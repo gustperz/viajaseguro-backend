@@ -1,0 +1,15 @@
+{
+  "generators": {
+    "modules": {}
+  },
+  "hooks": {
+    "csrf": false,
+    "grunt": false,
+    "i18n": false,
+    "session": false,
+    "views": false
+  },
+  "paths": {
+    "public": "public"
+  }
+}

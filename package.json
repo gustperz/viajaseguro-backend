@@ -1,0 +1,30 @@
+{
+  "name": "vs-jsbackend",
+  "private": true,
+  "version": "0.0.1",
+  "description": "backend viajaseguro",
+  "keywords": [],
+  "dependencies": {
+    "glob": "^7.0.6",
+    "hoek": "^4.0.2",
+    "include-all": "~0.1.6",
+    "lodash": "^4.15.0",
+    "path": "^0.12.7",
+    "pluralize": "^3.0.0",
+    "rc": "1.0.1",
+    "sails": "~0.12.3",
+    "sails-disk": "~0.10.9"
+  },
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gustperz/vs-jsbackend.git"
+  },
+  "author": "tav0",
+  "license": "",
+  "devDependencies": {}
+}
