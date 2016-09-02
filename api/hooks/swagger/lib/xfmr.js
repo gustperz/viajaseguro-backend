@@ -361,23 +361,23 @@ const Transformer = {
    * http://swagger.io/specification/#responsesObject
    */
   getResponses(sails, methodGroup) {
-    let $ref = Transformer.getDefinitionReferenceFromPath(sails, methodGroup.path)
-    let okCode = '200'
-    let okMessage = {
-      description: 'The requested resource'
-    }
-    if ($ref) {
-      okMessage.schema = {'$ref': $ref}
-    }
-    if (methodGroup.method === 'post') {
-      okCode = '201';
-      okMessage = {description: 'Resource created'};
-    }
+    // let $ref = Transformer.getDefinitionReferenceFromPath(sails, methodGroup.path)
+    // let okCode = '200'
+    // let okMessage = {
+    //   description: 'The requested resource'
+    // }
+    // if ($ref) {
+    //   okMessage.schema = {'$ref': $ref}
+    // }
+    // if (methodGroup.method === 'post') {
+    //   okCode = '201';
+    //   okMessage = {description: 'Resource created'};
+    // }
     let returnValue = {
       '404': {description: 'Resource not found'},
       '500': {description: 'Internal server error'}
     }
-    returnValue[okCode] = okMessage
+    // returnValue[okCode] = okMessage
     return returnValue
   }
 };
