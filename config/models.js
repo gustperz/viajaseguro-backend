@@ -4,7 +4,7 @@
 
 module.exports.models = {
 
-  connection: 'localDiskDb',
+  connection: 'mysqlServer',
 
   migrate: 'alter',
 

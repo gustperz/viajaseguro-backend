@@ -19,7 +19,7 @@
     "rc": "1.0.1",
     "sails": "~0.12.3",
     "sails-disk": "~0.10.9",
-    "sails-mysql": "^0.12.1",
+    "sails-mysql": "^0.12.2",
     "sails-service-hash": "^3.2.1"
   },
   "scripts": {
