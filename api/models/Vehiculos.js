@@ -2,7 +2,7 @@
  * Created by Jose Soto Acosta on 7/09/2016.
  */
 /**
- * Vehiculo.js
+ * Vehiculos.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
