@@ -13,7 +13,7 @@ const _ = require('lodash');
 module.exports = function (data, config) {
   const response = _.assign({
     code: _.get(config, 'code', 'E_FORBIDDEN'),
-    message: _.get(config, 'message', 'User not authorized to perform the operation'),
+    message: _.get(config, 'message', 'El usuario no esta autorizado para realizar esta operación.'),
     data: data || {}
   }, _.get(config, 'root', {}));
 

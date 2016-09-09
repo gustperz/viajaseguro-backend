@@ -1193,7 +1193,7 @@ angular.module('sw.ui.md')
             ],
             200: [
                 'OK',
-                'indicates that the request has succeeded.',
+                'Indica que la solicitud ha tenido éxito.',
                 'RFC7231#6.3.1',
                 'http://tools.ietf.org/html/rfc7231#section-6.3.1'
             ],
@@ -1318,8 +1318,8 @@ angular.module('sw.ui.md')
                 'http://tools.ietf.org/html/rfc7231#section-6.5.3'
             ],
             404: [
-                'Not Found',
-                'indicates that the origin server did not find a current representation for the target resource or is not willing to disclose that one exists.',
+                'No encontrado',
+                'Indica que en el servidor de origen no se encontró una representación actual para el recurso de destino o no está dispuesto a revelar que existe uno.',
                 'RFC7231#6.5.4',
                 'http://tools.ietf.org/html/rfc7231#section-6.5.4'
             ],
@@ -1450,8 +1450,8 @@ angular.module('sw.ui.md')
                 'http://tools.ietf.org/html/draft-tbray-http-legally-restricted-status'
             ],
             500: [
-                'Internal Server Error',
-                'indicates that the server encountered an unexpected condition that prevented it from fulfilling the request.',
+                'Error interno en el servidor',
+                'Indica que el servidor encontró una condición inesperada que le ha impedido el cumplimiento de la solicitud..',
                 'RFC7231#6.6.1',
                 'http://tools.ietf.org/html/rfc7231#section-6.6.1'
             ],
