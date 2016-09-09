@@ -32,7 +32,11 @@ module.exports = {
         },
 
         vehiculo: {
-            model: 'vehiculos'
+            model: 'vehiculo'
+        },
+
+        user: {
+            model: 'user'
         }
 
     },
