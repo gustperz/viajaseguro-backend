@@ -1,7 +1,7 @@
 {
-  "name": "vs-jsbackend",
+  "name": "viajaseguro-backend",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "backend viajaseguro",
   "keywords": [],
   "dependencies": {
@@ -19,6 +19,7 @@
     "rc": "1.0.1",
     "sails": "~0.12.3",
     "sails-disk": "~0.10.9",
+    "sails-migrations": "^2.0.9",
     "sails-mysql": "^0.12.2",
     "sails-service-hash": "^3.2.1"
   },
@@ -29,7 +30,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/gustperz/vs-jsbackend.git"
+    "url": "git://github.com/gustperz/viajaseguro-backend.git"
   },
   "author": "tav0",
   "license": "",
