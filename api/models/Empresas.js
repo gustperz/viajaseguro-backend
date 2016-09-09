@@ -10,8 +10,10 @@ module.exports = {
   attributes: {
     nit:              {type: 'string', size: 15, required: true, unique: true},
     pjuridica:        {type: 'string', size: 20, required: true},
-    nombre:           {type: 'string', size: 100, required: true},
+    nombre_corto:     {type: 'string', size: 25, required: true},
+    nombre_largo:     {type: 'string', size: 100, required: true},
     logo:             {type: 'string', size: 255,},
+    firma_digital:    {type: 'string', size: 255},
     direccion:        {type: 'string', size: 50},
     telefono:         {type: 'string', size: 15},
     nresolucon:       {type: 'string', size: 20, required: true},
