@@ -53,13 +53,13 @@ module.exports.routes = {
         }
     },
 
-    'DELETE /empresas/:id':{
+    'GET /empresas/:id':{
         controller: 'empresas/Empresas',
-        action: 'removeEmpresa',
+        action: 'getEmpresa',
 
         swagger: {
-            methods: ['DELETE'],
-            summary: 'Elimina una empresa',
+            methods: ['GET'],
+            summary: 'Obtiene una empresa',
             tags: ['Empresas'],
             responses : {
                 200: {
