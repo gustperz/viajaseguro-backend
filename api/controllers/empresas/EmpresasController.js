@@ -23,9 +23,10 @@ module.exports = {
     },
     addEmpresa: function (req, res) {
         var params = (req.allParams());
-        EmpresaService.addEmpresa(params)
-            .then(res.ok())
-            .catch(res.negotiate());
+        EmpresaService.addEmpresa(params, function (err, empresa) {
+            if(err) return res.negotiate(err)
+            return res.ok(empresa)
+        })
     },
 
     removeEmpresa: function (req, res) {

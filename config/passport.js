@@ -36,6 +36,9 @@ const _onLocalStrategyAuth = (req, username, password, next) => {
             if (user.rol == 'CENTRAL_EMPRESA') {
                 Centrales.findOne({user: user.id}).exec((err, central) => {
                     if (err || !central) return next(null, null, sails.config.errors.USER_NOT_VALID);
+                    user.central = {
+                      id: central.id
+                    };
                     Empresas.findOne({id: central.empresa}).exec((err, empresa) => {
                         if (!empresa.activa)  return next(null, null, sails.config.errors.USER_NOT_INACTIVE);
                         user.empresa = {
