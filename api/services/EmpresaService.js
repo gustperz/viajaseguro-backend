@@ -27,15 +27,16 @@ module.exports = {
     },
     addEmpresa: function (params, next) {
         var data = params;
-        if (!data.usuario) return next.badRequest('Informacion de acceso de la empresa no enviada');
-        data.usuario.rol = 'EMPRESA';
+        console.log(data);
+        if (!data.user) return next.badRequest('Informacion de acceso de la empresa no enviada');
+        data.user.rol = 'EMPRESA';
         Empresas.create(data)
             .then(function (empresa) {
                     next(null, empresa)
                 })
             .catch(error => {
-                if (!error.invalidAttributes.username && data.usuario.username) {
-                    User.destroy({username: data.usuario.username}).exec(() => {
+                if (!error.invalidAttributes.username && data.user.username) {
+                    User.destroy({username: data.user.username}).exec(() => {
                     });
                 }
                 next(error);
