@@ -13,13 +13,41 @@ module.exports = {
   },
 
   authenticate(req, res) {
-    passport.authenticate('local', _.partial(sails.config.passport.onPassportAuth, req, res))(req, res);
+    passport.authenticate('local', function (error, user, info) {
+      if (error || !user) return res.negotiate(error || info);
+      async.series([
+          function (callback) {
+            if (user.rol === 'CENTRAL_EMPRESA') {
+              Centrales.findOne({user: user.id}).populate('empresa')
+                .then((central)=> {
+                  user.central = central;
+                  callback(user);
+                }).catch(res.negotiate);
+            }
+            if (user.rol === 'EMPRESA') {
+              Empresas.findOne({user: user.id})
+                .then((empresa)=> {
+                  user.empresa = empresa;
+                  callback(user);
+                }).catch(res.negotiate);
+            }
+          }
+        ],
+        function (user) {
+          console.log(user);
+          return res.ok({
+            token: JWTService.token.encode({id: user.id}),
+            user: user
+          });
+        });
+
+    })(req, res);
   },
 
   registro(req, res) {
     User
       .create(_.omit(req.allParams(), 'id'))
-      .then(function (user){
+      .then(function (user) {
         return {
           token: JWTService.token.encode({id: user.id}),
           user: user

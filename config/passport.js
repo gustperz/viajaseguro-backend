@@ -32,7 +32,9 @@ const _onLocalStrategyAuth = (req, username, password, next) => {
     .findOne({[LOCAL_STRATEGY_CONFIG.usernameField]: username})
     .then(user => {
       if (!user) return next(null, null, sails.config.errors.USER_NOT_FOUND);
-      if (!HashService.bcrypt.compareSync(password, user.password)) return next(null, null, sails.config.errors.USER_NOT_FOUND);
+      if (!HashService.bcrypt.compareSync(password, user.password)){
+        return next(null, null, sails.config.errors.USER_NOT_FOUND);
+      }
       return next(null, user, {});
     })
     .catch(next);
@@ -51,12 +53,3 @@ const _onJwtStrategyAuth = (req, payload, next) => {
 passport.use(new LocalStrategy(LOCAL_STRATEGY_CONFIG, _onLocalStrategyAuth));
 passport.use(new JwtStrategy(JWT_STRATEGY_CONFIG, _onJwtStrategyAuth));
 
-module.exports.passport = {
-  onPassportAuth(req, res, error, user, info) {
-    if (error || !user) return res.negotiate(error || info);
-    return res.ok({
-      token: JWTService.token.encode({id: user.id}),
-      user: user
-    });
-  }
-};
