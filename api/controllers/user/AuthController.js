@@ -20,16 +20,32 @@ module.exports = {
             if (user.rol === 'CENTRAL_EMPRESA') {
               Centrales.findOne({user: user.id}).populate('empresa')
                 .then((central)=> {
-                  user.central = central;
+                    user.central = {
+                        id: central.id
+                    };
+                    user.empresa = {
+                        id: central.empresa.id,
+                        nombre_corto: central.empresa.nombre_corto,
+                        nombre_largo: central.empresa.nombre_largo,
+                        logo: central.empresa.logo,
+                    };
                   callback(user);
                 }).catch(res.negotiate);
             }
-            if (user.rol === 'EMPRESA') {
+            else if (user.rol === 'EMPRESA') {
               Empresas.findOne({user: user.id})
                 .then((empresa)=> {
-                  user.empresa = empresa;
+                    if (!empresa.activa) return res.unauthorized(sails.config.errors.USER_NOT_INACTIVE);
+                    user.empresa = {
+                        id: empresa.id,
+                        nombre_corto: empresa.nombre_corto,
+                        logo: empresa.logo,
+                    };
                   callback(user);
                 }).catch(res.negotiate);
+            }
+            else {
+                callback(user);
             }
           }
         ],
