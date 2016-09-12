@@ -51,7 +51,7 @@ const _onLocalStrategyAuth = (req, username, password, next) => {
                     });
                 });
             } else if (user.rol == 'EMPRESA') {
-                Empresa.findOne({user: user.id}).exec((err, empresa) => {
+                Empresas.findOne({user: user.id}).exec((err, empresa) => {
                     if (err || !empresa) return next(null, null, sails.config.errors.USER_NOT_VALID);
                     if (!empresa.activa)  return next(null, null, sails.config.errors.USER_NOT_INACTIVE);
                     user.empresa = {
