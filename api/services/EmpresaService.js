@@ -12,22 +12,41 @@ module.exports = {
         model: 'empresas'
     },
 
-    getEmpresas: function(next) {
-        Empresas.find().exec(function(err, empresas) {
-            if(err) throw err;
+    getEmpresas: function (next) {
+        Empresas.find().exec(function (err, empresas) {
+            if (err) throw err;
             next(empresas);
         });
     },
-    addEmpresa: function(todoVal, next) {
-        Empresas.create({value: todoVal}).exec(function(err, empresas) {
-            if(err) throw err;
-            next(empresas);
-        });
+    getEmpresa: function (id, next) {
+        Empresas.findOne({id: id})
+            .then(function (empresa) {
+                next(null, empresa)
+            })
+            .catch(next)
     },
-    removeEmpresa: function(paramId, next) {
-        Empresas.destroy({value: paramId}).exec(function(err, empresa) {
-            if(err) throw err;
+    addEmpresa: function (params, next) {
+        var data = params;
+        console.log(data);
+        if (!data.user) return next.badRequest('Informacion de acceso de la empresa no enviada');
+        data.user.rol = 'EMPRESA';
+        Empresas.create(data)
+            .then(function (empresa) {
+                    next(null, empresa)
+                })
+            .catch(error => {
+                if (!error.invalidAttributes.username && data.user.username) {
+                    User.destroy({username: data.user.username}).exec(() => {
+                    });
+                }
+                next(error);
+            })
+    },
+    removeEmpresa: function (paramId, next) {
+        Empresas.destroy({value: paramId}).exec(function (err, empresa) {
+            if (err) throw err;
             next(empresa);
         });
     }
+
 }
