@@ -53,7 +53,7 @@ module.exports.routes = {
         }
     },
 
-    'GET /empresas/:id':{
+    'GET /empresas/:id': {
         controller: 'empresas/Empresas',
         action: 'getEmpresa',
 
@@ -61,12 +61,43 @@ module.exports.routes = {
             methods: ['GET'],
             summary: 'Obtiene una empresa',
             tags: ['Empresas'],
-            responses : {
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
+
+    'PUT /empresas/:id': {
+        controller: 'empresas/Empresas',
+        action: 'updateEmpresa',
+
+        swagger: {
+            methods: ['GET'],
+            summary: 'Actualiza una empresa',
+            tags: ['Empresas'],
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
+
+    'DELETE /empresas/:id':{
+        controller: 'empresas/Empresas',
+        action: 'removeEmpresa',
+
+        swagger: {
+            methods: ['DELETE'],
+            summary: 'Elimina una empresa',
+            tags: ['Empresas'],
+            responses: {
                 200: {
                     description: 'OK'
                 }
             }
         }
     }
-
 }

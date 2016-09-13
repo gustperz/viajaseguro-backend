@@ -17,22 +17,31 @@ module.exports = {
         var id = req.allParams().id;
         if (!id) return res.badRequest('No envio el id de la empresa');
         EmpresaService.getEmpresa(req.allParams().id, function (err, empresa) {
-            if(err) return res.negotiate(err)
+            if (err) return res.negotiate(err)
             return res.ok(empresa)
         })
     },
     addEmpresa: function (req, res) {
-        var params = (req.allParams());
+        var params = req.allParams();
+        if (!params.user) return res.badRequest('Espera, aun no envias la información de acceso de la empresa.');
         EmpresaService.addEmpresa(params, function (err, empresa) {
-            if(err) return res.negotiate(err)
+            if (err) return res.negotiate(err)
             return res.ok(empresa)
         })
     },
-
+    updateEmpresa: function (req, res) {
+        var params = req.allParams();
+        EmpresaService.updateEmpresa(params, function (err, empresa) {
+            if (err) return res.negotiate(err)
+            return res.ok(empresa)
+        })
+    },
     removeEmpresa: function (req, res) {
-        var params = (req.body.value) ? req.body.value : undefined;
-        EmpresaService.removeEmpresa(params, function (success) {
-            res.json(success);
+        var id = req.allParams().id;
+        if (!id) return res.badRequest('No se envio ningun id para eliminar');
+        EmpresaService.removeEmpresa(id, function (err, empresa) {
+            if (err) return res.negotiate(err)
+            return res.ok(empresa)
         });
     }
 };
