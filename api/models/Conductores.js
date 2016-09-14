@@ -11,7 +11,7 @@
 module.exports = {
 
     attributes: {
-        cedula:             { type: 'string', required: true, unique: true },
+        identificacion:     { type: 'string', required: true, unique: true },
         nombres:            { type: 'string', required: true, size: 50 },
         apellidos:          { type: 'string', required: true, size: 50 },
         imagen:             { type: 'string', required: false, size: 255 },

@@ -12,7 +12,6 @@ module.exports.routes = {
         swagger: {
             methods: ['GET'],
             summary: 'Obtiene todas los conductores de una empresa',
-            tags: ['Condcutores'],
             responses: {
                 200: {
                     description: 'OK'
