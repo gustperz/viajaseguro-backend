@@ -49,5 +49,13 @@ module.exports = {
         }
     },
 
-    autoCreatedAt: true
+    autoCreatedAt: true,
+
+    afterDestroy(destroyedRecords, next){
+        for (var i = 0; i < destroyedRecords.length; i++) {
+            User.destroy({id: destroyedRecords[i].user}).exec(() => {
+            });
+        }
+        next();
+    }
 };
