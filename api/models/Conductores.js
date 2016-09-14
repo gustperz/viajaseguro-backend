@@ -17,8 +17,10 @@ module.exports = {
         imagen:             { type: 'string', required: false, size: 255 },
         telefono:           { type: 'string', required: true, size: 15 },
         fecha_nacimiento:   { type: 'date', required: true },
-        direccion:          { type: 'date', required: true, size: 50},
+        direccion:          { type: 'string', required: true, size: 50},
         email:              { type: 'string', required: false, size: 30 },
+        fecha_licencia:     { type: 'date', required: true },
+        fecha_seguroac:     { type: 'date', required: true },
         estado:             { type: 'string', defaultsTo: 'disponible'},
         activo:             { type: 'boolean', defaultsTo: true},
 

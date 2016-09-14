@@ -32,7 +32,9 @@ module.exports = {
         telefono_propietario:   { type: 'integer', required: true, size: 15 },
         // documentation
         soat:                   { type: 'boolean', required: false},
+        fecha_soat:             { type: 'date', required: true },
         tecnomecanica:          { type: 'boolean', required: false },
+        fecha_tecnomecanica:    { type: 'date', required: true },
         tarjeta_propiedad:      { type: 'boolean', required: false }
     },
 
