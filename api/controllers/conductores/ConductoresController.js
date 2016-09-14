@@ -11,5 +11,6 @@
 const _ = require('lodash');
 
 module.exports = {
+    identity: 'Empresas',
 
 }

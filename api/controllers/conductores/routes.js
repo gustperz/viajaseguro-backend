@@ -5,10 +5,9 @@
  * Route Mappings
  */
 module.exports.routes = {
-    'GET /empresas/:parentid/conductores': {
-        controller: 'conductores/Conductores',
-        action: 'populate',
-        alias: 'conductores',
+    'GET /conductores': {
+        controller: 'Conductores',
+        action: 'find',
 
         swagger: {
             methods: ['GET'],

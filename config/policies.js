@@ -19,5 +19,9 @@ module.exports.policies = {
 
   SwaggerController: {
     '*': true
+  },
+
+  ConductoresController: {
+    '*': ['isAuthenticated', 'fiterByUser']
   }
 };
