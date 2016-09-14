@@ -5,13 +5,12 @@
 module.exports.routes = {
 
     'POST /empresas': {
-        controller: 'empresas/Empresas',
-        action: 'addEmpresa',
+        controller: 'Empresas',
+        action: 'create',
 
         swagger: {
             methods: ['POST'],
             summary: 'Guardado de empresa',
-            tags: ['Empresas'],
             responses: {
                 201: {
                     schema: 'Empresas'
@@ -38,13 +37,12 @@ module.exports.routes = {
     },
 
     'GET /empresas': {
-        controller: 'empresas/Empresas',
-        action: 'getEmpresas',
+        controller: 'Empresas',
+        action: 'find',
 
         swagger: {
             methods: ['GET'],
             summary: 'Obtiene todas las empresas',
-            tags: ['Empresas'],
             responses: {
                 200: {
                     description: 'OK'
@@ -54,13 +52,12 @@ module.exports.routes = {
     },
 
     'GET /empresas/:id': {
-        controller: 'empresas/Empresas',
-        action: 'getEmpresa',
+        controller: 'Empresas',
+        action: 'findOne',
 
         swagger: {
             methods: ['GET'],
             summary: 'Obtiene una empresa',
-            tags: ['Empresas'],
             responses: {
                 200: {
                     description: 'OK'
@@ -70,13 +67,12 @@ module.exports.routes = {
     },
 
     'PUT /empresas/:id': {
-        controller: 'empresas/Empresas',
-        action: 'updateEmpresa',
+        controller: 'Empresas',
+        action: 'update',
 
         swagger: {
             methods: ['GET'],
             summary: 'Actualiza una empresa',
-            tags: ['Empresas'],
             responses: {
                 200: {
                     description: 'OK'
@@ -86,13 +82,12 @@ module.exports.routes = {
     },
 
     'DELETE /empresas/:id':{
-        controller: 'empresas/Empresas',
-        action: 'removeEmpresa',
+        controller: 'Empresas',
+        action: 'destroy',
 
         swagger: {
             methods: ['DELETE'],
             summary: 'Elimina una empresa',
-            tags: ['Empresas'],
             responses: {
                 200: {
                     description: 'OK'

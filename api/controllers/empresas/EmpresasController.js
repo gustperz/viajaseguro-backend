@@ -7,41 +7,19 @@
 const _ = require('lodash');
 
 module.exports = {
+    identity: 'Empresas',
 
-    getEmpresas: function (req, res) {
-        EmpresaService.getEmpresas(function (empresas) {
-            res.json(empresas);
-        });
-    },
-    getEmpresa: function (req, res) {
-        var id = req.allParams().id;
-        if (!id) return res.badRequest('No envio el id de la empresa');
-        EmpresaService.getEmpresa(req.allParams().id, function (err, empresa) {
-            if (err) return res.negotiate(err)
-            return res.ok(empresa)
-        })
-    },
-    addEmpresa: function (req, res) {
-        var params = req.allParams();
-        if (!params.user) return res.badRequest('Espera, aun no envias la información de acceso de la empresa.');
-        EmpresaService.addEmpresa(params, function (err, empresa) {
-            if (err) return res.negotiate(err)
-            return res.ok(empresa)
-        })
-    },
-    updateEmpresa: function (req, res) {
-        var params = req.allParams();
-        EmpresaService.updateEmpresa(params, function (err, empresa) {
-            if (err) return res.negotiate(err)
-            return res.ok(empresa)
-        })
-    },
-    removeEmpresa: function (req, res) {
-        var id = req.allParams().id;
-        if (!id) return res.badRequest('No se envio ningun id para eliminar');
-        EmpresaService.removeEmpresa(id, function (err, empresa) {
-            if (err) return res.negotiate(err)
-            return res.ok(empresa)
-        });
+    create(req, res) {
+        var data = req.allParams();
+        if (!data.user) return res.badRequest('Espera, aun no envias la información de acceso de la empresa.');
+        data.user.rol = 'EMPRESA';
+        Empresas.create(data)
+            .then(res.ok)
+            .catch(error => {
+                if (!error.invalidAttributes.username && data.user.username) {
+                    User.destroy({username: data.user.username}).exec(() => {});
+                }
+                res.negotiate(error);
+            })
     }
 };

@@ -21,13 +21,17 @@ module.exports = {
         email:              { type: 'string', required: false, size: 30 },
         estado:             { type: 'string', defaultsTo: 'disponible'},
         activo:             { type: 'boolean', defaultsTo: true},
-        
+
         // relaciones
-        central: { 
+        central: {
             model: 'centrales'
         },
-        
-        ciudad: { 
+
+        empresa: {
+            model: 'empresas'
+        },
+
+        ciudad: {
             model: 'municipios'
         },
 
