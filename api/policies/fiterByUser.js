@@ -21,6 +21,9 @@ module.exports = function (req, res, next) {
             .then((empresas) => {
                 if(!empresas[0]) return res.badRequest('no se encuentra la empresa de este usuario');
                 req.options.where.empresa = empresas[0].id;
+                req.user.empresa = {
+                    id: empresas[0].id
+                };
                 next();
             }).catch(res.negotiate);
     }
