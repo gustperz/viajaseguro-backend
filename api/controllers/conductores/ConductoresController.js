@@ -18,14 +18,24 @@ module.exports = {
         const data = req.allParams();
         data.empresa = req.user.empresa.id;
         data.user = {
-            username: data.identificacion,
-            password: data.identificacion,
+            username: String(data.identificacion),
+            password: String(data.identificacion),
             rol: 'CONDUCTOR',
             email: req.allParams().email || ''
         };
         Conductores.create(data)
             .then(res.ok)
             .catch(error => {
+                if (!error.invalidAttributes.username && data.user.username) {
+                    User.destroy({username: data.user.username}).exec(() => {});
+                }
+                if (!error.invalidAttributes.placa && data.vehiculo.placa) {
+                    Vehiculos.destroy({placa: data.vehiculo.placa}).exec(() => {});
+                }
+
+                if (!error.invalidAttributes.codigo_vial && data.vehiculo.codigo_vial) {
+                    Vehiculos.destroy({codigo_vial: data.vehiculo.codigo_vial}).exec(() => {});
+                }
                 res.negotiate(error);
             });
     },

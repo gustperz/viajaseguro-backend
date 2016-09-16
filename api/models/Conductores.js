@@ -19,6 +19,8 @@ module.exports = {
         fecha_nacimiento:   { type: 'date', required: true },
         direccion:          { type: 'string', required: true, size: 50},
         email:              { type: 'string', required: false, size: 30 },
+        nlicencia:          { type: 'string', required: true ,size: 20},
+        tipo_licencia:      { type: 'string', required: true, size: 2},
         fecha_licencia:     { type: 'date', required: true },
         fecha_seguroac:     { type: 'date', required: true },
         estado:             { type: 'string', defaultsTo: 'disponible'},
