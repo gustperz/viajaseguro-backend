@@ -47,8 +47,6 @@ module.exports = {
 
             // elimino de fields todas las que sena de vehiculo y las guardo en fields_vehiculo
             var fields_vehiculo = _.remove(fields, field => _.startsWith(field, 'vehiculo.'));
-            console.log(fields_vehiculo)
-            console.log(fields)
 
             //verifico que no este consultando una columna que no exista en conductores
             const dif = actionUtil.checkFields(fields, Conductores);
@@ -59,7 +57,6 @@ module.exports = {
             if (fields_vehiculo.length) {
                 //elimino de las columnas de vehiculo el sufijo vehiculo.
                 fields_vehiculo = _.map(fields_vehiculo, field => _.replace(field, 'vehiculo.', ''));
-                console.log(fields_vehiculo)
 
                 //verifico que no este consultando una columna que no exista en vehiculos
                 const dif = actionUtil.checkFields(fields_vehiculo, Vehiculos);
