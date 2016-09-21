@@ -23,5 +23,8 @@ module.exports.policies = {
 
   ConductoresController: {
     '*': ['isAuthenticated', 'fiterByUser']
+  },
+  VehiculosController: {
+    '*': ['isAuthenticated', 'fiterByUser']
   }
 };

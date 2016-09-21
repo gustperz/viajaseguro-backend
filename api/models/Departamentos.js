@@ -7,13 +7,14 @@
 
 module.exports = {
 
-  attributes: {
-    nombre: { type: 'string', required: true},
+    attributes: {
+        nombre: {type: 'string', required: true},
+        codigoT: {type: 'string', required: true},
 
-    ciudades: {
-      collection: 'municipios',
-      via: 'departamento'
+        ciudades: {
+            collection: 'municipios',
+            via: 'departamento'
+        }
     }
-  }
 };
 
