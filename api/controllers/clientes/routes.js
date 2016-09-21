@@ -5,13 +5,13 @@
  * Route Mappings
  */
 module.exports.routes = {
-    'GET /clientes/:id': {
+    'GET /clientes': {
         controller: 'Clientes',
-        action: 'findOne',
+        action: 'findOneByIdentificacion',
 
         swagger: {
             methods: ['GET'],
-            summary: 'Obtiene un cliente',
+            summary: 'Obtiene un cliente por la identificacion',
             responses: {
                 200: {
                     description: 'OK'

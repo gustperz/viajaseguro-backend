@@ -25,9 +25,16 @@ module.exports = {
             .then(res.ok)
             .catch(error => {
                 if (!error.invalidAttributes.username && data.user.username) {
-                    User.destroy({username: data.user.username}).exec(() => {});
+                    User.destroy({username: data.user.username}).exec(() => {
+                    });
                 }
                 res.negotiate(error);
             });
     },
+
+    findOneByIdentificacion(req, res){
+        const identificacion = req.allParams().identificacion;
+        if (!identificacion) return res.badRequest('Se necesita la identificacion');
+        Clientes.findOne({identificacion: identificacion}).then(res.ok).catch(res.negotiate);
+    }
 };
