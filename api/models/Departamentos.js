@@ -6,15 +6,18 @@
  */
 
 module.exports = {
+  migrate: 'safe',
 
-    attributes: {
-        nombre: {type: 'string', required: true},
-        codigoT: {type: 'string', required: true},
+  autoPK: false,
+  attributes: {
+    id:     {type: 'integer', required: true, primaryKey: true, autoIncrement: false,},
+    nombre: {type: 'string', required: true, size: 45},
+    coigo:  {type: 'string', required: true, size: 3},
 
-        ciudades: {
-            collection: 'municipios',
-            via: 'departamento'
-        }
+    ciudades: {
+      collection: 'municipios',
+      via: 'departamento'
     }
+  }
 };
 

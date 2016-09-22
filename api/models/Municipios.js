@@ -6,9 +6,12 @@
  */
 
 module.exports = {
+  migrate: 'safe',
 
+  autoPK: false,
   attributes: {
-    nombre: { type: 'string', required: true},
+    codigo: {type: 'integer', required: true, primaryKey: true, unique: true, autoIncrement: false,},
+    nombre: {type: 'string', required: true, size: 45},
 
     departamento: {
       model: 'departamentos'
