@@ -17,9 +17,9 @@ module.exports = {
     create(req, res) {
         const data = req.allParams();
         data.empresa = req.user.empresa.id;
-        data.vehiculo = {
-            empresa: req.user.empresa.id
-        };
+        data.vehiculo.empresa= req.user.empresa.id;
+
+        console.log(data)
         data.user = {
             username: String(data.identificacion),
             password: String(data.identificacion),
