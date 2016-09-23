@@ -12,7 +12,7 @@ module.exports = {
     nombre:         {type: 'string', required: true},
     telefono:       {type: 'string'},
     dieccion:       {type: 'string'}
-  }
+  },
 
     // relaciones
     user: {

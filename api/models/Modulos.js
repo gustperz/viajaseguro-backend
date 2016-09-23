@@ -7,8 +7,15 @@
 
 module.exports = {
 
-  attributes: {
-    nombre: { type: 'string', required: true, unique: true}
-  }
+    attributes: {
+        nombre: {type: 'string', required: true, unique: true},
+
+        // relaciones
+        empresas: {
+            collection: 'empresas',
+            via: 'modulos',
+            through: 'modulosempresa'
+        }
+    }
 };
 

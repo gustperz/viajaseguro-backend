@@ -12,7 +12,7 @@ var isArray = require('lodash').isArray;
 var isObject = require('lodash').isObject;
 var isUndefined = require('lodash').isUndefined;
 var _ = require('lodash'); // TODO: replace lodash with individual per-method packages
-var mergeDefaults = require('sails/node_modules/merge-defaults');
+var mergeDefaults = require('merge-defaults');
 
 
 // Parameter used for jsonp callback is constant, as far as
