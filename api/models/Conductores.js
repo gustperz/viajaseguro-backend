@@ -54,8 +54,8 @@ module.exports = {
 
     afterDestroy(destroyedRecords, next){
         for (var i = 0; i < destroyedRecords.length; i++) {
-            User.destroy({id: destroyedRecords[i].user}).exec(() => {
-            });
+            User.destroy({id: destroyedRecords[i].user}).exec(() => {});
+            Vehiculos.destroy({id: destroyedRecords[i].vehiculo}).exec(() => {});
         }
         next();
     }
