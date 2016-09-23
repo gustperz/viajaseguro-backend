@@ -11,16 +11,18 @@ module.exports = function findRecords (req, res) {
         return require('./findone')(req,res);
     }
 
-    if (req.param('fields')) {
-        const fields = req.param('fields').replace(/ /g, '').split(',');
+    if (req.param('fields') || req.options.nofields) {
         const Model = actionUtil.parseModel(req);
 
-        const dif = actionUtil.checkFields(fields, Model);
-        if (dif.length) {
-            return res.badRequest({'error': 'error in fields, ['+dif.toString()+']'});
+        if (!req.options.nofields) {
+            var fields = req.param('fields').replace(/ /g, '').split(',');
+            const dif = actionUtil.checkFields(fields, Model);
+            if (dif.length) {
+                return res.badRequest({'error': 'error in fields, [' + dif.toString() + ']'});
+            }
         }
 
-        var query = Model.find({select: fields})
+        var query = Model.find(req.param('fields') ? {select: fields} : null)
             .where( actionUtil.parseCriteria(req) )
             .limit( actionUtil.parseLimit(req) )
             .skip( actionUtil.parseSkip(req) )

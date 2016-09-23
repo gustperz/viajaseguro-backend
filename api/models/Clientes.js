@@ -7,19 +7,12 @@
 
 module.exports = {
 
-    attributes: {
-        identificacion: {type: 'string', primaryKey: true, autoIncrement: false, required: true},
-        nombre: {type: 'string', required: true},
-        telefono: {type: 'string'},
-        dieccion: {type: 'string'}
-    },
+  attributes: {
+    identificacion: {type: 'string', primaryKey: true, autoIncrement: false, required: true},
+    nombre:         {type: 'string', required: true},
+    telefono:       {type: 'string'},
+    dieccion:       {type: 'string'}
+  }
 
-    afterDestroy(destroyedRecords, next){
-        for (var i = 0; i < destroyedRecords.length; i++) {
-            User.destroy({id: destroyedRecords[i].user}).exec(() => {
-            });
-        }
-        next();
-    }
 };
 

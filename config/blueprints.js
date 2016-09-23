@@ -22,6 +22,6 @@ module.exports.blueprints = {
 
   autoWatch: true,
 
-  defaultLimit: 30
+  // defaultLimit: 30
 
 };

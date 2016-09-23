@@ -26,8 +26,6 @@ module.exports = {
         color:                  { type: 'string', required: true, size: 20 },
         cupos:                  { type: 'integer', required: true, size: 2 },
         codigo_vial:            { type: 'string', required: true, unique: true, size: 5 },
-        // empresa
-        empresa:                {type: 'integer', required: false},
         // propietario
         cedula_propietario:     { type: 'string', required: true, size: 15 },
         nombre_propietario:     { type: 'string', required: true, size: 50 },
@@ -40,10 +38,6 @@ module.exports = {
         tarjeta_propiedad:      { type: 'boolean', required: false }
     },
 
-    // relaciones
-    empresa: {
-        model: 'empresas'
-    },
     autoCreatedAt: true,
     autoUpdatedAt: true,
 }

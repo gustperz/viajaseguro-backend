@@ -7,12 +7,12 @@
  */
 
 var util = require('util');
-var isString = require('lodash.isstring');
-var isArray = require('lodash.isarray');
-var isObject = require('lodash.isobject');
-var isUndefined = require('lodash.isundefined');
+var isString = require('lodash').isString;
+var isArray = require('lodash').isArray;
+var isObject = require('lodash').isObject;
+var isUndefined = require('lodash').isUndefined;
 var _ = require('lodash'); // TODO: replace lodash with individual per-method packages
-var mergeDefaults = require('merge-defaults');
+var mergeDefaults = require('sails/node_modules/merge-defaults');
 
 
 // Parameter used for jsonp callback is constant, as far as
@@ -59,7 +59,7 @@ var actionUtil = {
         _.each(_options.associations, function(association) {
             // If an alias filter was provided, override the blueprint config.
             if (aliasFilter) {
-                shouldPopulate = _.contains(aliasFilter, association.alias);
+                shouldPopulate = _.includes(aliasFilter, association.alias);
             }
 
             // Only populate associations if a population filter has been supplied

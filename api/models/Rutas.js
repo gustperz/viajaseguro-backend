@@ -9,15 +9,14 @@ module.exports = {
 
   attributes: {
     nombre_ciudad: {type: 'string', size: 100},
-    trayecto:      {type: 'array'},
-    tarifa:        {type: 'float'},
+    trayecto:      {type: 'text'},
 
     origen: {
       model: 'centrales'
     },
 
     destino: {
-      model: 'centrales'
+      model: 'municipios'
     }
 
   }
