@@ -11,7 +11,7 @@ module.exports = {
     create(req, res) {
         var data = req.allParams();
         if (!data.user) return res.badRequest('Espera, aun no envias la información de acceso de la central.');
-        data.user.rol = 'CENTRAL';
+        data.user.rol = 'CENTRAL_EMPRESA';
         data.empresa = req.user.empresa.id;
         Centrales.create(data)
             .then(res.ok)
