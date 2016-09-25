@@ -57,10 +57,5 @@ module.exports = {
             });
         }
         next();
-    },
-    afterCreate(values, next){
-        // console.log(values)
-        // Empresas.Modulos.add(values);
-        // next();
     }
 };
