@@ -44,7 +44,6 @@ module.exports = {
         toJSON() {
             var obj = this.toObject();
             delete obj.user;
-            delete  obj.firma_digital;
             return obj;
         }
     },
