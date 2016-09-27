@@ -105,4 +105,21 @@ module.exports.routes = {
     }
   },
 
+  'PUT /user/:id/updateContrasena': {
+    model: 'user',
+    action: 'update',
+
+    swagger: {
+      methods: ['PUT'],
+      summary: 'Actualiza la password del usuario',
+      responses: {
+        200: {
+          description: 'OK',
+        }
+      },
+    }
+  },
+
+
+
 }
