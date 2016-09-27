@@ -22,18 +22,18 @@ module.exports.policies = {
   },
 
   ConductoresController: {
-    '*': ['isAuthenticated', 'fiterByUser']
+    '*': ['isAuthenticated', 'fiterByEmpresa']
   },
 
   VehiculosController: {
-    '*': ['isAuthenticated', 'fiterByUser']
+    '*': ['isAuthenticated', 'fiterByEmpresa']
   },
 
   CentralesController: {
-    '*': ['isAuthenticated', 'fiterByUser']
+    '*': ['isAuthenticated', 'fiterByEmpresa']
   },
 
   RutasController: {
-    '*': ['isAuthenticated', 'fiterByUser']
+    '*': ['isAuthenticated', 'fiterByCentral']
   }
 };
