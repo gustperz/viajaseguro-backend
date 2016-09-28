@@ -32,7 +32,7 @@ module.exports = {
                 return res.ok( _.map( turnos, turno => {
                     return {
                         pos: turno.pos,
-                        conductor: _.pick(turno.conductor, ['id, identificacion', 'nombres', 'apellidos', 'imagen', 'codigo_vial_vehiculo'])
+                        conductor: _.pick(turno.conductor, ['id', 'nombres', 'apellidos', 'imagen', 'codigo_vial'])
                     }
                 }) );
             }).catch(res.negotiate);
