@@ -34,6 +34,7 @@ module.exports.policies = {
   },
 
   RutasController: {
-    '*': ['isAuthenticated', 'fiterByCentral']
+    '*': ['isAuthenticated', 'fiterByCentral'],
+    'create': ['isAuthenticated', 'fiterByEmpresa']
   }
 };
