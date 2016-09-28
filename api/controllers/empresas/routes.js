@@ -94,5 +94,34 @@ module.exports.routes = {
                 }
             }
         }
+    },
+    'POST /empresas/:id/logo':{
+        controller: 'Empresas',
+        action: 'saveLogo',
+
+        swagger: {
+            methods: ['POST'],
+            summary: 'Guarda el logo de la empresa',
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
+    'POST /empresas/:id/firma':{
+        controller: 'Empresas',
+        action: 'saveFirma',
+
+        swagger: {
+            methods: ['POST'],
+            summary: 'Guarda la firma de la empresa',
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
     }
+
 }

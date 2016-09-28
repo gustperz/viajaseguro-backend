@@ -44,7 +44,6 @@ module.exports = {
         toJSON() {
             var obj = this.toObject();
             delete obj.user;
-            delete  obj.firma_digital;
             return obj;
         }
     },
@@ -57,10 +56,5 @@ module.exports = {
             });
         }
         next();
-    },
-    afterCreate(values, next){
-        // console.log(values)
-        // Empresas.Modulos.add(values);
-        // next();
     }
 };

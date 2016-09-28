@@ -22,7 +22,8 @@
     "sails-disk": "~0.10.9",
     "sails-migrations": "^2.0.9",
     "sails-mysql": "^0.12.2",
-    "sails-service-hash": "^3.2.1"
+    "sails-service-hash": "^3.2.1",
+    "uid-safe": "^2.1.2"
   },
   "scripts": {
     "debug": "node debug app.js",

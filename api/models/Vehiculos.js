@@ -37,7 +37,10 @@ module.exports = {
         fecha_tecnomecanica:    { type: 'date', required: true },
         tarjeta_propiedad:      { type: 'boolean', required: false }
     },
-
+    // relaciones
+    empresa: {
+        model: 'empresas'
+    },
     autoCreatedAt: true,
     autoUpdatedAt: true,
 }

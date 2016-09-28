@@ -5,6 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 const _ = require('lodash');
+const uid = require('uid-safe')
 
 module.exports = {
     identity: 'Empresas',
@@ -15,53 +16,68 @@ module.exports = {
         const mc = data.modulos_contratados_empresa;
         if (!data.user) return res.badRequest('Espera, aun no envias la información de acceso de la empresa.');
         data.user.rol = 'EMPRESA';
-        Empresas.create(data, function(err, empresa) {
-            console.log(empresa)
-            if (err) return next(err);
-
-            res.status(201);
-
-            res.json(empresa);
-
-        });
-        // Empresas.create(data)
-        //     .done(function (err, empresa) {
-        //         console.log(empresa)
-        //         // Error handling
-        //         if (err) {
-        //
-        //             res.send("Error:Sorry!Something went Wrong");
-        //
-        //         } else {
-        //             res.send("Successfully Created!");
-        //             //res.redirect( 'person/view/’+model.id);
-        //
-        //         }
-        //
-        //     });
-
+        Empresas.create(data)
+            .then(function (empresa) {
+                empresa.modulos.add(mc);
+                empresa.save(function (err) {
+                    res.ok(empresa);
+                })
+            })
+            .catch(error => {
+                if (!error.invalidAttributes.username && data.user.username) {
+                    User.destroy({username: data.user.username}).exec(() => {
+                    });
+                }
+            })
     },
 
-    // create: function (req, res) {
-    //
-    //     if (req.method == "POST" && req.param("Person", null) != null) {
-    //         Person.create(req.param("Person")).done(function (err, model) {
-    //
-    //             // Error handling
-    //             if (err) {
-    //
-    //                 res.send("Error:Sorry!Something went Wrong");
-    //
-    //             } else {
-    //                 res.send("Successfully Created!");
-    //                 //res.redirect( 'person/view/’+model.id);
-    //
-    //             }
-    //
-    //         });
-    //
-    //     } else {
-    //         res.render("person/create");
-    //     }
-    // }
+    saveLogo(req, res){
+        Empresas.findOne({id: req.allParams().id})
+            .then((empresa) => {
+                if (empresa) {
+                    req.file('logo').upload({
+                            dirname: sails.config.appPath + '/public/images/empresas',
+                            saveAs: function (__newFileStream, cb) {
+                                cb(null, empresa.logo || uid.sync(18) + empresa.id + '.' + _.last(__newFileStream.filename.split('.')));
+                            }
+                        },
+                        (error, uploadedFiles) => {
+                            if (error) return res.negotiate(error);
+                            if (!uploadedFiles[0]) return res.badRequest('ha ocurrido un erro inesperado al almacenar la imagen');
+                            const filename = _.last(uploadedFiles[0].fd.split('/'));
+                            empresa.logo = filename;
+                            empresa.save((err, s) => res.ok('files upload'));
+                        }
+                    );
+                } else {
+                    return res.notFound('la empresa no existe');
+                }
+            }).catch(res.negotiate);
+    },
+
+    saveFirma(req, res){
+        Empresas.findOne({id: req.allParams().id})
+            .then((empresa) => {
+                if (empresa) {
+                    console.log(req.file('firmaDigital'));
+                    req.file('firmaDigital').upload({
+                            dirname: sails.config.appPath + '/public/images/empresas/firma',
+                            saveAs: function (__newFileStream, cb) {
+                                cb(null, empresa.firma_digital || uid.sync(18) + empresa.id + '.'
+                                    + _.last(__newFileStream.filename.split('.')));
+                            }
+                        },
+                        (error, uploadedFiles) => {
+                            if (error) return res.negotiate(error);
+                            if (!uploadedFiles[0]) return res.badRequest('ha ocurrido un erro inesperado al almacenar la imagen');
+                            const filename = _.last(uploadedFiles[0].fd.split('/'));
+                            empresa.firma_digital = filename;
+                            empresa.save((err, s) => res.ok('files upload'));
+                        }
+                    );
+                } else {
+                    return res.notFound('la empresa no existe');
+                }
+            }).catch(res.negotiate);
+    }
 };
