@@ -35,12 +35,14 @@ module.exports = {
         fecha_soat:             { type: 'date', required: true },
         tecnomecanica:          { type: 'boolean', required: false },
         fecha_tecnomecanica:    { type: 'date', required: true },
-        tarjeta_propiedad:      { type: 'boolean', required: false }
+        tarjeta_propiedad:      { type: 'boolean', required: false },
+
+        // relaciones
+        empresa: {
+            model: 'empresas'
+        },
     },
-    // relaciones
-    empresa: {
-        model: 'empresas'
-    },
+
     autoCreatedAt: true,
     autoUpdatedAt: true,
 }
