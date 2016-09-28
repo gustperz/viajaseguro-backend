@@ -25,6 +25,7 @@ module.exports = {
         fecha_seguroac:     { type: 'date', required: true },
         estado:             { type: 'string', defaultsTo: 'disponible'},
         activo:             { type: 'boolean', defaultsTo: true},
+        codigo_vial:        { type: 'boolean', defaultsTo: true},
 
         // relaciones
         central: {

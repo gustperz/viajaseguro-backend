@@ -77,9 +77,11 @@ module.exports.routes = {
     'GET /centrales/:parentId/rutas': {
         controller: 'Centrales',
         action: 'populate',
+        relarion: 'rutas',
 
         swagger: {
             methods: ['GET'],
+            tags: ['Centrales'],
             summary: 'Obtiene las rutas de la central',
             responses: {
                 200: {
@@ -88,6 +90,7 @@ module.exports.routes = {
             }
         }
     },
+
     'POST /centrales/:parentId/rutas': {
         controller: 'Centrales',
         action: 'add',
@@ -95,6 +98,7 @@ module.exports.routes = {
 
         swagger: {
             methods: ['POST'],
+            tags: ['Centrales'],
             summary: 'Crear rutas central',
             responses: {
                 201: {

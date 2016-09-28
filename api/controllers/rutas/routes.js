@@ -66,4 +66,35 @@ module.exports.routes = {
             }
         }
     },
+
+    'GET /rutas/:id/turnos': {
+        controller: 'Rutas',
+        action: 'populateTurnos',
+
+        swagger: {
+            methods: ['GET'],
+            summary: 'obtiene los turnos de los conductores en cola',
+            responses: {
+                200: {
+                    description: 'OK',
+                    type: 'array'
+                }
+            }
+        }
+    },
+
+    'POST /rutas/:id/turnos': {
+        controller: 'Rutas',
+        action: 'updateTurnos',
+
+        swagger: {
+            methods: ['POST'],
+            summary: 'actualiza los turnos de los conductores en cola',
+            responses: {
+                201: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
 }

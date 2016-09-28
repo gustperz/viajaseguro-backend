@@ -17,8 +17,12 @@ module.exports = {
 
     destino: {
       model: 'municipios'
+    },
+
+    turnos: {
+      collection: 'turnosruta',
+      via: 'ruta'
     }
 
   }
 };
-
