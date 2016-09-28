@@ -53,8 +53,13 @@ module.exports = {
     autoCreatedAt: true,
     autoUpdatedAt: true,
 
-    beforeCreate(values, next){
-        values.estacion = values.central;
+    afterCreate(newlyInsertedRecord, next){
+        Centrales.findOne(newlyInsertedRecord.central).populate('ciudad').then((central) => {
+            Conductores.update(
+                { id: newlyInsertedRecord.id },
+                { estacion: central.ciudad.codigo }
+            ).exec(() => {});
+        });
         next();
     },
 
