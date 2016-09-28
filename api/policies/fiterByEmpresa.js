@@ -9,7 +9,6 @@ module.exports = function (req, res, next) {
     const user = req.user;
 
     if (user.rol === 'CENTRAL_EMPRESA') {
-        console.log(req.options)
         if(req.options.model === 'centrales') return next();
         Centrales.findOne({user: user.id}, {select: ['id']})
             .then((central) => {

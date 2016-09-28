@@ -11,7 +11,6 @@ module.exports = {
     identity: 'Empresas',
 
     create(req, res, next) {
-        console.log('aca entro')
         const data = req.allParams();
         const mc = data.modulos_contratados_empresa;
         if (!data.user) return res.badRequest('Espera, aun no envias la información de acceso de la empresa.');

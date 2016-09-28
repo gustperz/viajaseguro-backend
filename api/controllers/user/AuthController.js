@@ -50,7 +50,7 @@ module.exports = {
           }
         ],
         function (user) {
-          console.log(user);
+
           return res.ok({
             token: JWTService.token.encode({id: user.id}),
             user: user
