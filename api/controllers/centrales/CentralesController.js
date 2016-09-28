@@ -21,6 +21,12 @@ module.exports = {
                 }
                 res.negotiate(error);
             })
-    }
+    },
+
+    joinWS(req, res){
+        if (!req.isSocket) return res.badRequest();
+        sails.sockets.join(req, req.params.parentId);
+        return res.ok();
+    },
 };
 
