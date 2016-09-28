@@ -31,12 +31,12 @@ module.exports = {
             model: 'centrales'
         },
 
-        empresa: {
-            model: 'empresas'
+        estacion: {
+            model: 'municipios'
         },
 
-        ciudad: {
-            model: 'municipios'
+        empresa: {
+            model: 'empresas'
         },
 
         vehiculo: {
@@ -51,6 +51,11 @@ module.exports = {
 
     autoCreatedAt: true,
     autoUpdatedAt: true,
+
+    beforeCreate(values, next){
+        values.estacion = values.central;
+        next();
+    },
 
     afterDestroy(destroyedRecords, next){
         for (var i = 0; i < destroyedRecords.length; i++) {
