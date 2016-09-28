@@ -123,7 +123,7 @@ module.exports.routes = {
         }
     },
 
-    'GET /socket/:parentId/join': {
+    'GET /socket/join/central/:id': {
         controller: 'Centrales',
         action: 'joinWS',
 
