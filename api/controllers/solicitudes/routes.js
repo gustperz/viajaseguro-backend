@@ -18,7 +18,7 @@ module.exports.routes = {
         }
     },
 
-    'POST /centrales/reject_solicitud':{
+    'POST /centrales/reject_solicitud': {
         controller: 'Solicitudes',
         action: 'rejectSolicitud',
 
@@ -26,7 +26,21 @@ module.exports.routes = {
             methods: ['POST'],
             summary: 'Rechaza una solicitude del cliente',
             responses: {
-                200:{
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
+    'POST /centrales/accept_solicitud': {
+        controller: 'Solicitudes',
+        action: 'acceptSolicitud',
+
+        swagger: {
+            methods: ['POST'],
+            summary: 'Acepta una solicitude del cliente',
+            responses: {
+                200: {
                     description: 'OK'
                 }
             }
