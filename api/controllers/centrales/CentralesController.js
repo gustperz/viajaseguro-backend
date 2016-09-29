@@ -25,7 +25,7 @@ module.exports = {
 
     joinWS(req, res){
         if (!req.isSocket) return res.badRequest();
-        sails.sockets.join(req, req.params.parentId);
+        sails.sockets.join(req, 'central'+req.params.id+'watcher');
         return res.ok();
     },
 };
