@@ -13,6 +13,12 @@ module.exports = {
     //relaciones
     cliente: {
       model : 'clientes'
+    },
+    conductor:{
+      model : 'conductores'
+    },
+    central: {
+      model : 'centrales'
     }
   }
 };

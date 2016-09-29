@@ -52,7 +52,11 @@ module.exports = {
         solicitud.estado = 'a';
         if (!solicitud.id) res.badRequest();
         if(solicitud.id){
-            Solicitudes.update({id: solicitud.id},{estado :solicitud.estado}).then(function (solicitud) {
+            Solicitudes.update({id: solicitud.id},
+                {estado :solicitud.estado},
+                {conductor: solicitud.conductor},
+                {central: req.user.central.id}
+                ).then(function (solicitud) {
                 sails.sockets.broadcast('cliente' + solicitud.cliente + 'watcher', 'acceptSolicitud', {mes: 'rechazada'});
             })
         }
