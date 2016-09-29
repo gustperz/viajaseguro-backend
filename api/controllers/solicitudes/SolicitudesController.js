@@ -34,4 +34,16 @@ module.exports = {
         sails.sockets.broadcast('central'+data.central.id+'watcher', 'newSolicitud', solicitud);
         return res.ok();
     },
+
+    rejectSolicitud(req, res){
+        const solicitud = req.allParams();
+        solicitud.estado = 'r';
+        if (!solicitud.id) res.badRequest();
+        if(solicitud.id){
+            Solicitudes.update({id: solicitud.id},{estado :solicitud.estado}).then(function (solicitud) {
+                sails.sockets.broadcast('cliente' + solicitud.cliente + 'watcher', 'rejectSolicitud', {mes: 'rechazada'});
+            })
+        }
+        return res.ok();
+    }
 };

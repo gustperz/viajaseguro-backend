@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-
+    estado : {type:'string', size: '2'},
 
     //relaciones
     cliente: {
