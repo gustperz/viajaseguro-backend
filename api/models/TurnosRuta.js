@@ -4,8 +4,6 @@
 
 module.exports = {
 
-    autoPK: false,
-
     attributes: {
         pos: {type: 'integer'},
 
@@ -15,12 +13,6 @@ module.exports = {
 
         conductor: {
             model: 'conductores'
-        },
-
-        toJSON() {
-            var obj = this.toObject();
-            delete obj.ruta;
-            return obj;
         }
 
     }
