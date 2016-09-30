@@ -5,6 +5,7 @@
 module.exports = {
 
     attributes: {
+        id: {type: 'integer', autoIncrement: true},
         pos: {type: 'integer'},
 
         ruta: {

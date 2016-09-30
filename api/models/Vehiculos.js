@@ -29,7 +29,7 @@ module.exports = {
         // propietario
         cedula_propietario:     { type: 'string', required: true, size: 15 },
         nombre_propietario:     { type: 'string', required: true, size: 50 },
-        telefono_propietario:   { type: 'integer', required: true, size: 20 },
+        telefono_propietario:   { type: 'string', required: true, size: 20 },
         // documentation
         soat:                   { type: 'boolean', required: false},
         fecha_soat:             { type: 'date', required: true },
