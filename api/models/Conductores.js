@@ -53,6 +53,12 @@ module.exports = {
     autoCreatedAt: true,
     autoUpdatedAt: true,
 
+    updateEstado(id, estado) {
+        this.update(id, {'estado': estado}).then(conductor => {
+
+        }).catch(error => {sails.log.warn('update estado a conductor qe no existee')})
+    },
+
     afterCreate(newlyInsertedRecord, next){
         Centrales.findOne(newlyInsertedRecord.central).populate('ciudad').then((central) => {
             Conductores.update(
