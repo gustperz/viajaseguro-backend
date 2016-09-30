@@ -4,8 +4,13 @@
 
 module.exports = {
 
+    connection: 'redis',
+
+    autoPK: false,
+
     attributes: {
-        id: {type: 'integer', autoIncrement: true},
+        id: {type: 'integer', primaryKey: true, unique: true },
+
         pos: {type: 'integer'},
 
         ruta: {

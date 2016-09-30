@@ -22,7 +22,13 @@ module.exports.connections = {
 
 
   /***************************************************************************
-  * More adapters: https://github.com/balderdashy/sails                      *
+  * Redis                                                                    *
   ***************************************************************************/
+  redis: {
+    adapter: 'sails-redis',
+    port: 6379,
+    host: 'localhost',
+    password: ''
+  },
 
 };

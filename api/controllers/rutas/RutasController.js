@@ -8,11 +8,12 @@ module.exports = {
 
     updateTurnos(req, res) {
         const ruta_id = req.params.id;
-        TurnosRuta.query('DELETE FROM `turnosruta` WHERE ruta = '+ruta_id, (err) => {
+        TurnosRuta.destroy({ruta: ruta_id}).exec(err => {
             if (err) return res.negotiate(err);
             const turnos = req.allParams().turnos;
             _.forEach(turnos, function (turno) {
                 TurnosRuta.create({
+                    id: turno.conductor,
                     pos: turno.pos,
                     conductor: turno.conductor,
                     ruta: ruta_id
