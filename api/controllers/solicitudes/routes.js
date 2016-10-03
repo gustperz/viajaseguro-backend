@@ -3,12 +3,27 @@
  */
 module.exports.routes = {
 
-    'POST /centrales/new_solicitud': {
+    'GET /solicitudes': {
         controller: 'Solicitudes',
-        action: 'newSolicitud',
+        action: 'find',
 
         swagger: {
-            methods: ['GE'],
+            methods: ['GET'],
+            summary: 'get solicitud por socket',
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
+
+    'POST /solicitudes': {
+        controller: 'Solicitudes',
+        action: 'create',
+
+        swagger: {
+            methods: ['POST'],
             summary: 'Envia una solicitud por socket',
             responses: {
                 200: {
@@ -18,13 +33,13 @@ module.exports.routes = {
         }
     },
 
-    'POST /centrales/reject_solicitud': {
+    'POST /solicitudes/:id/reject': {
         controller: 'Solicitudes',
-        action: 'rejectSolicitud',
+        action: 'reject',
 
         swagger: {
             methods: ['POST'],
-            summary: 'Rechaza una solicitude del cliente',
+            summary: 'Rechaza una solicitud del cliente',
             responses: {
                 200: {
                     description: 'OK'
@@ -32,13 +47,29 @@ module.exports.routes = {
             }
         }
     },
-    'POST /centrales/accept_solicitud': {
+
+    'POST /solicitudes/:id/cancel': {
         controller: 'Solicitudes',
-        action: 'acceptSolicitud',
+        action: 'cancel',
 
         swagger: {
             methods: ['POST'],
-            summary: 'Acepta una solicitude del cliente',
+            summary: 'Cancela una solicitud',
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
+
+    'PUT /solicitudes/:id/estado': {
+        controller: 'Solicitudes',
+        action: 'update',
+
+        swagger: {
+            methods: ['PUT'],
+            summary: 'cambiar estado de una solicitude del cliente',
             responses: {
                 200: {
                     description: 'OK'

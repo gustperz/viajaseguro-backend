@@ -1,66 +1,56 @@
 /**
  * Created by jose on 28/09/16.
  */
-const _ = require('lodash');
+const forEach = require('lodash').each;
 
 module.exports = {
     identity: 'Solicitudes',
 
-    newSolicitud(req, res) {
-        var data = req.allParams();
+    find(req, res) {
         if (!req.isSocket) return res.badRequest();
-        sails.sockets.join(req, 'central'+data.central.id+'watcher');
-        var solicitud = {
-            id: 1,
-            tipo: 'Pasajeros',
-            codigo_ruta: 44279,
-            cliente :{
-                identificacion: '123456789',
-                nombre: 'Maria Cristina',
-                telefono: '3015941826',
-                direccion: 'Por hay'
-            },
-            pasajeros: [
-                {
-                    cedula: '1234567890',
-                    nombre: 'Fulano'
-                },
-                {
-                    cedula: '9876543210',
-                    nombre: 'Fulano 2'
-                }
-            ]
-        };
-        sails.sockets.broadcast('central'+data.central.id+'watcher', 'newSolicitud', solicitud);
-        return res.ok();
+        Solicitudes.find(req.options.where).then(solicitudes => {
+            sails.sockets.join(req, 'central'+req.user.central.id+'watcher');
+            forEach(solicitudes, function (solicitud) {
+                sails.sockets.join(req, 'solicitud'+solicitud.id+'watcher');
+            });
+            return res.ok(solicitudes);
+        }).catch(res.negotiate);
     },
 
-    rejectSolicitud(req, res){
-        const solicitud = req.allParams();
-        solicitud.estado = 'r';
-        if (!solicitud.id) res.badRequest();
-        if(solicitud.id){
-            Solicitudes.update({id: solicitud.id},{estado :solicitud.estado}).then(function (solicitud) {
-                sails.sockets.broadcast('cliente' + solicitud.cliente + 'watcher', 'rejectSolicitud', {mes: 'rechazada'});
-            })
-        }
-        return res.ok();
+    create(req, res) {
+        if (!req.isSocket) return res.badRequest();
+        Solicitudes.create(req.allParams()).then(solicitud => {
+            sails.sockets.join(req, 'solicitud'+solicitud.id+'watcher');
+            sails.sockets.join(req, 'central'+req.user.central.id+'watcher');
+            sails.sockets.broadcast('central'+solicitud.central+'watcher', 'newSolicitud', solicitud);
+            return res.ok(solicitud);
+        }).catch(res.negotiate);
     },
 
-    acceptSolicitud(req, res){
-        const solicitud = req.allParams();
-        solicitud.estado = 'a';
-        if (!solicitud.id) res.badRequest();
-        if(solicitud.id){
-            Solicitudes.update({id: solicitud.id},
-                {estado :solicitud.estado},
-                {conductor: solicitud.conductor},
-                {central: req.user.central.id}
-                ).then(function (solicitud) {
-                sails.sockets.broadcast('cliente' + solicitud.cliente + 'watcher', 'acceptSolicitud', {mes: 'rechazada'});
-            })
-        }
-        return res.ok();
+    reject(req, res){
+        if (!req.isSocket) return res.badRequest();
+        Solicitudes.destroy({id: req.params.id}).then(() => {
+            sails.sockets.broadcast('solicitud'+req.params.id+'watcher', 'reject', req.allParams());
+            return res.ok();
+        }).catch(res.negotiate);
+    },
+
+    cancel(req, res){
+        if (!req.isSocket) return res.badRequest();
+        Solicitudes.destroy({id: req.params.id}).then(() => {
+            sails.sockets.broadcast('solicitud'+solicitud.id+'watcher', 'cancel', req.allParams());
+            return res.ok();
+        }).catch(res.negotiate);
+    },
+
+    update(req, res){
+        if (!req.isSocket) return res.badRequest();
+        Solicitudes.finOne(req.params.id).then((solicitud) => {
+            solicitud.estado = req.allParams().estado;
+            solicitud.save();
+            sails.sockets.broadcast('solicitud'+solicitud.id+'watcher', 'updateEstado', req.allParams());
+            return res.ok();
+        }).catch(res.negotiate);
     }
 
 };

@@ -7,6 +7,8 @@
 
 module.exports = {
 
+  connection: 'redis',
+
   attributes: {
     estado : {type:'string', size: '2'},
 

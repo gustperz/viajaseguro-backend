@@ -123,18 +123,4 @@ module.exports.routes = {
         }
     },
 
-    'GET /socket/join/central/:id': {
-        controller: 'Centrales',
-        action: 'joinWS',
-
-        swagger: {
-            methods: ['GET'],
-            summary: 'Logea en el socket',
-            responses: {
-                200: {
-                    description: 'OK'
-                }
-            }
-        }
-    },
 }

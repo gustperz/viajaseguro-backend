@@ -14,6 +14,9 @@ module.exports = function (req, res, next) {
             .then((central) => {
                 if(!central) return res.badRequest('no se encuentra la central de este usuario');
                 req.options.where.central = central.id;
+                req.user.central = {
+                    id: central.id
+                };
                 next();
             }).catch(res.negotiate);
     }

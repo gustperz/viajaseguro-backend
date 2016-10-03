@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-    identificacion: {type: 'string', primaryKey: true, autoIncrement: false, required: true, unique: true},
+    identificacion: {type: 'string', primaryKey: true, required: true, size: 10},
     nombre:         {type: 'string', required: true},
     telefono:       {type: 'string'},
     dieccion:       {type: 'string'}
