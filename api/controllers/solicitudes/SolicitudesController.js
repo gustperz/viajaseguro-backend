@@ -45,8 +45,10 @@ module.exports = {
 
     update(req, res){
         if (!req.isSocket) return res.badRequest();
-        Solicitudes.finOne(req.params.id).then((solicitud) => {
+        Solicitudes.findOne(req.params.id).then((solicitud) => {
             solicitud.estado = req.allParams().estado;
+            req.allParams().conductor && (solicitud.conductor = req.allParams().conductor);
+            console.log(solicitud)
             solicitud.save();
             sails.sockets.broadcast('solicitud'+solicitud.id+'watcher', 'updateEstado', req.allParams());
             return res.ok();
