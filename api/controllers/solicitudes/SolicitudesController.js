@@ -23,6 +23,13 @@ module.exports = {
             sails.sockets.join(req, 'solicitud'+solicitud.id+'watcher');
             sails.sockets.join(req, 'central'+req.user.central.id+'watcher');
             sails.sockets.broadcast('central'+solicitud.central+'watcher', 'newSolicitud', solicitud);
+
+            forEach(solicitud.pasajeros, function (pasajero) {
+                if(pasajero.identificacion) {
+                    Clientes.findOrCreate({identificacion: pasajero.identificacion}, pasajero).exec(() => {});
+                }
+            });
+
             return res.ok(solicitud);
         }).catch(res.negotiate);
     },

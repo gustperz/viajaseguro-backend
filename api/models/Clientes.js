@@ -11,7 +11,7 @@ module.exports = {
     identificacion: {type: 'string', primaryKey: true, required: true, size: 10},
     nombre:         {type: 'string', required: true},
     telefono:       {type: 'string'},
-    dieccion:       {type: 'string'}
+    direccion:       {type: 'string'}
   },
 
     // relaciones
