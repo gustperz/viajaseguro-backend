@@ -19,10 +19,12 @@ module.exports = {
 
     create(req, res) {
         if (!req.isSocket) return res.badRequest();
-        Solicitudes.create(req.allParams()).then(solicitud => {
+        var data = req.allParams();
+        data.central = req.user.central;
+        Solicitudes.create(data).then(solicitud => {
             sails.sockets.join(req, 'solicitud'+solicitud.id+'watcher');
             sails.sockets.join(req, 'central'+req.user.central.id+'watcher');
-            sails.sockets.broadcast('central'+solicitud.central+'watcher', 'newSolicitud', solicitud);
+            sails.sockets.broadcast('central'+solicitud.central+'watcher', 'newSolicitud', solicitud, req);
 
             forEach(solicitud.pasajeros, function (pasajero) {
                 if(pasajero.identificacion) {

@@ -10,8 +10,10 @@ module.exports = {
   connection: 'redis',
 
   attributes: {
-    estado :    {type:'string', size: '1'},
-    pasajeros : {type:'array', required: true},
+    estado:     {type:'string', size: '1'},
+    direccion:  {type:'string', size: '50'},
+    telefono:   {type:'string', size: '12'},
+    pasajeros:  {type:'array', required: true},
 
     //relaciones
     cliente: {
