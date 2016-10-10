@@ -8,15 +8,12 @@
 module.exports = {
 
   attributes: {
-    nombre_ciudad: {type: 'string', size: 100},
-    trayecto:      {type: 'text'},
+    origen:    {type: 'json'},
+    destino:   {type: 'json'},
+    trayecto:  {type: 'text'},
 
-    origen: {
+    central: {
       model: 'centrales'
-    },
-
-    destino: {
-      model: 'municipios'
     },
 
     turnos: {

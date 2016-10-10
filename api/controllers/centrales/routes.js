@@ -35,6 +35,21 @@ module.exports.routes = {
         }
     },
 
+    'PUT /centrales/:id': {
+        controller: 'Centrales',
+        action: 'update',
+
+        swagger: {
+            methods: ['PUT'],
+            summary: 'Modifica una central',
+            responses: {
+                200: {
+                    schema: 'centrales'
+                }
+            }
+        }
+    },
+
     'POST /centrales': {
         controller: 'Centrales',
         action: 'create',

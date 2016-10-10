@@ -22,7 +22,7 @@ module.exports = {
 
         rutas: {
             collection: 'rutas',
-            via: 'origen'
+            via: 'central'
         },
 
         empresa: {
