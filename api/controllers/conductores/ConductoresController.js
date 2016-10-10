@@ -18,6 +18,7 @@ module.exports = {
         const data = req.allParams();
         data.empresa = req.user.empresa.id;
         data.vehiculo.empresa= req.user.empresa.id;
+        data.codigo_vial = data.vehiculo.codigo_vial;
 
         data.user = {
             username: String(data.identificacion),
