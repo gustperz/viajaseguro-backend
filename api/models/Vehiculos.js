@@ -36,6 +36,7 @@ module.exports = {
         tecnomecanica:          { type: 'boolean', required: false },
         fecha_tecnomecanica:    { type: 'date', required: true },
         tarjeta_propiedad:      { type: 'boolean', required: false },
+        fecha_seguroac:     { type: 'date', required: true },
 
         // relaciones
         empresa: {

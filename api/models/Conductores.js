@@ -22,10 +22,9 @@ module.exports = {
         nlicencia:          { type: 'string', required: true ,size: 20},
         tipo_licencia:      { type: 'string', required: true, size: 2},
         fecha_licencia:     { type: 'date', required: true },
-        fecha_seguroac:     { type: 'date', required: true },
         estado:             { type: 'string', defaultsTo: 'disponible'},
         activo:             { type: 'boolean', defaultsTo: true},
-        codigo_vial:        { type: 'boolean', defaultsTo: true},
+        codigo_vial:        { type: 'string'},
 
         // relaciones
         central: {
