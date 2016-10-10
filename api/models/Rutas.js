@@ -19,6 +19,13 @@ module.exports = {
     turnos: {
       collection: 'turnosruta',
       via: 'ruta'
+    },
+
+    toJSON() {
+      var obj = this.toObject();
+      delete obj.origen.address_components_raw;
+      delete obj.destino.address_components_raw;
+      return obj;
     }
 
   }
