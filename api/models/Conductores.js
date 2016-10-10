@@ -59,10 +59,10 @@ module.exports = {
     },
 
     afterCreate(newlyInsertedRecord, next){
-        Centrales.findOne(newlyInsertedRecord.central).populate('ciudad').then((central) => {
+        Centrales.findOne(newlyInsertedRecord.central).then((central) => {
             Conductores.update(
                 { id: newlyInsertedRecord.id },
-                { estacion: central.ciudad.codigo }
+                { estacion: central.ciudad_place_id }
             ).exec(() => {});
         });
         next();
