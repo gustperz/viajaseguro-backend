@@ -25,14 +25,11 @@ module.exports = {
         estado:             { type: 'string', defaultsTo: 'disponible'},
         activo:             { type: 'boolean', defaultsTo: true},
         codigo_vial:        { type: 'string'},
+        estacion:           { type: 'string'},
 
         // relaciones
         central: {
             model: 'centrales'
-        },
-
-        estacion: {
-            model: 'municipios'
         },
 
         empresa: {
