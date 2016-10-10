@@ -16,7 +16,7 @@ module.exports = {
         Centrales.create(data)
             .then(res.ok)
             .catch(error => {
-                if (!error.invalidAttributes.username && data.user.username) {
+                if (!(error.invalidAttributes && error.invalidAttributes.username)) {
                     User.destroy({username: data.user.username}).exec(() => {});
                 }
                 res.negotiate(error);

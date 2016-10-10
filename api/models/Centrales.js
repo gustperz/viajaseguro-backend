@@ -10,10 +10,15 @@ const pick = require('lodash').pick;
 module.exports = {
 
     attributes: {
-        direccion: {type: 'string', size: 50},
-        telefono: {type: 'string', size: 15},
-        pos_lat: {type: 'string', size: 50},
-        pos_lng: {type: 'string', size: 50},
+        ciudad:                 {type: 'string', size: 50},
+        ciudad_place_id:        {type: 'string', size: 50},
+        departamento:           {type: 'string', size: 50},
+        place_id:               {type: 'string', size: 50},
+        address_components_raw: {type: 'array'},
+        direccion:              {type: 'string', size: 50},
+        telefono:               {type: 'string', size: 15},
+        pos_lat:                {type: 'string', size: 50},
+        pos_lng:                {type: 'string', size: 50},
 
         rutas: {
             collection: 'rutas',
@@ -22,10 +27,6 @@ module.exports = {
 
         empresa: {
             model: 'empresas'
-        },
-
-        ciudad: {
-            model: 'municipios'
         },
 
         user: {
