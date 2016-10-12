@@ -8,7 +8,7 @@
 module.exports = {
 
     attributes: {
-        nit:                {type: 'string', size: 15, required: true, unique: true},
+        nit:                {type: 'string', size: 15, unique: true},
         pjuridica:          {type: 'string', size: 20},
         nombre_corto:       {type: 'string', size: 25, required: true},
         nombre_largo:       {type: 'string', size: 100},

@@ -28,7 +28,8 @@ module.exports = {
                         nombre_corto: central.empresa.nombre_corto,
                         nombre_largo: central.empresa.nombre_largo,
                         logo: central.empresa.logo,
-                        activa: central.empresa.activa
+                        activa: central.empresa.activa,
+                        tipo: central.empresa.tipo
                     };
                   callback(user);
                 }).catch(res.negotiate);
