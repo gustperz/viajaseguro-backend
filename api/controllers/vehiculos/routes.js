@@ -3,6 +3,20 @@
  */
 
 module.exports.routes = {
+    'POST /vehiculos': {
+        controller: 'Vehiculos',
+        action: 'create',
+
+        swagger: {
+            methods: ['POST'],
+            summary: 'Guardado de un vehiculo',
+            responses: {
+                201: {
+                    schema: 'Vehiculos'
+                }
+            },
+        }
+    },
     'GET /vehiculos': {
         controller: 'Vehiculos',
         action: 'find',
