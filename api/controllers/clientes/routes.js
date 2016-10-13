@@ -5,7 +5,7 @@
  * Route Mappings
  */
 module.exports.routes = {
-    'GET /clientes': {
+    'GET /clientes/:identificacion': {
         controller: 'Clientes',
         action: 'findOneByIdentificacion',
 
