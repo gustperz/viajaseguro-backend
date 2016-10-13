@@ -18,6 +18,7 @@ module.exports = {
         firma_digital:      {type: 'string', size: 255},
         direccion:          {type: 'string', size: 50},
         telefono:           {type: 'string', size: 15},
+        fax:                {type: 'string', size: 20},
         nresolucon:         {type: 'string', size: 20},
         fecha_resolucion:   {type: 'date'},
         especial:           {type: 'boolean', defaultsTo: false},
