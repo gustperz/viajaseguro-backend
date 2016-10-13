@@ -15,13 +15,13 @@ module.exports = {
       model: 'rutas'
     },
 
-    // conductor: {
-    //   model: 'conductores'
-    // },
+    conductor: {
+      model: 'conductores'
+    },
 
-    // vehiculo: {
-    //   model: 'vehiculos'
-    // },
+    vehiculo: {
+      model: 'vehiculos'
+    },
 
     origen: {
       model: 'municipios'

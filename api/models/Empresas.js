@@ -8,7 +8,8 @@
 module.exports = {
 
     attributes: {
-        nit:                {type: 'string', size: 15, unique: true},
+        nit_especial:       {type: 'string', size: 15, unique: true},
+        nit_intermunicipal: {type: 'string', size: 15, unique: true},
         pjuridica:          {type: 'string', size: 20},
         nombre_corto:       {type: 'string', size: 25, required: true},
         nombre_largo:       {type: 'string', size: 100},
@@ -18,7 +19,8 @@ module.exports = {
         telefono:           {type: 'string', size: 15},
         nresolucon:         {type: 'string', size: 20},
         fecha_resolucion:   {type: 'date'},
-        tipo:               {type: 'integer', size: 11, required: true},
+        especial:           {type: 'boolean', defaultsTo: false},
+        intermunicipal:     {type: 'boolean', defaultsTo: false},
         activa:             {type: 'boolean', defaultsTo: true},
 
         modulos: {
