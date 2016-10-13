@@ -26,6 +26,9 @@ module.exports = {
         color:                  { type: 'string', required: true, size: 20 },
         cupos:                  { type: 'integer', required: true, size: 2 },
         codigo_vial:            { type: 'string', required: true, size: 5 },
+        ntarjoperacion:         { type: 'string', required: true},
+        marca:                  { type: 'string', required: true},
+        clase:                  { type: 'string', required: true},
         // propietario
         cedula_propietario:     { type: 'string', required: true, size: 15 },
         nombre_propietario:     { type: 'string', required: true, size: 50 },
