@@ -11,6 +11,7 @@ module.exports = {
         nit_especial:       {type: 'string', size: 15, unique: true},
         nit_intermunicipal: {type: 'string', size: 15, unique: true},
         pjuridica:          {type: 'string', size: 20},
+        nombre_pjuridica:   {type: 'string', size: 50},
         nombre_corto:       {type: 'string', size: 25, required: true},
         nombre_largo:       {type: 'string', size: 100},
         logo:               {type: 'string', size: 255,},
