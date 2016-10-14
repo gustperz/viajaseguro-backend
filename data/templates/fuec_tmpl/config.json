@@ -3,13 +3,13 @@
     "recipe": "phantom-pdf",
     "engine": "handlebars",
     "modificationDate": {
-        "$$date": 1476468321319
+        "$$date": 1476479199772
     },
     "_id": "1uc9N0C07h07ck9E",
     "phantom": {
         "format": "Letter",
         "customPhantomJS": false,
-        "blockJavaScript": true,
+        "blockJavaScript": false,
         "waitForJS": false,
         "printDelay": "1"
     },

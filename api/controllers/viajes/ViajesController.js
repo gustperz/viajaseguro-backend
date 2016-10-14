@@ -9,13 +9,19 @@ module.exports = {
     identity: 'Viajes',
 
     findOneFuec(req, res){
-        Viajes.findOne({id: req.allParams().id}).then(function (viaje) {
+        Viajes.findOne({id: req.allParams().id}).populate('conductor').populate('vehiculo').then(function (viaje) {
             Empresas.findOne({id: viaje.empresa}).then(function (empresa) {
-                empresa.fecha_resolucion = moment(empresa.fecha_resolucion).locale("es").format('Do MMMM YYYY,');
+                empresa.fecha_resolucion = moment(empresa.fecha_resolucion).locale("es").format('LL');
                 var data = {
                     template: {'shortid': 'B144VRaR'},
                     data: {
-                        empresa: empresa
+                        empresa: empresa,
+                        contrato: {
+                            dia: moment(viaje.fecha).day(),
+                            mes: moment(viaje.fecha).locale('es').format('MMMM'),
+                            ano: moment(viaje.fecha).year()
+                        },
+                        viaje: viaje
                     },
                     options: {
                         preview: true
