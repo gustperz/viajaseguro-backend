@@ -1,0 +1,365 @@
+<style type="text/css">
+    body,
+    div,
+    table,
+    thead,
+    tbody,
+    tfoot,
+    tr,
+    th,
+    td,
+    p {
+        font-family: "Liberation Sans";
+        font-size: x-small
+    }
+    
+    a.comment-indicator:hover+ comment {
+        background: #ffd;
+        position: absolute;
+        display: block;
+        border: 1px solid black;
+        padding: 0.5em;
+    }
+    
+    a.comment-indicator {
+        background: red;
+        display: inline-block;
+        border: 1px solid black;
+        width: 0.5em;
+        height: 0.5em;
+    }
+    
+    comment {
+        display: none;
+    }
+</style>
+<table cellspacing="0" border="0">
+    <colgroup width="119"></colgroup>
+    <colgroup width="64"></colgroup>
+    <colgroup width="81"></colgroup>
+    <colgroup width="64"></colgroup>
+    <colgroup width="93"></colgroup>
+    <colgroup width="35"></colgroup>
+    <colgroup width="70"></colgroup>
+    <colgroup width="100"></colgroup>
+    <colgroup width="64"></colgroup>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 rowspan=6 height="116" align="center" valign=middle>
+            <br>
+        </td>
+        <td colspan=4 align="center" valign=middle>
+            <b style="text-transform: uppercase">{{this.empresa.nombre_largo}}</b>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=4 align="center" valign=middle>
+            <b>
+                <font size=5 style="text-transform: uppercase">{{this.empresa.nombre_corto}}</font>
+            </b>
+        </td>
+        <td colspan=3 rowspan=2 align="center" valign=middle>
+            <br>
+            <img src="{#image FUECCOOTRASAN1_html_ee55b014f46af39d}" width=185 height=41 hspace=25 vspace=1>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=4 align="center" valign=middle>
+            <b>
+                <font size=1>NIT. {{this.empresa.nit}}</font>
+            </b>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=4 align="center" valign=middle>
+            <b>
+                <font size=1>{{this.empresa.direccion}} TEL {{this.empresa.telefono}} - FAX {{this.empresa.fax}} </font>
+            </b>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td align="left">
+            <br>
+        </td>
+
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=4 align="center" valign=middle>
+            <b>CONTRATO DE VIAJE DE SERVICIO ESPECIAL</b>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td style="border-top: 2px groove #000000; border-bottom: 2px groove #000000; border-left: 2px groove #000000; border-right: 2px groove #000000" colspan=2 align="center" valign=middle>
+            <b>
+                <font size=4>No. 16880</font>
+            </b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 2px groove #000000; border-bottom: 2px groove #000000; border-left: 2px groove #000000; border-right: 2px groove #000000; font-size: 14px" colspan=9 height="17" align="left" valign=middle>
+            <b>DATOS DEL VEH&Iacute;CULO:</b>
+        </td>
+    </tr>
+    <tr>
+        <td height="17" align="left" valign=middle>
+            <b>PLACA:</b>
+        </td>
+        <td align="left" valign=middle>
+            <b> TLU-123</b>
+        </td>
+        <td align="left" valign=middle>
+            <b>MODELO:</b>
+        </td>
+        <td align="left" valign=middle sdval="1992" sdnum="9226;">
+            <b>1992</b>
+        </td>
+        <td align="left" valign=middle>
+            <b>No INTERNO:</b>
+        </td>
+        <td align="left" valign=middle sdval="9" sdnum="9226;">
+            <b>9</b>
+        </td>
+        <td align="left" valign=middle>
+            <b>COLOR:</b>
+        </td>
+        <td align="left" valign=middle>
+            <b>AZUL</b>
+        </td>
+        <td align="left">
+            <b>
+                <br>
+            </b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 2px ridge #000000; border-bottom: 2px ridge #000000; border-left: 2px ridge #000000; border-right: 2px ridge #000000; font-size: 14px" colspan=9 height="17" align="left" valign=middle>
+            <b>PERSONAS O EMPRESAS CONTRATANTES:</b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-bottom: 2px ridge #000000" colspan=9 height="24" align="left" valign=middle>
+            <b>FULANO DE TAL PASCUAL
+            </b>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=9 rowspan=10 height="190" align="justify" valign=middle style="font-size: 14px">Entre los suscritos
+            <b>{{this.empresa.nombre_pjuridica}}d</b>, mayor de identificado edad como aparece al pie de mi firma en calidad de representante legal de {{this.empresa.nombre_largo}} quien en adelante se denominara el contratista y
+            <b>Jose Miguel Soto Acosta</b>, mayor de edad vecino de esta ciudad, actuando en calidad de responsable(s) para la realizaci&oacute;n de un contrato de servicio de transporte expreso. Quien en adelante se denominaran los contratantes hemos colaborado
+            en el presente contrato de transporte especial de pasajeros. El cual regira por las siguientes clausulas.
+            <b>Primera:</b> El contratista se compromete a transportar en el lugar indicado a los contratantes relacionado(s) a la hora acordada
+            <b>8:15 am</b> y transportarlos a un lugar o destino pactado
+            <b>Valledupar</b> por (1) dia(s).
+            <b>Segunda:</b> Valor del contrato, El valor del presente contrato se pacta en la suma de
+            <b>$ 76000</b> que ser&aacute;n cancelados en el momento de la iniciaci&oacute;n de la prestaci&oacute;n del servicio de contrato de viaje especial.
+            <b>Tercer:</b> Responsabilidades del contratista, El contratista se compromete a lo siguiente
+            <b>a)</b> llevar a la persona(s) o empresa contratante, al sitio o destino pactado,
+            <b>b)</b> Prestar el servicio con la mayor seguridad y respeto,
+            <b>c)</b> en caso de presentarse alg&uacute;n percance del veh&iacute;culo transportador (entre ellas fallas mec&aacute;nica) buscar la soluci&oacute;n para darle el debido cumplimiento a lo contratado.
+            <b>Cuarta:</b> Responsabilidades del contratante: se compromete
+            <b>a)</b> pagar cumplidamente el valor acordado para obtener la prestaci&oacute;n del servicio especial,
+            <b>b)</b> estar en el sitio acordado y la hora fijada y as&iacute; dar cumplimiento al contrato.
+            <b>c)</b>
+            demostrar buen comportamiento durante la prestaci&oacute;n del servicio.
+            <b>Quinta:</b> Terminaci&oacute;n del contrato, ademas de las previstas por la ley, tambi&eacute;n son causales de terminaci&oacute;n del contrato
+            <b>a)</b> la no realizaci&oacute;n del servicio de transporte sin avisar oportunamente al contratista.
+            <b>b)</b> por la muerte del contratista o contratante.
+            <b>c)</b> por incumplimiento en el pago del contrato o prestaci&oacute;n del servicio.
+            <b>Sexta:</b> Tipo de contrato, para cualquier efecto el presente contrato por si solo presta merito ejecutivo sin necesidad de requerimientos judiciales o extrajudiciales y las partes acuerdan que los costos se generen por cualquier concepto,
+            ser&aacute;n por cuenta del contratante.
+            <b>S&eacute;ptima:</b> El veh&iacute;culo sera conducido por
+            <b>Jose Miguel Soto Acosta</b>.
+        </td>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+        <td height="17" align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=9 height="17" align="left" valign=middle style="font-size: 14px">El presente contrato se suscribe en la ciudad de
+            <b>Valledupar</b> a los
+            <b>14</b> dias del mes de
+            <b>Octubre</b> del a&ntilde;o
+            <b>2016</b>.
+        </td>
+    </tr>
+    <tr>
+        <td height="17" align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td height="17" align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td style="border-bottom: 2px ridge #000000" colspan=3 rowspan=3 align="center" valign=middle>
+            <img src="http://api.viajaseguro.co/images/empresas/firma/{{this.empresa.firma_digital}}"/>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td height="17" align="left">
+            <br>
+        </td>
+        <td align="center" valign=middle>
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td height="17" align="left">
+            <br>
+        </td>
+        <td style="border-bottom: 2px ridge #000000" colspan=3 align="center" valign=middle>FIRMA NORMAL
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td height="17" align="left">
+            <br>
+        </td>
+        <td colspan=3 align="left" valign=middle style="font-size: 14px">
+            <b>CONTRATANTE C.C</b>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+        <td colspan=3 align="left" valign=middle style="font-size: 14px">
+            <b>FIRMA AUTORIZADA</b>
+        </td>
+        <td align="left">
+            <br>
+        </td>
+    </tr>
+</table>
+<script>
+    var data = {{#toJSON this}}{{/toJSON}}
+</script>

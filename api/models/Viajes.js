@@ -31,6 +31,10 @@ module.exports = {
       model: 'municipios'
     },
 
+    empresa: {
+      model: 'empresas'
+    },
+
     clientes: {
       collection: 'clientes',
       through: 'pasajerosviaje'

@@ -23,7 +23,20 @@ module.exports = function (req, res, next) {
                 if(!empresa) return res.badRequest('no se encuentra la empresa de este usuario');
                 req.options.where.empresa = empresa.id;
                 req.user.empresa = {
-                    id: empresa.id
+                    id: empresa.id,
+                    nresolucon: empresa.nresolucon,
+                    fecha_resolucion: empresa.fecha_resolucion,
+                    nombre_corto: empresa.nombre_corto,
+                    nombre_largo: empresa.nombre_largo,
+                    nit_especial: empresa.nit_especial,
+                    nit_intermunicipal: empresa.nit_intermunicipal,
+                    logo: empresa.logo,
+                    telefono: empresa.telefono,
+                    direccion: empresa.direccion,
+                    fax: empresa.fax,
+                    firma_digital: empresa.firma_digital,
+                    pjuridica: empresa.pjuridica,
+                    nombre_pjuridica: empresa.nombre_pjuridica
                 };
                 next();
             }).catch(res.negotiate);

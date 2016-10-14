@@ -34,13 +34,6 @@
     }
 </style>
 <table cellspacing="0" border="0">
-    {{this.nombre}}
-    <colgroup width="123"></colgroup>
-    <colgroup width="114"></colgroup>
-    <colgroup width="140"></colgroup>
-    <colgroup width="176"></colgroup>
-    <colgroup width="114"></colgroup>
-    <colgroup width="135"></colgroup>
     <tr>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 rowspan=3 height="88" align="center" valign=bottom>
             <font size=3 color="#000000">
@@ -51,7 +44,7 @@
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 rowspan=3 align="center" valign=bottom>
             <font size=3 color="#000000">
                 <br>
-                <img src="FUEC COOTRASAN (1)_html_bd4abafe4ecb1176.png" width=353 height=79 hspace=37 vspace=5>
+                <img src="http://api.viajaseguro.co/images/empresas/{{this.empresa.logo}}" width=353 height=79 hspace=37 vspace=5>
             </font>
         </td>
     </tr>
@@ -82,10 +75,10 @@
     </tr>
     <tr>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" colspan=4 height="21" align="center" valign=bottom>
-            <font size=3 color="#000000">COOPERATIVA DE TRANSPORTADORES DE SAN JUAN &quot;COOTRASAN&quot;</font>
+            <font size=3 color="#000000" style="text-transform: uppercase">{{this.empresa.nombre_largo}} &quot;{{this.empresa.nombre_corto}}&quot;</font>
         </td>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="left" valign=bottom>
-            <font size=3 color="#000000">NIT: 824.004.192-3</font>
+            <font size=3 color="#000000">NIT: {{this.empresa.nit_especial}}</font>
         </td>
     </tr>
     <tr>
@@ -360,7 +353,7 @@
         <td style="border-top: 1px solid #000000" colspan=6 rowspan=3 height="86" align="center" valign=bottom>
             <font size=3 color="#000000">
                 <br>
-                <img src="FUEC COOTRASAN (1)_html_e974da4e2f7d9178.png" width=191 height=83 hspace=182 vspace=2>
+                <img src="http://api.viajaseguro.co/images/empresas/firma/{{this.empresa.firma_digital}}" width=191 height=86 hspace=182 vspace=2>
             </font>
         </td>
     </tr>
@@ -370,22 +363,17 @@
     </tr>
     <tr>
         <td colspan=6 height="15" align="center" valign=bottom>
-            <font size=3 color="#000000">COOPERATIVA DE TRANSPORTADORES DE SAN JUAN DEL CESAR "COOTRASAN" Nit 824.004.192</font>
+            <font size=3 color="#000000" style="text-transform: uppercase">{{this.empresa.nombre_largo}} "{{this.empresa.nombre_corto}}" Nit {{this.empresa.nit_especial}}</font>
         </td>
     </tr>
     <tr>
         <td colspan=6 height="15" align="center" valign=bottom>
-            <font size=3 color="#000000">Resoluci&oacute;n de Habilitaci&oacute;n No 0191 del 30 de Noviembre del 2001 Emanada del Ministerio de Transporte Seccional Cesar</font>
+            <font size=3 color="#000000">Resoluci&oacute;n de Habilitaci&oacute;n No {{this.empresa.nresolucon}} del {{this.empresa.fecha_resolucion}} Emanada del Ministerio de Transporte Seccional Cesar</font>
         </td>
     </tr>
     <tr>
         <td colspan=6 height="15" align="center" valign=bottom>
-            <font size=3 color="#000000">Oficina Principal Cra. 8 No. 16B - 37 Tel: 5708433 - 5714991 - Fax: 5714939 Valledupar-Cesar</font>
-        </td>
-    </tr>
-    <tr>
-        <td colspan=6 height="15" align="center" valign=bottom>
-            <font size=3 color="#000000">Email: Cootrasan4@hotmail.com</font>
+            <font size=3 color="#000000">Oficina Principal {{this.empresa.direccion}} Tel: {{this.empresa.telefono}} - Fax: {{this.empresa.fax}}</font>
         </td>
     </tr>
     <tr>
@@ -417,3 +405,6 @@
         </td>
     </tr>
 </table>
+<script>
+    var data = {{#toJSON this}}{{/toJSON}}
+</script>

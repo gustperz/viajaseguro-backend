@@ -15,5 +15,21 @@ module.exports.routes = {
               }
           },
       }
+  },
+
+  'GET /viajes': {
+      controller: 'Viajes',
+      action: 'find',
+
+      swagger:{
+          methods: ['GET'],
+          summary: 'Obtiene los viajes',
+          responses:{
+              200:{
+                  description: 'OK'
+              }
+          }
+      }
+
   }
 };
