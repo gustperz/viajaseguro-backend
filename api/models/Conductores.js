@@ -17,6 +17,7 @@ module.exports = {
         imagen:             { type: 'string', required: false, size: 255 },
         telefono:           { type: 'string', required: true, size: 15 },
         fecha_nacimiento:   { type: 'date', required: true },
+        fecha_ingreso:   { type: 'date', required: true },
         direccion:          { type: 'string', required: true, size: 50},
         email:              { type: 'string', required: false, size: 30, unique: true },
         nlicencia:          { type: 'string', required: true ,size: 20},
