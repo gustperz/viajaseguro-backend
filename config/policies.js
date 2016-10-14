@@ -30,7 +30,8 @@ module.exports.policies = {
   },
 
   ViajesController: {
-    '*': ['isAuthenticated', 'fiterByEmpresa']
+    '*': ['isAuthenticated', 'fiterByEmpresa'],
+    'find': ['isAuthenticated', 'fiterByCentral']
   },
 
   CentralesController: {

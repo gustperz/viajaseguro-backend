@@ -2,13 +2,13 @@
  * Created by jose on 13/10/16.
  */
 module.exports.routes = {
-  'GET /generateFuec': {
+  'GET /viajes/:id/fuec': {
       controller: 'Viajes',
-      action: 'generateFuec',
+      action: 'findOneFuec',
 
       swagger: {
           methods: ['GET'],
-          summary: 'Obtiene el formato fuec ',
+          summary: 'Obtiene el formato fuec de un viaje',
           responses: {
               200: {
                   description: 'OK'
