@@ -7,7 +7,7 @@ const path = require('path');
 
 const logger = new(winston.Logger)({
   transports: [
-    new (winston.transports.Console)({}),
+    new (winston.transports.Console)({level: 'silly'}),
     new (require('winston-daily-rotate-file'))({
       dirname: path.resolve('logs'),
       datePattern: '.yyyy-MM-dd.log',
@@ -20,6 +20,6 @@ const logger = new(winston.Logger)({
 });
 
 module.exports.log = {
-  level: 'verbose',
+  level: 'silly',
   custom: logger
 };

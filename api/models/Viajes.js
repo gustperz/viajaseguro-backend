@@ -4,12 +4,18 @@
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
+const moment = require('moment');
 
 module.exports = {
 
   attributes: {
-    fecha:    {type: 'datetime', required: true},
+    contrato: {type: 'string', size: 4},
+    cont_dia: {type: 'string', size: 4},
+    fuec:     {type: 'string', size: 21},
+    fecha:    {type: 'string', defaultsTo: moment().format('YYYY-MM-DD')},
     trayecto: {type: 'mediumtext'},
+    origen:   {type: 'string'},
+    destino:  {type: 'string'},
 
     ruta: {
       model: 'rutas'
@@ -21,14 +27,6 @@ module.exports = {
 
     vehiculo: {
       model: 'vehiculos'
-    },
-
-    origen: {
-      model: 'municipios'
-    },
-
-    destino: {
-      model: 'municipios'
     },
 
     empresa: {

@@ -45,4 +45,8 @@ module.exports.policies = {
   SolicitudesController: {
     '*': ['isAuthenticated', 'fiterByCentral']
   },
+
+  ViajesController: {
+    '*': ['isAuthenticated', 'fiterByCentral']
+  },
 };
