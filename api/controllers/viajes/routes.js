@@ -31,5 +31,39 @@ module.exports.routes = {
           }
       }
 
-  }
+    },
+
+    'POST /viajes': {
+        controller: 'Viajes',
+        action: 'create',
+
+        swagger: {
+            methods: ['POST'],
+            summary: 'Guardar un nuevo viaje (despachar conductor)',
+            responses: {
+                201: {
+                    schema: 'Viajes'
+                }
+            },
+            parameters: [{
+                in: 'body',
+                name: 'Datos de Guardado',
+                description: 'Guarda un conductor',
+                required: true,
+                schema: {
+                    type: 'object',
+                    properties: {
+                        'fecha': {type: 'string'},
+                        'trayecto': {type: 'string'},
+                        'origen': {type: 'string'},
+                        'destino': {type: 'string'},
+                        'ruta': {type: 'string'},
+                        'conductor': {type: 'string'},
+                        'vehiculo': {type: 'string'},
+                        'clientes': {type: 'array'},
+                    }
+                }
+            }]
+        }
+    },
 };
