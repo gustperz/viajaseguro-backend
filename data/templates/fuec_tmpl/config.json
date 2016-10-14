@@ -3,14 +3,15 @@
     "recipe": "phantom-pdf",
     "engine": "handlebars",
     "modificationDate": {
-        "$$date": 1476445092321
+        "$$date": 1476468321319
     },
     "_id": "1uc9N0C07h07ck9E",
     "phantom": {
         "format": "Letter",
         "customPhantomJS": false,
-        "blockJavaScript": false,
-        "waitForJS": false
+        "blockJavaScript": true,
+        "waitForJS": false,
+        "printDelay": "1"
     },
     "scripts": [
         {
