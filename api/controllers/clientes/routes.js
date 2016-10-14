@@ -5,9 +5,9 @@
  * Route Mappings
  */
 module.exports.routes = {
-    'GET /clientes/:identificacion': {
+    'GET /clientes/:id': {
         controller: 'Clientes',
-        action: 'findOneByIdentificacion',
+        action: 'find',
 
         swagger: {
             methods: ['GET'],
