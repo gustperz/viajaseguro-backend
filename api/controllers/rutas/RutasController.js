@@ -39,7 +39,7 @@ module.exports = {
                     return {
                         id: turno.id,
                         pos: turno.pos,
-                        conductor: _.pick(turno.conductor, ['id', 'nombres', 'apellidos', 'imagen', 'codigo_vial'])
+                        conductor: _.pick(turno.conductor, ['id', 'nombres', 'apellidos', 'imagen', 'codigo_vial', 'vehiculo'])
                     }
                 }) );
             }).catch(res.negotiate);
