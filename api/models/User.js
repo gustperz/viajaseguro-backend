@@ -22,7 +22,7 @@ module.exports = {
 
     email: {
       type: 'email',
-      unique: true
+      size: 40
     },
 
     rol: {
