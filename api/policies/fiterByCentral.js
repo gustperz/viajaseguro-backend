@@ -17,6 +17,9 @@ module.exports = function (req, res, next) {
                 req.user.central = {
                     id: central.id
                 };
+                req.user.empresa = {
+                    id: central.empresa
+                };
                 next();
             }).catch(res.negotiate);
     }
