@@ -20,6 +20,7 @@ module.exports = {
         telefono:           {type: 'string', size: 15},
         fax:                {type: 'string', size: 20},
         nresolucon:         {type: 'string', size: 20},
+        ndireccion_terr:    {type: 'string', size: 3},
         fecha_resolucion:   {type: 'date'},
         especial:           {type: 'boolean', defaultsTo: false},
         intermunicipal:     {type: 'boolean', defaultsTo: false},
