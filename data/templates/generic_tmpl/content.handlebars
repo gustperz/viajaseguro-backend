@@ -1,4 +1,6 @@
-<style type="text/css">
+<html>
+  <head>
+      <style type="text/css">
     body,
     div,
     table,
@@ -33,7 +35,10 @@
         display: none;
     }
 </style>
-<table cellspacing="0" border="0">
+  </head>
+  <body>
+      <div id="fuec">
+    <table cellspacing="0" border="0">
     <colgroup width="69"></colgroup>
     <colgroup width="64"></colgroup>
     <colgroup width="21"></colgroup>
@@ -805,6 +810,20 @@
         </td>
     </tr>
 </table>
+</div>
+
+<div id="contract"></div>
+      </body>
+</html>
 <script>
-    var data = {{#toJSON this}}{{/toJSON}}
+    var data = {{#toJSON this}}{{/toJSON}};
+    
+    var vars={};
+      var x=window.location.search.substring(1).split('&');
+      for (var i in x) {
+        var z=x[i].split('=',2);
+        vars[z[0]] = unescape(z[1]);
+      }
+      document.getElementById('fuec').innerHTML = vars.fuec; 
+      document.getElementById('contract').innerHTML = vars.contract; 
 </script>
