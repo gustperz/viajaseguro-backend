@@ -42,15 +42,14 @@ module.exports = {
             return res.ok(viajes.map(viaje => {
                 return {
                     id: viaje.id,
+                    fuec: viaje.fuec,
+                    origen: viaje.origen,
+                    destino: viaje.destino,
                     conductor: {
                         nombre: viaje.conductor.nombres + ' ' + viaje.conductor.apellidos
                     },
                     vehiculo: {
                         placa: viaje.vehiculo.placa
-                    },
-                    ruta: {
-                        origen: viaje.ruta.origen.ciudad + ', ' + viaje.ruta.origen.departamento,
-                        destino: viaje.ruta.destino.ciudad + ', ' + viaje.ruta.destino.departamento
                     }
                 }
             }));

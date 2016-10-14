@@ -11,6 +11,7 @@ module.exports = {
   autoPK: false,
 
   attributes: {
+    id:{type: 'integer', autoIncrement: true},
     viaje: {
       model: 'viajes'
     },

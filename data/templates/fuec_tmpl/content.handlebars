@@ -46,7 +46,7 @@
     <colgroup width="64"></colgroup>
     <tr>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 rowspan=6 height="116" align="center" valign=middle>
-            <br>
+            <img src="http://api.viajaseguro.co/images/empresas/{{this.empresa.logo}}" height="135" width="200"/>
         </td>
         <td colspan=4 align="center" valign=middle>
             <b style="text-transform: uppercase">{{this.empresa.nombre_largo}}</b>
@@ -122,7 +122,7 @@
         </td>
         <td style="border-top: 2px groove #000000; border-bottom: 2px groove #000000; border-left: 2px groove #000000; border-right: 2px groove #000000" colspan=2 align="center" valign=middle>
             <b>
-                <font size=4>No. 16880</font>
+                <font size=4>No. {{this.viaje.contrato}}</font>
             </b>
         </td>
     </tr>
@@ -179,8 +179,8 @@
             <b>Jose Miguel Soto Acosta</b>, mayor de edad vecino de esta ciudad, actuando en calidad de responsable(s) para la realizaci&oacute;n de un contrato de servicio de transporte expreso. Quien en adelante se denominaran los contratantes hemos colaborado
             en el presente contrato de transporte especial de pasajeros. El cual regira por las siguientes clausulas.
             <b>Primera:</b> El contratista se compromete a transportar en el lugar indicado a los contratantes relacionado(s) a la hora acordada
-            <b>8:15 am</b> y transportarlos a un lugar o destino pactado
-            <b>Valledupar</b> por (1) dia(s).
+            y transportarlos a un lugar o destino pactado
+            <b style="text-transform: capitalize">{{this.viaje.destino}}</b> por (1) dia(s).
             <b>Segunda:</b> Valor del contrato, El valor del presente contrato se pacta en la suma de
             <b>$ 76000</b> que ser&aacute;n cancelados en el momento de la iniciaci&oacute;n de la prestaci&oacute;n del servicio de contrato de viaje especial.
             <b>Tercer:</b> Responsabilidades del contratista, El contratista se compromete a lo siguiente
@@ -251,7 +251,7 @@
     </tr>
     <tr>
         <td colspan=9 height="17" align="left" valign=middle style="font-size: 14px">El presente contrato se suscribe en la ciudad de
-            <b>Valledupar</b> a los
+            <b style="text-transform: capitalize">{{this.viaje.origen}}</b> a los
             <b>{{this.contrato.dia}}</b> dias del mes de
             <b>{{this.contrato.mes}}</b> del a&ntilde;o
             <b>{{this.contrato.ano}}</b>.
@@ -438,7 +438,7 @@
     <tr>
         <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="18" align="center" valign=bottom>
             <b>
-                <font size=3 color="#000000">No 22001910120151121</font>
+                <font size=3 color="#000000">No {{this.viaje.fuec}}</font>
             </b>
         </td>
     </tr>
@@ -452,7 +452,7 @@
     </tr>
     <tr>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="left" valign=bottom>
-            <font size=3 color="#000000">CONTRATO No: 1121</font>
+            <font size=3 color="#000000">CONTRATO No: {{this.viaje.contrato}}</font>
         </td>
     </tr>
     <tr>
@@ -475,7 +475,7 @@
     </tr>
     <tr>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
-            <font size=3 color="#000000">RECORRIDO : RIO SECO- LOS HATICOS - SAN JUAN - DISTRACCION</font>
+            <font size=3 color="#000000" style="text-transform: uppercase">RECORRIDO : {{this.viaje.trayecto}}</font>
         </td>
     </tr>
     <tr>
@@ -483,7 +483,7 @@
             <font size=3 color="#000000">ORIGEN:</font>
         </td>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=bottom>
-            <font size=3 color="#000000">VALLEDUPAR</font>
+            <font size=3 color="#000000" style="text-transform: uppercase">{{this.viaje.origen}}</font>
         </td>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=bottom>
             <font size=3 color="#000000">
@@ -494,7 +494,7 @@
             <font size=3 color="#000000">DESTINO:</font>
         </td>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=bottom>
-            <font size=3 color="#000000">FONSECA</font>
+            <font size=3 color="#000000" style="text-transform: uppercase">{{this.viaje.destino}}</font>
         </td>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
             <font size=3 color="#000000">
@@ -630,12 +630,12 @@
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 height="21" align="center" valign=bottom>
             <font size=3 color="#000000">{{this.viaje.vehiculo.placa}}</font>
         </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom>
             <font size=3 color="#000000">
                 {{this.viaje.vehiculo.modelo}}
             </font>
         </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom>
             <font size=3 color="#000000">
                 {{this.viaje.vehiculo.marca}}
             </font>
