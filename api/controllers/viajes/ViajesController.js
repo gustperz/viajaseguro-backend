@@ -27,7 +27,6 @@ module.exports = {
                         preview: true
                     }
                 }
-                console.log(data)
                 var options = {
                     uri: 'http://localhost:5488/api/report  ',
                     method: 'POST',
