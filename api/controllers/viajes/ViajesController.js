@@ -1,10 +1,10 @@
 /**
  * Created by jose on 13/10/16.
  */
-const _ = require('lodash');
+const forEach = require('lodash').forEach;
 const moment = require('moment');
 var request = require('request');
-var moment = require('moment');
+
 module.exports = {
     identity: 'Viajes',
 
@@ -78,8 +78,9 @@ module.exports = {
             data.empresa = result.empresa.id;
             data.fuec = territorial+resolucion+fecha_resol+fecha_exp+contrato+cont_dia;
             Viajes.create(data).then(viaje => {
-                viaje.clientes.add(data.pasajeros.map(pasajero => pasajero.identificacion));
-                viaje.save();
+                forEach(data.pasajeros, pasajero => {
+                    PasajerosViaje.create({viaje: viaje.id, cliente: pasajero.identificacion}).exec(()=>{});
+                });
                 return res.ok();
             }).catch(res.negotiate);
         });
