@@ -14,16 +14,7 @@ module.exports = {
         ], (error, result) => {
             if(error) return res.negotiate(error);
 
-            TurnosRuta.find({ruta: ruta_id}).populate('conductor')
-                .then((turnos) => {
-                    const data = _.map( turnos, turno => ({
-                        id: turno.id,
-                        pos: turno.pos,
-                        conductor: _.pick(turno.conductor, ['id', 'nombres', 'apellidos', 'imagen', 'codigo_vial', 'vehiculo'])
-                    }) );
-                    sails.sockets.broadcast('turnosRutawatcher', 'turnosRuta' + ruta_id + 'Cahnged',  data);
-                })
-                .catch(res.negotiate);
+            TurnosRuta.broadcastCahnge(ruta_id);
             return res.ok()
         });
 
@@ -52,17 +43,11 @@ module.exports = {
         if (!req.isSocket) return res.badRequest();
         const ruta_id = req.params.id;
         TurnosRuta.find({ruta: ruta_id}).populate('conductor')
-            .then((turnos) => res.ok( _.map( turnos, make) ))
+            .then(turnos => {
+                sails.sockets.join(req, 'turnosRutawatcher');
+                res.ok(turnos);
+            })
             .catch(res.negotiate);
-
-        function make(turno) {
-            sails.sockets.join(req, 'turnosRutawatcher');
-            return {
-                id: turno.id,
-                pos: turno.pos,
-                conductor: _.pick(turno.conductor, ['id', 'nombres', 'apellidos', 'imagen', 'codigo_vial', 'vehiculo'])
-            }
-        }
     }
 
 };

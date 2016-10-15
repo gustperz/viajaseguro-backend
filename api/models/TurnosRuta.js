@@ -1,6 +1,7 @@
 /**
  * Created by tav0 on 27/09/16.
  */
+const pick = require('lodash').pick;
 
 module.exports = {
 
@@ -19,7 +20,20 @@ module.exports = {
 
         conductor: {
             model: 'conductores'
-        }
+        },
 
+        toJSON() {
+            var obj = this.toObject();
+            if(typeof obj.conductor == 'object'){
+                obj.conductor = pick(obj.conductor, ['id', 'nombres', 'apellidos', 'imagen', 'codigo_vial', 'vehiculo'])
+            }
+            return obj;
+        }
+    },
+
+    broadcastCahnge(ruta) {
+        TurnosRuta.find({ruta: ruta}).populate('conductor').then(turnos =>
+            sails.sockets.broadcast('turnosRutawatcher', 'turnosRuta' + ruta + 'Cahnged__',  turnos)
+        );
     }
 };
