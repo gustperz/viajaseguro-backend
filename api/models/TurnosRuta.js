@@ -31,7 +31,7 @@ module.exports = {
         }
     },
 
-    broadcastCahnge(ruta) {
+    broadcastChange(ruta) {
         TurnosRuta.find({ruta: ruta}).populate('conductor').then(turnos =>
             sails.sockets.broadcast('turnosRutawatcher', 'turnosRuta' + ruta + 'Cahnged__',  turnos)
         );

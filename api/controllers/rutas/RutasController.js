@@ -14,7 +14,7 @@ module.exports = {
         ], (error, result) => {
             if(error) return res.negotiate(error);
 
-            TurnosRuta.broadcastCahnge(ruta_id);
+            TurnosRuta.broadcastChange(ruta_id);
             return res.ok()
         });
 
