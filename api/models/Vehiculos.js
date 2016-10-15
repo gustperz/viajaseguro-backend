@@ -29,6 +29,7 @@ module.exports = {
         ntarjoperacion:         { type: 'string', required: true},
         marca:                  { type: 'string', required: true},
         clase:                  { type: 'string', required: true},
+        modalidad:              { type: 'boolean', required: true},
         // propietario
         cedula_propietario:     { type: 'string', required: true, size: 15 },
         nombre_propietario:     { type: 'string', required: true, size: 50 },

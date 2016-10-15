@@ -282,7 +282,7 @@
         </td>
         <td style="border-bottom: 1px solid #000000" colspan=5 align="center" valign=middle>
             <font face="Bitstream Charter">
-                <br>
+                <br><b>{{this.viaje.fecha}}</b>
             </font>
         </td>
         <td align="left">
@@ -290,8 +290,8 @@
                 <br>
             </font>
         </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Liberation Serif" size=4>No. 46458</font>
+        <td style="border-top: 1px solid #000000; border-bottom: 4px solid #000000; border-left: 1px solid #000000; border-right: 4px solid #000000" colspan=2 align="center" valign=middle>
+            <font face="Liberation Serif" size=4>No. {{this.viaje.contrato}}</font>
         </td>
         <td align="left">
             <font face="Bitstream Charter">
@@ -305,7 +305,7 @@
         </td>
         <td style="border-bottom: 1px solid #000000" colspan=9 align="center" valign=middle>
             <font face="Bitstream Charter">
-                <br>
+                <br><b>{{this.viaje.vehiculo.codigo_vial}}</b>
             </font>
         </td>
     </tr>
@@ -314,8 +314,8 @@
             <font face="Bitstream Charter">CONDUCTOR:</font>
         </td>
         <td colspan=6 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
+            <font face="Bitstream Charter" style="text-transform: uppercase">
+                <br><b>{{this.viaje.conductor.nombres}} {{this.viaje.conductor.apellidos}}</b>
             </font>
         </td>
         <td align="center">
@@ -323,7 +323,7 @@
         </td>
         <td colspan=2 align="left" valign=middle>
             <font face="Bitstream Charter">
-                <br>
+                <br><b>{{this.viaje.conductor.nlicencia}}</b>
             </font>
         </td>
     </tr>
@@ -332,12 +332,12 @@
             <font face="Bitstream Charter">PLACA No.</font>
         </td>
         <td style="border-top: 1px solid #000000" colspan=3 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
+            <font face="Bitstream Charter" style="text-transform: uppercase">
+                <br>{{this.viaje.vehiculo.placa}}
             </font>
         </td>
         <td style="border-top: 1px solid #000000" align="center">
-            <font face="Bitstream Charter">PROP.</font>
+            {{!--<font face="Bitstream Charter">PROP.</font>--}}
         </td>
         <td style="border-top: 1px solid #000000" colspan=5 align="center" valign=middle>
             <font face="Bitstream Charter">
@@ -350,8 +350,8 @@
             <font face="Bitstream Charter">ORIGEN:</font>
         </td>
         <td style="border-top: 1px solid #000000" colspan=4 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
+            <font face="Bitstream Charter" style="text-transform: uppercase">
+                <br>{{this.viaje.origen}}
             </font>
         </td>
         <td style="border-top: 1px solid #000000" align="left">
@@ -363,24 +363,26 @@
             <font face="Bitstream Charter">DESTINO:</font>
         </td>
         <td style="border-top: 1px solid #000000" colspan=3 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
+            <font face="Bitstream Charter" style="text-transform: uppercase">
+                <br>{{this.viaje.destino}}
             </font>
         </td>
     </tr>
     <tr>
         <td height="23" align="left">
-            <font face="Bitstream Charter">VIAJE: </font>
+            {{!--<font face="Bitstream Charter">VIAJE: </font>--}}
         </td>
         <td style="border-top: 1px solid #000000" colspan=3 align="center" valign=middle>
             <br>
         </td>
-        <td style="border-top: 1px solid #000000" align="center">A:</td>
+        <td style="border-top: 1px solid #000000" align="center"></td>
         <td colspan=2 align="center" valign=middle>
             <br>
         </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">HOTA:</font>
+        <td style="border-top: 1px solid #000000" colspan=2 align="center" valign=middle>
+            <font face="Bitstream Charter">
+                <br>
+            </font>
         </td>
         <td style="border-top: 1px solid #000000" colspan=2 align="center" valign=middle>
             <font face="Bitstream Charter">
@@ -388,58 +390,48 @@
             </font>
         </td>
     </tr>
-    <tr>
-        <td height="23" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
+    {{!--<tr>--}}
+        {{!--<td height="23" align="left">--}}
+        {{!--    <font face="Bitstream Charter">--}}
+        {{!--        <br>--}}
+        {{!--    </font>--}}
+        {{!--</td>--}}
+        {{!--<td style="border-top: 1px solid #000000" align="left">--}}
+        {{!--    <font face="Bitstream Charter">--}}
+        {{!--        <br>--}}
+        {{!--    </font>--}}
+        {{!--</td>--}}
+        {{!--<td style="border-top: 1px solid #000000" align="left">--}}
+        {{!--    <font face="Bitstream Charter">--}}
+        {{!--        <br>--}}
+        {{!--    </font>--}}
+        {{!--</td>--}}
+        {{!--<td style="border-top: 1px solid #000000" align="left">--}}
+        {{!--    <font face="Bitstream Charter">--}}
+        {{!--        <br>--}}
+        {{!--    </font>--}}
+        {{!--</td>--}}
+        {{!--<td align="left">--}}
+        {{!--    <font face="Bitstream Charter">--}}
+        {{!--        <br>--}}
+        {{!--    </font>--}}
+        {{!--</td>--}}
+        {{!--<td style="border-top: 1px solid #000000" align="left">--}}
+        {{!--    <font face="Bitstream Charter">--}}
+        {{!--        <br>--}}
+        {{!--    </font>--}}
+        {{!--</td>--}}
+        {{!--<td style="border-top: 1px solid #000000" align="left">--}}
+        {{!--    <font face="Bitstream Charter">--}}
+        {{!--        <br>--}}
+        {{!--    </font>--}}
+        {{!--</td>--}}
+    {{!--    <td align="left">--}}
+    {{!--        <font face="Bitstream Charter">--}}
+    {{!--            <br>--}}
+    {{!--        </font>--}}
+    {{!--    </td>--}}
+    {{!--</tr>--}}
     <tr>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="23" align="center" valign=middle bgcolor="#999999">
             <b>
@@ -457,143 +449,26 @@
             </b>
         </td>
     </tr>
+    {{#each this.viaje.clientes}}
     <tr>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="23" align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
+            <font face="Bitstream Charter" style="text-transform: capitalize">
+                <br>{{identificacion}} - {{nombre}}
             </font>
         </td>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
             <font face="Bitstream Charter">
-                <br>
+                <br>Valledupar
             </font>
         </td>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
             <font face="Bitstream Charter">
-                <br>
+                <br>$ 17000
             </font>
         </td>
     </tr>
-    <tr>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="23" align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="23" align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="23" align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="23" align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td height="10" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
+    {{/each}}
+
     <tr>
         <td height="20" align="left">
             <br>
@@ -658,7 +533,7 @@
         </td>
     </tr>
     <tr>
-        <td style="border-top: 1px solid #000000; border-left: 1px solid #000000" height="10" align="left">
+        <td style="border-top: 1px solid #000000; border-left: 1px solid #000000" height="0" align="left">
             <br>
         </td>
         <td style="border-top: 1px solid #000000" align="left">
@@ -689,6 +564,8 @@
             <br>
         </td>
     </tr>
+    
+    
     <tr>
         <td style="border-left: 1px solid #000000" height="23" align="left">
             <br>
@@ -702,81 +579,11 @@
         <td align="left">
             <br>
         </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td style="border-right: 1px solid #000000" align="left">
-            <br>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-left: 1px solid #000000" height="23" align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td style="border-right: 1px solid #000000" align="left">
-            <br>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-left: 1px solid #000000" height="23" align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
+        <td align="center" colspan="4">
+            <font size=3 color="#000000">
+                <br>
+                <img src="http://api.viajaseguro.co/images/empresas/firma/{{this.empresa.firma_digital}}" width=280 height=100 hspace=182 >
+            </font>
         </td>
         <td align="left">
             <br>
@@ -798,7 +605,10 @@
         <td style="border-bottom: 1px solid #000000" align="left">
             <br>
         </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" colspan=3 align="center" valign=middle>FIRMA AUTORIZADA</td>
+        <td style="border-bottom: 1px solid #000000" align="left">
+            <br>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" colspan=2 align="center" valign=middle>FIRMA AUTORIZADA</td>
         <td style="border-bottom: 1px solid #000000" align="left">
             <br>
         </td>
@@ -817,13 +627,4 @@
 </html>
 <script>
     var data = {{#toJSON this}}{{/toJSON}};
-    
-    var vars={};
-      var x=window.location.search.substring(1).split('&');
-      for (var i in x) {
-        var z=x[i].split('=',2);
-        vars[z[0]] = unescape(z[1]);
-      }
-      document.getElementById('fuec').innerHTML = vars.fuec; 
-      document.getElementById('contract').innerHTML = vars.contract; 
 </script>
