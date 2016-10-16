@@ -22,6 +22,7 @@ module.exports = {
             console.log(turno)
             if(turno.pos == -1) {
                 sails.sockets.broadcast('conductor' + turno.conductor + 'watcher', 'removedTurno');
+                sails.log.silly('broadcast conductor' + turno.conductor + 'watcher:removedTurno');
                 Conductores.updateEstado(turno.conductor, 'disponible');
                 return cb()
             } else {
@@ -32,6 +33,7 @@ module.exports = {
                     ruta: ruta_id
                 }).then(() => {
                     sails.sockets.broadcast('conductor' + turno.conductor + 'watcher', 'turnoUpdate', {pos: turno.pos});
+                    sails.log.silly('broadcast conductor' + turno.conductor + 'watcher:turnoUpdate');
                     if(turno.isNew) Conductores.updateEstado(turno.conductor, 'en_turno');
                     return cb();
                 });
