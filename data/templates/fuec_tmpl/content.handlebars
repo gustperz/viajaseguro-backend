@@ -712,12 +712,14 @@
             <font size=3 color="#000000">NOMBRES Y APELLIDOS</font>
         </td>
     </tr>
+    {{#each this.viaje.clientes}}
     <tr>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
-            <font size=3 color="#000000">ANGEL FERNANDEZ</font>
+            <font size=3 color="#000000" style="text-transform: uppercase">{{identificacion}} - {{nombre}}</font>
         </td>
     </tr>
-
+    {{/each}}
+    
     <tr>
         <td style="border-top: 1px solid #000000" colspan=6 rowspan=3 height="110" align="center" valign=bottom>
             <font size=3 color="#000000">

@@ -1,829 +1,1325 @@
-<html>
-  <head>
-      <style type="text/css">
-    body,
-    div,
-    table,
-    thead,
-    tbody,
-    tfoot,
-    tr,
-    th,
-    td,
-    p {
-        font-family: "Liberation Sans";
-        font-size: x-small
-    }
-    
-    a.comment-indicator:hover+ comment {
-        background: #ffd;
-        position: absolute;
-        display: block;
-        border: 1px solid black;
-        padding: 0.5em;
-    }
-    
-    a.comment-indicator {
-        background: red;
-        display: inline-block;
-        border: 1px solid black;
-        width: 0.5em;
-        height: 0.5em;
-    }
-    
-    comment {
-        display: none;
-    }
-</style>
-  </head>
-  <body>
-      <div id="fuec">
-    <table cellspacing="0" border="0">
-    <colgroup width="69"></colgroup>
-    <colgroup width="64"></colgroup>
-    <colgroup width="21"></colgroup>
-    <colgroup span="3" width="64"></colgroup>
-    <colgroup width="74"></colgroup>
-    <colgroup width="72"></colgroup>
-    <colgroup width="81"></colgroup>
-    <colgroup width="77"></colgroup>
-    <tr>
-        <td style="border-top: 1px solid #000000; border-left: 1px solid #000000" height="23" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td colspan=6 align="center" valign=middle>
-            <b>
-                <font face="Bitstream Charter" size=3 style="text-transform: uppercase">{{this.empresa.nombre_largo}}</font>
-            </b>
-        </td>
-        <td style="border-top: 1px solid #000000; border-left: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-left: 1px solid #000000" height="23" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-right: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td colspan=6 align="center" valign=middle>
-            <b>
-                <i>
-                    <font face="Bitstream Charter" size=4 style="text-transform: uppercase">{{this.empresa.nombre_corto}}</font>
-                </i>
-            </b>
-        </td>
-        <td style="border-left: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-right: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-left: 1px solid #000000" height="23" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-right: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="center">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td colspan=5 align="center" valign=middle>
-            <b>
-                <font face="Bitstream Charter">NIT. {{this.empresa.nit_intermunicipal}} REGISTRO # {{this.empresa.nresolucon}}</font>
-            </b>
-        </td>
-        <td style="border-left: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-right: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-left: 1px solid #000000" height="23" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-right: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="center">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td colspan=5 align="center" valign=middle>
-            <b>
-                <font face="Bitstream Charter"> {{this.empresa.direccion}} TEL: {{this.empresa.telefono}}</font>
-            </b>
-        </td>
-        <td style="border-left: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-right: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="23" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="center">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td colspan=5 align="center" valign=middle>
-            <b>
-                <br>
-            </b>
-        </td>
-        <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td height="23" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td colspan=6 align="center" valign=middle>
-            <b>
-                <br>
-            </b>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td height="23" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td height="23" align="left">
-            <font face="Bitstream Charter">FECHA:</font>
-        </td>
-        <td style="border-bottom: 1px solid #000000" colspan=5 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Liberation Serif" size=4>No. 46458</font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td height="30" align="left">
-            <font face="Bitstream Charter">No. INTERNO:</font>
-        </td>
-        <td style="border-bottom: 1px solid #000000" colspan=9 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td height="25" align="left">
-            <font face="Bitstream Charter">CONDUCTOR:</font>
-        </td>
-        <td colspan=6 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="center">
-            <font face="Bitstream Charter">PASE No.</font>
-        </td>
-        <td colspan=2 align="left" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td height="27" align="left">
-            <font face="Bitstream Charter">PLACA No.</font>
-        </td>
-        <td style="border-top: 1px solid #000000" colspan=3 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="center">
-            <font face="Bitstream Charter">PROP.</font>
-        </td>
-        <td style="border-top: 1px solid #000000" colspan=5 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td height="23" align="left">
-            <font face="Bitstream Charter">ORIGEN:</font>
-        </td>
-        <td style="border-top: 1px solid #000000" colspan=4 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">DESTINO:</font>
-        </td>
-        <td style="border-top: 1px solid #000000" colspan=3 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td height="23" align="left">
-            <font face="Bitstream Charter">VIAJE: </font>
-        </td>
-        <td style="border-top: 1px solid #000000" colspan=3 align="center" valign=middle>
-            <br>
-        </td>
-        <td style="border-top: 1px solid #000000" align="center">A:</td>
-        <td colspan=2 align="center" valign=middle>
-            <br>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">HOTA:</font>
-        </td>
-        <td style="border-top: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td height="23" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="23" align="center" valign=middle bgcolor="#999999">
-            <b>
-                <font face="Bitstream Charter" size=4>Nombre del pasajero</font>
-            </b>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle bgcolor="#999999">
-            <b>
-                <font size=4>Destino</font>
-            </b>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle bgcolor="#999999">
-            <b>
-                <font face="Bitstream Charter" size=4>Valor pasaje</font>
-            </b>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="23" align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="23" align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="23" align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="23" align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="23" align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td height="10" align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-        <td align="left">
-            <font face="Bitstream Charter">
-                <br>
-            </font>
-        </td>
-    </tr>
-    <tr>
-        <td height="20" align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle bgcolor="#B2B2B2">
-            <b>
-                <font size=3>TOTAL $</font>
-            </b>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=middle>
-            <br>
-        </td>
-    </tr>
-    <tr>
-        <td height="10" align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-top: 1px solid #000000; border-left: 1px solid #000000" height="10" align="left">
-            <br>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <br>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <br>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <br>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <br>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <br>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <br>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <br>
-        </td>
-        <td style="border-top: 1px solid #000000" align="left">
-            <br>
-        </td>
-        <td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left">
-            <br>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-left: 1px solid #000000" height="23" align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td style="border-right: 1px solid #000000" align="left">
-            <br>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-left: 1px solid #000000" height="23" align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td style="border-right: 1px solid #000000" align="left">
-            <br>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-left: 1px solid #000000" height="23" align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td align="left">
-            <br>
-        </td>
-        <td style="border-right: 1px solid #000000" align="left">
-            <br>
-        </td>
-    </tr>
-    <tr>
-        <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="23" align="left">
-            <br>
-        </td>
-        <td style="border-bottom: 1px solid #000000" align="left">
-            <br>
-        </td>
-        <td style="border-bottom: 1px solid #000000" align="left">
-            <br>
-        </td>
-        <td style="border-bottom: 1px solid #000000" align="left">
-            <br>
-        </td>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" colspan=3 align="center" valign=middle>FIRMA AUTORIZADA</td>
-        <td style="border-bottom: 1px solid #000000" align="left">
-            <br>
-        </td>
-        <td style="border-bottom: 1px solid #000000" align="left">
-            <br>
-        </td>
-        <td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left">
-            <br>
-        </td>
-    </tr>
-</table>
-</div>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 
-<div id="contract"></div>
-      </body>
-</html>
-<script>
+<html>
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="generator" content="LibreOffice 5.1.4.2 (Linux)" />
+    <meta name="created" content="2016-10-15T17:49:30.049836968" />
+    <meta name="changed" content="2016-10-15T18:24:00.223550136" />
+
+    <style type="text/css">
+        body,
+        div,
+        table,
+        thead,
+        tbody,
+        tfoot,
+        tr,
+        th,
+        td,
+        p {
+            font-family: "Liberation Sans";
+            font-size: x-small
+        }
+        
+        a.comment-indicator:hover+ comment {
+            background: #ffd;
+            position: absolute;
+            display: block;
+            border: 1px solid black;
+            padding: 0.5em;
+        }
+        
+        a.comment-indicator {
+            background: red;
+            display: inline-block;
+            border: 1px solid black;
+            width: 0.5em;
+            height: 0.5em;
+        }
+        
+        comment {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <table cellspacing="0" border="0">
+        <colgroup span="13" width="64"></colgroup>
+        <tr>
+            <td colspan=3 rowspan=5 height="90" align="center" valign=middle>
+                <font face="Century Schoolbook L">
+                    <br>
+                    <img src="http://api.viajaseguro.co/images/empresas/{{this.empresa.logo}}" width=150 height=110 hspace=2 vspace=3>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td colspan=3 rowspan=5 align="center" valign=middle>
+                <font face="Century Schoolbook L">
+                    <br>
+                    <img src="{#image descarga}" width=150 height=110 hspace=3 vspace=3>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=7 align="center" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L" size=3 style="text-transform: uppercase">{{this.empresa.nombre_largo}}</font>
+                </b>
+            </td>
+        </tr>
+        <tr>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td colspan=5 align="center" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L" size=4 style="text-transform: uppercase">“{{this.empresa.nombre_corto}}”</font>
+                </b>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td colspan=5 align="center" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L">NIT. {{this.empresa.nit_intermunicipal}} REGISTRO # {{this.empresa.nresolucon}}</font>
+                </b>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td colspan=5 align="center" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L">{{this.empresa.direccion}} TEL: {{this.empresa.telefono}}</font>
+                </b>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000; border-bottom: 5px groove #000000; border-left: 1px groove #000000; border-right: 5px groove #000000" colspan=3 rowspan=2 align="center" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L" size=5>No. {{this.viaje.contrato}}</font>
+                </b>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td height="18" align="left">
+                <b>
+                    <font face="Century Schoolbook L">FECHA:</font>
+                </b>
+            </td>
+            <td style="border-bottom: 1px groove #000000" colspan=6 align="center" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L">{{this.viaje.fecha}}</font>
+                </b>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2 height="18" align="left" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L">No INTERNO:</font>
+                </b>
+            </td>
+            <td style="border-bottom: 1px groove #000000" colspan=5 align="center" valign=middle sdval="9" sdnum="9226;">
+                <b>
+                    <font face="Century Schoolbook L">{{this.viaje.vehiculo.codigo_vial}}</font>
+                </b>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2 height="18" align="left" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L">CONDUCTOR:</font>
+                </b>
+            </td>
+            <td style="border-bottom: 1px groove #000000" colspan=5 align="center" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L" style="text-transform: uppercase">{{this.viaje.conductor.nombres}} {{this.viaje.conductor.apellidos}}</font>
+                </b>
+            </td>
+            <td align="left">
+                <br>
+            </td>
+            <td align="left">
+                <b>
+                    <font face="Century Schoolbook L">PASE No:</font>
+                </b>
+            </td>
+            <td style="border-bottom: 1px groove #000000" colspan=4 align="center" valign=middle sdval="1120746041" sdnum="9226;">
+                <b>
+                    <font face="Century Schoolbook L">{{this.viaje.conductor.nlicencia}}</font>
+                </b>
+            </td>
+        </tr>
+        <tr>
+            <td height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2 height="18" align="left" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L">PLACA No:</font>
+                </b>
+            </td>
+            <td style="border-bottom: 1px groove #000000" colspan=5 align="center" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L" style="text-transform: uppercase">{{this.viaje.vehiculo.placa}}</font>
+                </b>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2 height="18" align="center" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L">ORIGEN:</font>
+                </b>
+            </td>
+            <td style="border-bottom: 1px groove #000000" colspan=4 align="center" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L" style="text-transform: uppercase">{{this.viaje.origen}}</font>
+                </b>
+            </td>
+            <td align="left">
+                <b>
+                    <font face="Century Schoolbook L">
+                        <br>
+                    </font>
+                </b>
+            </td>
+            <td align="left">
+                <b>
+                    <font face="Century Schoolbook L">DESTINO:</font>
+                </b>
+            </td>
+            <td style="border-bottom: 1px groove #000000" colspan=4 align="center" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L" style="text-transform: uppercase">{{this.viaje.destino}}</font>
+                </b>
+            </td>
+            <td align="left">
+                <br>
+            </td>
+        </tr>
+        <tr>
+            <td height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-top: 1px groove #000000; border-bottom: 1px groove #000000; border-left: 1px groove #000000; border-right: 1px groove #000000" colspan=7 height="18" align="center" valign=middle bgcolor="#999999">
+                <b>
+                    <font face="Century Schoolbook L">NOMBRE DEL PASAJERO</font>
+                </b>
+            </td>
+            <td style="border-top: 1px ridge #000000; border-bottom: 1px ridge #000000; border-left: 1px ridge #000000; border-right: 1px ridge #000000" colspan=6 align="center" valign=middle bgcolor="#999999">
+                <b>
+                    <font face="Century Schoolbook L">VALOR DEL PASAJE</font>
+                </b>
+            </td>
+        </tr>
+        {{#each this.viaje.clientes}}
+        <tr>
+            <td style="border-top: 1px groove #000000; border-bottom: 1px groove #000000; border-left: 1px groove #000000; border-right: 1px groove #000000" colspan=7 height="18" align="center" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L">{{identificacion}} - {{nombre}} </font>
+                </b>
+            </td>
+            <td style="border-top: 1px groove #000000; border-bottom: 1px groove #000000; border-left: 1px groove #000000; border-right: 1px groove #000000" colspan=6 align="center" valign=middle sdval="17000" sdnum="9226;0;[$$-240A]#.##0,00;[RED]([$$-240A]#.##0,00)">
+                <b></b>
+            </td>
+        </tr>
+        {{/each}}
+        <tr>
+            <td height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px ridge #000000; border-bottom: 1px ridge #000000; border-left: 1px ridge #000000; border-right: 1px ridge #000000" colspan=2 align="center" valign=middle bgcolor="#999999">
+                <b>
+                    <font face="Century Schoolbook L">TOTAL:</font>
+                </b>
+            </td>
+            <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="center" valign=middle sdval="34000" sdnum="9226;0;[$$-240A]#.##0,00;[RED]([$$-240A]#.##0,00)">
+                <b>$ {{this.viaje.valor_flete}}</b>
+            </td>
+        </tr>
+        <tr>
+            <td height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-top: 1px groove #000000; border-left: 1px groove #000000" height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000; border-right: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-left: 1px groove #000000" height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td colspan=5 rowspan=5 align="center" valign=middle>
+                <br>
+                <img style="border: none !important;" src="http://api.viajaseguro.co/images/empresas/firma/{{this.empresa.firma_digital}}" width=188 height=88 hspace=3 vspace=3>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-right: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-left: 1px groove #000000" height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-right: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-left: 1px groove #000000" height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-right: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-left: 1px groove #000000" height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-right: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-left: 1px groove #000000" height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-right: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-left: 1px groove #000000" height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-top: 1px groove #000000" colspan=5 align="center" valign=middle>
+                <b>
+                    <font face="Century Schoolbook L">FIRMA AUTORIZA</font>
+                </b>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-right: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-bottom: 1px groove #000000; border-left: 1px groove #000000" height="18" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-bottom: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-bottom: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-bottom: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-bottom: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-bottom: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-bottom: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-bottom: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-bottom: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-bottom: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-bottom: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-bottom: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+            <td style="border-bottom: 1px groove #000000; border-right: 1px groove #000000" align="left">
+                <font face="Century Schoolbook L">
+                    <br>
+                </font>
+            </td>
+        </tr>
+    </table>
+    <script>
     var data = {{#toJSON this}}{{/toJSON}};
-    
-    var vars={};
-      var x=window.location.search.substring(1).split('&');
-      for (var i in x) {
-        var z=x[i].split('=',2);
-        vars[z[0]] = unescape(z[1]);
-      }
-      document.getElementById('fuec').innerHTML = vars.fuec; 
-      document.getElementById('contract').innerHTML = vars.contract; 
 </script>
+</body>
+
+</html>

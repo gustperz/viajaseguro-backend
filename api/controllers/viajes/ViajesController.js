@@ -11,22 +11,41 @@ module.exports = {
     identity: 'Viajes',
 
     findOneFuec(req, res){
-        Viajes.findOne({id: req.allParams().id}).populate('conductor').populate('vehiculo').then(function (viaje) {
+        Viajes.findOne({id: req.allParams().id}).populate('conductor').populate('vehiculo').populate('clientes').then(function (viaje) {
+            viaje.conductor.fecha_licencia = moment(viaje.conductor.fecha_licencia).format('L');
             Empresas.findOne({id: viaje.empresa}).then(function (empresa) {
                 empresa.fecha_resolucion = moment(empresa.fecha_resolucion).locale("es").format('LL');
-                var data = {
-                    template: {'shortid': 'B144VRaR'},
-                    data: {
-                        empresa: empresa,
-                        contrato: {
-                            dia: moment(viaje.fecha).day(),
-                            mes: moment(viaje.fecha).locale('es').format('MMMM'),
-                            ano: moment(viaje.fecha).year()
+                if(viaje.vehiculo.modalidad === false){
+                    var data = {
+                        template: {'shortid': 'B144VRaR'},
+                        data: {
+                            empresa: empresa,
+                            contrato: {
+                                dia: moment(viaje.fecha).day(),
+                                mes: moment(viaje.fecha).locale('es').format('MMMM'),
+                                ano: moment(viaje.fecha).year()
+                            },
+                            viaje: viaje
                         },
-                        viaje: viaje
-                    },
-                    options: {
-                        preview: true
+                        options: {
+                            preview: true
+                        }
+                    }
+                }else if(viaje.vehiculo.modalidad === true){
+                    var data = {
+                        template: {'shortid': 'S102cRpR'},
+                        data: {
+                            empresa: empresa,
+                            contrato: {
+                                dia: moment(viaje.fecha).day(),
+                                mes: moment(viaje.fecha).locale('es').format('MMMM'),
+                                ano: moment(viaje.fecha).year()
+                            },
+                            viaje: viaje
+                        },
+                        options: {
+                            preview: true
+                        }
                     }
                 }
                 var options = {
@@ -39,7 +58,7 @@ module.exports = {
         });
     },
     find(req, res){
-        Viajes.find().populate('conductor').populate('vehiculo').populate('ruta').exec((err, viajes) => {
+        Viajes.find().populate('conductor').populate('vehiculo').populate('clientes').exec((err, viajes) => {
             if (err) return res.negotiate(err);
             return res.ok(viajes.map(viaje => {
                 return {
@@ -52,7 +71,8 @@ module.exports = {
                     },
                     vehiculo: {
                         placa: viaje.vehiculo.placa
-                    }
+                    },
+                    clientes: viaje.clientes
                 }
             }));
         });
