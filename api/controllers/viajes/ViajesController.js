@@ -3,6 +3,7 @@
  */
 const forEach = require('lodash').forEach;
 const remove = require('lodash').remove;
+const omit = require('lodash').omit;
 const moment = require('moment');
 var request = require('request');
 
@@ -92,7 +93,16 @@ module.exports = {
                 );
                 finishSolicitudes(viaje.conductor, viaje.central);
                 broadcastTurnos(viaje.ruta, viaje.conductor);
-                return res.ok();
+
+                Conductores.update(viaje.conductor, {
+                    estacion: data.estacion,
+                    estado: 'en_ruta'
+                }).then(updateRecords => {
+                    sails.sockets.broadcast('conductor' + viaje.conductor + 'watcher', 'madeDespacho');
+                    sails.log.silly('broadcast conductor' + turno.conductor + 'watcher:madeDespacho');
+
+                    return res.ok();
+                });
             }).catch(res.negotiate);
         });
 
