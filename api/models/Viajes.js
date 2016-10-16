@@ -33,6 +33,10 @@ module.exports = {
       model: 'empresas'
     },
 
+    central: {
+      model: 'centrales'
+    },
+
     clientes: {
       collection: 'clientes',
       through: 'pasajerosviaje'

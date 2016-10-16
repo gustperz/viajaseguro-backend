@@ -2,6 +2,7 @@
  * Created by jose on 13/10/16.
  */
 const forEach = require('lodash').forEach;
+const remove = require('lodash').remove;
 const moment = require('moment');
 var request = require('request');
 
@@ -78,17 +79,55 @@ module.exports = {
             const contrato = result.max_contrato ? ('000' + (+result.max_contrato[0].contrato + 1)).slice(-4) : '0001';
             const cont_dia = result.max_cont_dia ? ('000' + (+result.max_cont_dia[0].cont_dia + 1)).slice(-4) : '0001';
 
+            if(!territorial || !resolucion) return res.notFound('No se han registrado todos los datos de la empresa', {code: 'E_INCOMPLETE_EMPRESA_DATA'});
+
             data.contrato = contrato;
             data.cont_dia = cont_dia;
+            data.central = req.user.central.id;
             data.empresa = result.empresa.id;
             data.fuec = territorial+resolucion+fecha_resol+fecha_exp+contrato+cont_dia;
             Viajes.create(data).then(viaje => {
-                forEach(data.pasajeros, pasajero => {
-                    PasajerosViaje.create({viaje: viaje.id, cliente: pasajero.identificacion}).exec(()=>{});
-                });
+                forEach(data.pasajeros, pasajero =>
+                    PasajerosViaje.create({viaje: viaje.id, cliente: pasajero.identificacion}).exec(()=>{})
+                );
+                finishSolicitudes(viaje.conductor, viaje.central);
+                broadcastTurnos(viaje.ruta, viaje.conductor);
                 return res.ok();
             }).catch(res.negotiate);
         });
+
+        function finishSolicitudes(conductor, central) {
+            Solicitudes.find({conductor: conductor}).then(soliicitudes => {
+                forEach(soliicitudes, solicitud => {
+                    sails.sockets.broadcast('solicitud' + solicitud.id + 'watcher', 'vehiculo_en_camino');
+                    sails.log.silly('broadcast solicitud' + solicitud.id + 'watcher:vehiculo_en_camino');
+                });
+                Solicitudes.destroy({conductor: conductor, estado: 'a'}).exec(() => {
+                    sails.sockets.broadcast('central'+central+'watcher', 'makingDespacho');
+                    sails.log.silly('broadcast central'+central+'watcher:makingDespacho');
+                });
+            });
+        }
+
+        function broadcastTurnos(ruta, conductor) {
+            TurnosRuta.find({ruta: ruta}).then(turnos => {
+                async.series([
+                    cb => TurnosRuta.destroy({ruta: ruta}).exec(cb),
+                    cb => {
+                        remove(turnos, turnos => turnos.conductor === conductor);
+                        async.forEachOf(turnos, (turno, index, cb) => {
+                            turno.pos = index + 1;
+                            TurnosRuta.create(turno).then(() => {
+                                sails.sockets.broadcast('conductor' + turno.conductor + 'watcher', 'turnoUpdate', {pos: turno.pos});
+                                return cb();
+                            }).catch(cb);
+                        }, cb);
+                    }
+                ], function() {
+                    TurnosRuta.broadcastChange(ruta);
+                });
+            });
+        }
     }
 
 };
