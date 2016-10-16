@@ -8,6 +8,7 @@ module.exports.sockets = {
   host: '127.0.0.1',
   port: 6379,
   pass: '',
+  db: 'sails',
 
   grant3rdPartyCookie: true,
 
@@ -23,6 +24,6 @@ module.exports.sockets = {
     return cb();
   },
 
-  transports: ["polling", "websocket"]
+  transports: ["websocket"]
 
 };
