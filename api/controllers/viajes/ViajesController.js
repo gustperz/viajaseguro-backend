@@ -49,12 +49,9 @@ module.exports = {
                     }
                 }
                 var options = {
-                    type: 'POST',
-                    url: 'http://api.viajaseguro.co:5488/api/report',
-                    headers: {
-                        'Content-Type' : 'application/json'
-                    },
-                    data: JSON.stringify(data)
+                    uri: 'http://localhost:5488/api/report',
+                    method: 'POST',
+                    json: data
                 }
                 request(options).pipe(res);
             });
@@ -192,12 +189,9 @@ module.exports = {
                         }
                     }
                     var options = {
-                        type: 'POST',
-                        url: 'http://api.viajaseguro.co:5488/api/report',
-                        headers: {
-                            'Content-Type' : 'application/json'
-                        },
-                        data: JSON.stringify(data)
+                        uri: 'http://localhost:5488/api/report',
+                        method: 'POST',
+                        json: data
                     }
                     request(options).pipe(res);
                 });
