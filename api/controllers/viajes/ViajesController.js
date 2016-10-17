@@ -49,6 +49,9 @@ module.exports = {
                     }
                 }
                 var options = {
+                    headers: {
+                        'Content-Type' : 'application/json'
+                    },
                     uri: 'http://localhost:5488/api/report',
                     method: 'POST',
                     json: data
@@ -189,6 +192,9 @@ module.exports = {
                         }
                     }
                     var options = {
+                        headers: {
+                            'Content-Type' : 'application/json'
+                        },
                         uri: 'http://localhost:5488/api/report',
                         method: 'POST',
                         json: data
