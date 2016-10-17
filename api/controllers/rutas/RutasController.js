@@ -46,7 +46,7 @@ module.exports = {
         const ruta_id = req.params.id;
         TurnosRuta.find({ruta: ruta_id}).populate('conductor')
             .then(turnos => {
-                sails.sockets.join(req, 'turnosRutawatcher');
+                sails.sockets.join(req, 'turnosRuta'+ruta_id+'watcher');
                 res.ok(turnos);
             })
             .catch(res.negotiate);
