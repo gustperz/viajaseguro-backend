@@ -16,6 +16,8 @@ module.exports = {
     trayecto: {type: 'mediumtext'},
     origen:   {type: 'string'},
     destino:  {type: 'string'},
+    contratante_identificacion: {type: 'string', size: 20},
+    contratante_nombre: {type: 'string', size: 40},
 
     ruta: {
       model: 'rutas'
