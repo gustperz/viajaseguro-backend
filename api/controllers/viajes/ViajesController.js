@@ -58,23 +58,14 @@ module.exports = {
         });
     },
     find(req, res){
-        Viajes.find().populate('conductor').populate('vehiculo').populate('clientes').exec((err, viajes) => {
+        Viajes.find({
+            where: {
+                central: req.user.central.id,
+            },
+            sort: 'fecha DESC'
+        }).populate('conductor').populate('vehiculo').exec((err, viajes) => {
             if (err) return res.negotiate(err);
-            return res.ok(viajes.map(viaje => {
-                return {
-                    id: viaje.id,
-                    fuec: viaje.fuec,
-                    origen: viaje.origen,
-                    destino: viaje.destino,
-                    conductor: {
-                        nombre: viaje.conductor.nombres + ' ' + viaje.conductor.apellidos
-                    },
-                    vehiculo: {
-                        placa: viaje.vehiculo.placa
-                    },
-                    clientes: viaje.clientes
-                }
-            }));
+            return res.ok(viajes);
         });
     },
 
@@ -119,9 +110,9 @@ module.exports = {
                     estado: 'en_ruta'
                 }).then(updateRecords => {
                     sails.sockets.broadcast('conductor' + viaje.conductor + 'watcher', 'madeDespacho');
-                    sails.log.silly('broadcast conductor' + turno.conductor + 'watcher:madeDespacho');
+                    sails.log.silly('broadcast conductor' + viaje.conductor + 'watcher:madeDespacho');
 
-                    return res.ok();
+                    return generateFuec(viaje);
                 });
             }).catch(res.negotiate);
         });
@@ -155,6 +146,54 @@ module.exports = {
                     }
                 ], function() {
                     TurnosRuta.broadcastChange(ruta);
+                });
+            });
+        }
+
+        function generateFuec(Eviaje) {
+            Viajes.findOne({id: Eviaje.id}).populate('conductor').populate('vehiculo').populate('clientes').then(function (viaje) {
+                viaje.conductor.fecha_licencia = moment(viaje.conductor.fecha_licencia).format('L');
+                Empresas.findOne({id: viaje.empresa}).then(function (empresa) {
+                    empresa.fecha_resolucion = moment(empresa.fecha_resolucion).locale("es").format('LL');
+                    if(viaje.vehiculo.modalidad === false){
+                        var data = {
+                            template: {'shortid': 'B144VRaR'},
+                            data: {
+                                empresa: empresa,
+                                contrato: {
+                                    dia: moment(viaje.fecha).day(),
+                                    mes: moment(viaje.fecha).locale('es').format('MMMM'),
+                                    ano: moment(viaje.fecha).year()
+                                },
+                                viaje: viaje
+                            },
+                            options: {
+                                preview: true
+                            }
+                        }
+                    }else if(viaje.vehiculo.modalidad === true){
+                        var data = {
+                            template: {'shortid': 'S102cRpR'},
+                            data: {
+                                empresa: empresa,
+                                contrato: {
+                                    dia: moment(viaje.fecha).day(),
+                                    mes: moment(viaje.fecha).locale('es').format('MMMM'),
+                                    ano: moment(viaje.fecha).year()
+                                },
+                                viaje: viaje
+                            },
+                            options: {
+                                preview: true
+                            }
+                        }
+                    }
+                    var options = {
+                        uri: 'http://localhost:5488/api/report  ',
+                        method: 'POST',
+                        json: data
+                    }
+                    request(options).pipe(res);
                 });
             });
         }
