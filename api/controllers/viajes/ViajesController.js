@@ -49,12 +49,12 @@ module.exports = {
                     }
                 }
                 var options = {
+                    type: 'POST',
+                    url: 'http://localhost:5488/api/report',
                     headers: {
                         'Content-Type' : 'application/json'
                     },
-                    uri: 'http://localhost:5488/api/report',
-                    method: 'POST',
-                    json: data
+                    data: JSON.stringify(data)
                 }
                 request(options).pipe(res);
             });
@@ -192,12 +192,12 @@ module.exports = {
                         }
                     }
                     var options = {
+                        type: 'POST',
+                        url: 'http://localhost:5488/api/report',
                         headers: {
                             'Content-Type' : 'application/json'
                         },
-                        uri: 'http://localhost:5488/api/report',
-                        method: 'POST',
-                        json: data
+                        data: JSON.stringify(data)
                     }
                     request(options).pipe(res);
                 });
