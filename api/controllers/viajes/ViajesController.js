@@ -49,7 +49,7 @@ module.exports = {
                     }
                 }
                 var options = {
-                    uri: 'http://localhost:5488/api/report  ',
+                    uri: 'http://api.viajaseguro.co:5488/api/report',
                     method: 'POST',
                     json: data
                 }
@@ -189,7 +189,7 @@ module.exports = {
                         }
                     }
                     var options = {
-                        uri: 'http://localhost:5488/api/report  ',
+                        uri: 'http://api.viajaseguro:5488/api/report',
                         method: 'POST',
                         json: data
                     }
