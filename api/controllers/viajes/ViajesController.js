@@ -49,8 +49,11 @@ module.exports = {
                     }
                 }
                 var options = {
-                    uri: 'http://localhost:5488/api/report',
-                    method: 'POST',
+                    method: "POST",
+                    url: 'http://api.viajaseguro.co:5488/api/report',
+                    headers: {
+                        'Content-Type' : 'application/json'
+                    },
                     json: data
                 }
                 request(options).pipe(res);
@@ -189,8 +192,11 @@ module.exports = {
                         }
                     }
                     var options = {
-                        uri: 'http://localhost:5488/api/report',
-                        method: 'POST',
+                        method: "POST",
+                        url: 'http://api.viajaseguro.co:5488/api/report',
+                        headers: {
+                            'Content-Type' : 'application/json'
+                        },
                         json: data
                     }
                     request(options).pipe(res);
