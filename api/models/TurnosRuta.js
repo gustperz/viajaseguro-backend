@@ -33,7 +33,7 @@ module.exports = {
 
     broadcastChange(ruta) {
         TurnosRuta.find({ruta: ruta}).populate('conductor').then(turnos => {
-            sails.sockets.broadcast('turnosRutawatcher', 'turnosRutaChanged',  turnos);
+            sails.sockets.broadcast('turnosRuta'+ruta+'watcher', 'turnosRutaChanged',  turnos);
             sails.log.silly('broadcast turnosRutawatcher:turnosRutaChanged' );
         });
     }
