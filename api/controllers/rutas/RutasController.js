@@ -36,7 +36,7 @@ module.exports = {
                     sails.log.silly('broadcast conductor' + turno.conductor + 'watcher:turnoUpdate');
                     if(turno.isNew) Conductores.updateEstado(turno.conductor, 'en_turno');
                     return cb();
-                });
+                }).catch(cb);
             }
         }
     },

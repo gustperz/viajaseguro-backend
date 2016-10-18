@@ -10,7 +10,7 @@ module.exports = {
     autoPK: false,
 
     attributes: {
-        id: {type: 'integer', primaryKey: true, unique: true },
+        id: {type: 'integer', primaryKey: true, unique: true, autoIncrement: false },
 
         pos: {type: 'integer'},
 
