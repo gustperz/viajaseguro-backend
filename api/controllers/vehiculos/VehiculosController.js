@@ -11,6 +11,10 @@ module.exports = {
     create(req, res) {
         const data = req.allParams();
         data.empresa = req.user.empresa.id;
+
+        if(!req.user.empresa.especial && req.user.empresa.intermunicipal) data.modalidad = 'intermunicipal';
+        if(req.user.empresa.especial && !req.user.empresa.intermunicipal) data.modalidad = 'especial';
+
         Vehiculos.create(data)
             .then(res.ok)
             .catch(error => {
