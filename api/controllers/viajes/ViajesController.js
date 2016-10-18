@@ -21,22 +21,23 @@ module.exports = {
                         data: {
                             empresa: empresa,
                             contrato: {
-                                "dia": moment(viaje.fecha).day(),
-                                "mes": moment(viaje.fecha).locale('es').format('MMMM'),
-                                "ano": moment(viaje.fecha).year()
+                                dia: parseInt(moment(viaje.fecha).locale('es').format('Do')),
+                                mes: moment(viaje.fecha).locale('es').format('MMMM'),
+                                ano: moment(viaje.fecha).format('YYYY')
                             },
                             viaje: viaje
                         }
                     }
+                    console.log(data.data.contrato);
                 }else if(viaje.vehiculo.modalidad === 'intermunicipal'){
                     var data = {
                         template: {"shortid": "S102cRpR"},
                         data: {
                             empresa: empresa,
                             contrato: {
-                                dia: moment(viaje.fecha).day(),
+                                dia: moment(viaje.fecha).format('dd'),
                                 mes: moment(viaje.fecha).locale('es').format('MMMM'),
-                                ano: moment(viaje.fecha).year()
+                                ano: moment(viaje.fecha).format('YYYY')
                             },
                             viaje: viaje
                         }
