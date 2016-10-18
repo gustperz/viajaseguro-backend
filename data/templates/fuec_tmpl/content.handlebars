@@ -175,8 +175,8 @@
     </tr>
     <tr>
         <td colspan=9 rowspan=10 height="190" align="justify" valign=middle style="font-size: 14px">Entre los suscritos
-            <b>{{this.empresa.nombre_pjuridica}}</b>, mayor de identificado edad como aparece al pie de mi firma en calidad de representante legal de {{this.empresa.nombre_largo}} quien en adelante se denominara el contratista y
-            <b>Jose Miguel Soto Acosta</b>, mayor de edad vecino de esta ciudad, actuando en calidad de responsable(s) para la realizaci&oacute;n de un contrato de servicio de transporte expreso. Quien en adelante se denominaran los contratantes hemos colaborado
+            <b style="text-transform: capitalize">{{this.empresa.nombre_pjuridica}}</b>, mayor de identificado edad como aparece al pie de mi firma en calidad de representante legal de {{this.empresa.nombre_largo}} quien en adelante se denominara el contratista y
+            <b style="text-transform: capitalize">{{this.viaje.contratante_nombre}}</b>, mayor de edad vecino de esta ciudad, actuando en calidad de responsable(s) para la realizaci&oacute;n de un contrato de servicio de transporte expreso. Quien en adelante se denominaran los contratantes hemos colaborado
             en el presente contrato de transporte especial de pasajeros. El cual regira por las siguientes clausulas.
             <b>Primera:</b> El contratista se compromete a transportar en el lugar indicado a los contratantes relacionado(s) a la hora acordada
             y transportarlos a un lugar o destino pactado
@@ -199,7 +199,7 @@
             <b>Sexta:</b> Tipo de contrato, para cualquier efecto el presente contrato por si solo presta merito ejecutivo sin necesidad de requerimientos judiciales o extrajudiciales y las partes acuerdan que los costos se generen por cualquier concepto,
             ser&aacute;n por cuenta del contratante.
             <b>S&eacute;ptima:</b> El veh&iacute;culo sera conducido por
-            <b>{{this.viaje.conductor.nombres}} {{this.viaje.conductor.apellidos}}</b>.
+            <b style="text-transform: capitalize">{{this.viaje.conductor.nombres}} {{this.viaje.conductor.apellidos}}</b>.
         </td>
     </tr>
     <tr>
@@ -457,10 +457,10 @@
     </tr>
     <tr>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 height="21" align="left" valign=bottom>
-            <font size=3 color="#000000">CONTRATANTE: LUIS ARIZA CARRILLO</font>
+            <font size=3 color="#000000" style="text-transform: uppercase">CONTRATANTE: {{this.viaje.contratante_nombre}}</font>
         </td>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="left" valign=bottom>
-            <font size=3 color="#000000">NIT/CC: 12,693,140</font>
+            <font size=3 color="#000000">NIT/CC: {{this.viaje.contratante_identificacion}}</font>
         </td>
     </tr>
     <tr>
@@ -470,7 +470,7 @@
     </tr>
     <tr>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
-            <font size=3 color="#000000">TRANSPORTAR UN GRUPO DE PERSONAS PARTICULARES O VIAJE EXPRESO</font>
+            <font size=3 color="#000000" style="text-transform: uppercase">TRANSPORTAR UN GRUPO DE PERSONAS PARTICULARES O VIAJE EXPRESO</font>
         </td>
     </tr>
     <tr>
