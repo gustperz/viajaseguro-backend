@@ -4,7 +4,8 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-const _ = require('lodash');
+const omit = require('lodash').omit;
+const pick = require('lodash').pick;
 const passport = require('passport');
 
 module.exports = {
@@ -20,29 +21,38 @@ module.exports = {
             if (user.rol === 'CENTRAL_EMPRESA') {
               Centrales.findOne({user: user.id}).populate('empresa')
                 .then((central)=> {
+                    if (!central.empresa.activa) return res.unauthorized(sails.config.errors.USER_NOT_INACTIVE);
                     user.central = {
                         id: central.id
                     };
-                    user.empresa = {
-                        id: central.empresa.id,
-                        nombre_corto: central.empresa.nombre_corto,
-                        nombre_largo: central.empresa.nombre_largo,
-                        logo: central.empresa.logo,
-                        activa: central.empresa.activa,
-                        tipo: central.empresa.tipo
-                    };
-                  callback(user);
+                    user.empresa = pick(central.empresa, [
+                        'id',
+                        'nombre_corto',
+                        'nombre_largo',
+                        'logo',
+                        'activa',
+                        'tipo',
+                        'especial',
+                        'intermunicipal'
+                    ]);
+                    user.espec = central.empresa.especial;
+                    user.mod_intmpal = central.empresa.intermunicipal;
+                    callback(user);
                 }).catch(res.negotiate);
             }
             else if (user.rol === 'EMPRESA') {
               Empresas.findOne({user: user.id})
                 .then((empresa)=> {
                     if (!empresa.activa) return res.unauthorized(sails.config.errors.USER_NOT_INACTIVE);
-                    user.empresa = {
-                        id: empresa.id,
-                        nombre_corto: empresa.nombre_corto,
-                        logo: empresa.logo,
-                    };
+                    user.empresa = pick(empresa, [
+                        'id',
+                        'nombre_corto',
+                        'logo',
+                        'especial',
+                        'intermunicipal'
+                    ]);
+                    user.espec = empresa.especial;
+                    user.mod_intmpal = empresa.intermunicipal;
                   callback(user);
                 }).catch(res.negotiate);
             }
@@ -63,7 +73,7 @@ module.exports = {
 
   registro(req, res) {
     User
-      .create(_.omit(req.allParams(), 'id'))
+      .create(omit(req.allParams(), 'id'))
       .then(function (user) {
         return {
           token: JWTService.token.encode({id: user.id}),
