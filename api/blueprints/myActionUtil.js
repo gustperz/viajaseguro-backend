@@ -223,7 +223,7 @@ var actionUtil = {
         }
 
         // Look for explicitly specified `where` parameter.
-        var where = req.params.all().where;
+        var where = req.allParams().where;
 
         // If `where` parameter is a string, try to interpret it as JSON
         if (isString(where)) {
@@ -236,7 +236,7 @@ var actionUtil = {
 
             // Prune params which aren't fit to be used as `where` criteria
             // to build a proper where query
-            where = req.params.all();
+            where = req.allParams();
 
             // Omit built-in runtime config (like query modifiers)
             where = _.omit(where, blacklist || ['limit', 'skip', 'sort']);
