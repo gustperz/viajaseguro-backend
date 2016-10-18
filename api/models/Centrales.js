@@ -33,6 +33,10 @@ module.exports = {
             model: 'user'
         },
 
+        despachador: {
+            model: 'user'
+        },
+
         toJSON() {
             var obj = this.toObject();
             if(typeof obj.user == 'object'){

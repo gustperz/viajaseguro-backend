@@ -18,8 +18,10 @@ module.exports = {
             if (error || !user) return res.negotiate(error || info);
             async.series([
                     function (callback) {
-                        if (user.rol === 'CENTRAL_EMPRESA') {
-                            Centrales.findOne({user: user.id}).populate('empresa')
+                        if (user.rol === 'DESPACHADOR_EMPRESA_DES') return res.unauthorized(sails.config.errors.USER_NOT_INACTIVE);
+                        if (user.rol === 'CENTRAL_EMPRESA' || user.rol === 'DESPACHADOR_EMPRESA') {
+                            const filter = user.rol === 'CENTRAL_EMPRESA' ? {user: user.id} : {despachador: user.id};
+                            Centrales.findOne(filter).populate('empresa')
                                 .then((central)=> {
                                     if (!central.empresa.activa) return res.unauthorized(sails.config.errors.USER_NOT_INACTIVE);
                                     user.central = {

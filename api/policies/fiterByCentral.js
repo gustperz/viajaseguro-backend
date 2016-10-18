@@ -8,9 +8,10 @@ module.exports = function (req, res, next) {
 
     const user = req.user;
 
-    if (user.rol === 'CENTRAL_EMPRESA') {
+    if (user.rol === 'CENTRAL_EMPRESA' || user.rol === 'DESPACHADOR_EMPRESA') {
         if(req.options.model === 'centrales') return next();
-        Centrales.findOne({user: user.id}, {select: ['id']})
+        const filter = user.rol === 'CENTRAL_EMPRESA' ? {user: user.id} : {despachador: user.id};
+        Centrales.findOne(filter, {select: ['id']})
             .then((central) => {
                 if(!central) return res.badRequest('no se encuentra la central de este usuario');
                 req.options.where.central = central.id;

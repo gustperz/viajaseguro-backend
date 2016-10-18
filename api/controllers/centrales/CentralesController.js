@@ -22,5 +22,27 @@ module.exports = {
                 res.negotiate(error);
             })
     },
+
+    createDespachador(req, res) {
+        var data = req.allParams();
+        data.rol = 'DESPACHADOR_EMPRESA'
+        User.create(data)
+            .then(user =>{
+                Centrales.update(req.params.parentId, {despachador: user.id}).then(()=>{
+                    res.ok(user);
+                }).catch(res.negotiate);
+            }).catch(res.negotiate);
+    },
+
+    updateDespachador(req, res) {
+        Centrales.findOne(req.params.parentId).then(central => {
+            const data = req.allParams();
+            const rol = data.activo ? 'DESPACHADOR_EMPRESA' : 'DESPACHADOR_EMPRESA_DES';
+            const update = data.password
+                ? User.update(central.despachador, {rol: rol, password: data.password})
+                : User.update(central.despachador, {rol: rol});
+            update.then(res.ok).catch(res.negotiate);
+        }).catch(res.negotiate);
+    },
 };
 

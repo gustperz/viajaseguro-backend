@@ -138,4 +138,64 @@ module.exports.routes = {
         }
     },
 
+    'POST /centrales/:parentId/despachador': {
+        controller: 'Centrales',
+        action: 'createDespachador',
+
+        swagger: {
+            methods: ['POST'],
+            tags: ['Centrales'],
+            summary: 'Crear despachador central',
+            responses: {
+                201: {
+                    schema: 'user'
+                }
+            },
+            parameters: [{
+                in: 'body',
+                name: 'Usuario',
+                description: 'usuario despachador',
+                required: true,
+                schema: {
+                    type: 'object',
+                    required: ['username', 'password'],
+                    properties: {
+                        'username': {type: 'string'},
+                        'password': {type: 'string'},
+                    }
+                }
+            }]
+        }
+    },
+
+    'PUT /centrales/:parentId/despachador': {
+        controller: 'Centrales',
+        action: 'updateDespachador',
+
+        swagger: {
+            methods: ['PUT'],
+            tags: ['Centrales'],
+            summary: 'actualizar despachador central',
+            responses: {
+                200: {
+                    schema: 'user'
+                }
+            },
+            parameters: [{
+                in: 'body',
+                name: 'Usuario',
+                description: 'usuario despachador',
+                required: true,
+                schema: {
+                    type: 'object',
+                    required: ['activo'],
+                    properties: {
+                        'actvi': {type: 'boolen'},
+                        'password': {type: 'string'},
+                    }
+                }
+            }]
+        }
+    },
+
 }
