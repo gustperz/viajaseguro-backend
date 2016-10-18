@@ -33,29 +33,29 @@ module.exports = {
                     }
                 }else if(viaje.vehiculo.modalidad === true){
                     var data = {
-                        template: {'shortid': 'S102cRpR'},
-                        data: {
-                            empresa: empresa,
-                            contrato: {
+                        "template": {"shortid": "S102cRpR"},
+                        "data": {
+                            "empresa": empresa,
+                            "contrato": {
                                 dia: moment(viaje.fecha).day(),
                                 mes: moment(viaje.fecha).locale('es').format('MMMM'),
                                 ano: moment(viaje.fecha).year()
                             },
-                            viaje: viaje
+                            "viaje": viaje
                         },
-                        options: {
+                        "options": {
                             preview: true
                         }
                     }
                 }
                 var options = {
-                    method: "POST",
-                    url: 'http://api.viajaseguro.co:5488/api/report',
+                    method: 'POST',
+                    url: 'http://localhost:5488/api/report',
                     headers: {
-                        'Content-Type' : 'application/json'
+                        'content-Type' : 'application/json',
                     },
                     json: data
-                }
+                };
                 request(options).pipe(res);
             });
         });
