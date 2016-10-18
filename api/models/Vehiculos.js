@@ -35,11 +35,8 @@ module.exports = {
         nombre_propietario:     { type: 'string', required: true, size: 50 },
         telefono_propietario:   { type: 'string', required: true, size: 20 },
         // documentation
-        soat:                   { type: 'boolean', required: false},
         fecha_soat:             { type: 'date', required: true },
-        tecnomecanica:          { type: 'boolean', required: false },
         fecha_tecnomecanica:    { type: 'date', required: true },
-        tarjeta_propiedad:      { type: 'boolean', required: false },
         fecha_seguroac:         { type: 'date', required: true },
 
         // relaciones
