@@ -107,7 +107,7 @@ module.exports.routes = {
 
   'PUT /user/:id/updateContrasena': {
     model: 'user',
-    action: 'update',
+    action: 'updatePass',
 
     swagger: {
       methods: ['PUT'],
