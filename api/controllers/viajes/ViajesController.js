@@ -15,7 +15,6 @@ module.exports = {
             viaje.conductor.fecha_licencia = moment(viaje.conductor.fecha_licencia).format('L');
             Empresas.findOne({id: viaje.empresa}).then(function (empresa) {
                 empresa.fecha_resolucion = moment(empresa.fecha_resolucion).locale("es").format('LL');
-                console.log(viaje);
                 if(viaje.vehiculo.modalidad === 'especial'){
                     var data = {
                         template: {'shortid': 'B144VRaR'},
@@ -52,19 +51,6 @@ module.exports = {
                     json: data
                 };
                 request(options).pipe(res);
-
-                // request({
-                //     url: 'http://localhost:5488/api/report',
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type' : 'application/json'
-                //     },
-                //     json: {
-                //         "template": {"shortid": "S102cRpR"},
-                //         "data": data
-                //     },
-                // }).pipe(res);
-
             });
         });
     },
@@ -166,25 +152,22 @@ module.exports = {
                 viaje.conductor.fecha_licencia = moment(viaje.conductor.fecha_licencia).format('L');
                 Empresas.findOne({id: viaje.empresa}).then(function (empresa) {
                     empresa.fecha_resolucion = moment(empresa.fecha_resolucion).locale("es").format('LL');
-                    if(viaje.vehiculo.modalidad === false){
+                    if(viaje.vehiculo.modalidad === 'especial'){
                         var data = {
                             template: {'shortid': 'B144VRaR'},
                             data: {
                                 empresa: empresa,
                                 contrato: {
-                                    dia: moment(viaje.fecha).day(),
-                                    mes: moment(viaje.fecha).locale('es').format('MMMM'),
-                                    ano: moment(viaje.fecha).year()
+                                    "dia": moment(viaje.fecha).day(),
+                                    "mes": moment(viaje.fecha).locale('es').format('MMMM'),
+                                    "ano": moment(viaje.fecha).year()
                                 },
                                 viaje: viaje
-                            },
-                            options: {
-                                preview: true
                             }
                         }
-                    }else if(viaje.vehiculo.modalidad === true){
+                    }else if(viaje.vehiculo.modalidad === 'intermunicipal'){
                         var data = {
-                            template: {'shortid': 'S102cRpR'},
+                            template: {"shortid": "S102cRpR"},
                             data: {
                                 empresa: empresa,
                                 contrato: {
@@ -193,20 +176,17 @@ module.exports = {
                                     ano: moment(viaje.fecha).year()
                                 },
                                 viaje: viaje
-                            },
-                            options: {
-                                preview: true
                             }
                         }
                     }
                     var options = {
-                        method: "POST",
-                        url: 'http://api.viajaseguro.co:5488/api/report',
+                        method: 'POST',
+                        url: 'http://localhost:5488/api/report',
                         headers: {
-                            'Content-Type' : 'application/json'
+                            'content-Type' : 'application/json',
                         },
                         json: data
-                    }
+                    };
                     request(options).pipe(res);
                 });
             });
