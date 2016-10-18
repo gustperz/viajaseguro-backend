@@ -106,7 +106,7 @@ module.exports.routes = {
   },
 
   'PUT /user/:id/updateContrasena': {
-    model: 'user',
+    controller: 'user/Auth',
     action: 'updatePass',
 
     swagger: {
