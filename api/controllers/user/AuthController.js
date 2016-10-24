@@ -58,6 +58,22 @@ module.exports = {
                                     callback(user);
                                 }).catch(res.negotiate);
                         }
+                        else if (user.rol === 'CONDUCTOR') {
+                            Conductores.findOne({user: user.id})
+                                .then((conductor)=> {
+                                    if (!conductor.activo) return res.unauthorized(sails.config.errors.USER_NOT_INACTIVE);
+                                    user.conductor = pick(conductor, [
+                                        'id',
+                                        'nombres',
+                                        'apellidos',
+                                        'imagen',
+                                        'empresa',
+                                        'identificacion',
+                                        'vehiculo'
+                                    ]);
+                                    callback(user);
+                                }).catch(res.negotiate);
+                        }
                         else {
                             callback(user);
                         }

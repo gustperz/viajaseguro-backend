@@ -30,6 +30,14 @@ module.exports = {
             })
     },
 
+    findConductores(req, res){
+        console.log(req.allParams())
+      Empresas.find({id: req.allParams().id}).populate('conductores').then(empresa => {
+          console.log(empresa)
+          return  res.ok(empresa)
+      })
+    },
+
     saveLogo(req, res){
         Empresas.findOne({id: req.allParams().id})
             .then((empresa) => {

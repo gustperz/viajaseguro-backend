@@ -73,8 +73,23 @@ module.exports.routes = {
         action: 'update',
 
         swagger: {
-            methods: ['GET'],
+            methods: ['PUT'],
             summary: 'Actualiza un conductor',
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
+
+    'GET /conductores/:id/vehiculo': {
+        controller: 'Conductores',
+        action: 'findVehiculo',
+
+        swagger: {
+            methods: ['GET'],
+            summary: 'Consulta el vehiculo de un conductor',
             responses: {
                 200: {
                     description: 'OK'

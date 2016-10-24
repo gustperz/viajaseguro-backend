@@ -91,4 +91,12 @@ module.exports = {
         }
     },
 
+    findVehiculo(req, res){
+        var data = req.allParams();
+
+        Conductores.find({id: data.id}).populate('vehiculo').then(conductor => {
+            return res.ok(conductor);
+        })
+    }
+
 }

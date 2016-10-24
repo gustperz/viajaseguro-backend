@@ -66,6 +66,21 @@ module.exports.routes = {
         }
     },
 
+    'GET /empresas/:id/conductores': {
+        controller: 'Empresas',
+        action: 'findConductores',
+
+        swagger: {
+            methods: ['GET'],
+            summary: 'Obtiene los conductores de una empresa',
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
+
     'PUT /empresas/:id': {
         controller: 'Empresas',
         action: 'update',
