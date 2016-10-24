@@ -11,12 +11,14 @@ module.exports = function (req, res, next) {
     if (user.rol === 'CENTRAL_EMPRESA'|| user.rol === 'DESPACHADOR_EMPRESA') {
         if(req.options.model === 'centrales') return next();
         const filter = user.rol === 'CENTRAL_EMPRESA' ? {user: user.id} : {despachador: user.id};
-        Centrales.findOne(filter, {select: ['id']})
+        Centrales.findOne(filter, {select: ['id']}).populate('empresa')
             .then((central) => {
                 if(!central) return res.badRequest('no se encuentra la central de este usuario');
-                req.options.where.empresa = central.empresa;
+                req.options.where.empresa = central.empresa.id;
                 req.user.empresa = {
-                    id: central.empresa
+                    id: central.empresa.id,
+                    especial: central.empresa.especial,
+                    intermunicipal: central.empresa.intermunicipal
                 };
                 next();
             }).catch(res.negotiate);
@@ -28,6 +30,8 @@ module.exports = function (req, res, next) {
                 req.options.where.empresa = empresa.id;
                 req.user.empresa = {
                     id: empresa.id,
+                    especial: empresa.especial,
+                    intermunicipal: empresa.intermunicipal
                 };
                 next();
             }).catch(res.negotiate);

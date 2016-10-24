@@ -20,6 +20,9 @@ module.exports = {
         data.vehiculo.empresa= req.user.empresa.id;
         data.codigo_vial = data.vehiculo.codigo_vial;
 
+        if(!req.user.empresa.especial && req.user.empresa.intermunicipal) data.vehiculo.modalidad = 'intermunicipal';
+        if(req.user.empresa.especial && !req.user.empresa.intermunicipal) data.vehiculo.modalidad = 'especial';
+
         data.user = {
             username: String(data.identificacion),
             password: String(data.identificacion),
