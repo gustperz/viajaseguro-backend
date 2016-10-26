@@ -111,6 +111,20 @@ module.exports.routes = {
                 }
             }
         }
-    }
+    },
+    'POST /conductores/:id/imagen':{
+        controller: 'Conductores',
+        action: 'saveImagen',
+
+        swagger: {
+            methods: ['POST'],
+            summary: 'Guarda la imagen del conductor',
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
 
 }

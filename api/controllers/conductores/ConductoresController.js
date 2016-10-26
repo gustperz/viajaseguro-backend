@@ -100,6 +100,30 @@ module.exports = {
         Conductores.find({id: data.id}).populate('vehiculo').then(conductor => {
             return res.ok(conductor);
         })
-    }
+    },
+
+    saveImagen(req, res){
+        Conductores.findOne({id: req.allParams().id})
+            .then((conductor) => {
+                if (conductor) {
+                    req.file('imagen').upload({
+                            dirname: sails.config.appPath + '/public/images/conductores',
+                            saveAs: function (__newFileStream, cb) {
+                                cb(null, conductor.imagen || uid.sync(18) + conductor.id + '.' + _.last(__newFileStream.filename.split('.')));
+                            }
+                        },
+                        (error, uploadedFiles) => {
+                            if (error) return res.negotiate(error);
+                            if (!uploadedFiles[0]) return res.badRequest('ha ocurrido un error inesperado al almacenar la imagen');
+                            const filename = _.last(uploadedFiles[0].fd.split('/'));
+                            conductor.imagen = filename;
+                            conductor.save((err, s) => res.ok('files upload'));
+                        }
+                    );
+                } else {
+                    return res.notFound('El conductor no existe');
+                }
+            }).catch(res.negotiate);
+    },
 
 }

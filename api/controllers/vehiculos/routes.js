@@ -75,5 +75,19 @@ module.exports.routes = {
                 }
             }
         }
-    }
+    },
+    'POST /vehiculos/:id/imagen':{
+        controller: 'Vehiculos',
+        action: 'saveImagen',
+
+        swagger: {
+            methods: ['POST'],
+            summary: 'Guarda la imagen del vehiculo',
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
 }
