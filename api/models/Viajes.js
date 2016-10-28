@@ -16,6 +16,7 @@ module.exports = {
     trayecto: {type: 'mediumtext'},
     origen:   {type: 'string'},
     destino:  {type: 'string'},
+    valor:    {type: 'float'},
     contratante_identificacion:  {type: 'string', size: 12},
     contratante_nombre:  {type: 'string', size: 150},
 
