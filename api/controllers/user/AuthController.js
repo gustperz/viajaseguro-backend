@@ -54,7 +54,7 @@ module.exports = {
                                         'intermunicipal'
                                     ]);
                                     user.espec = empresa.especial;
-                                    user.mod_intmpal = empresa.intermunicipal;
+                                    user.intmpal = empresa.intermunicipal;
                                     callback(user);
                                 }).catch(res.negotiate);
                         }
