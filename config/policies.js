@@ -22,6 +22,7 @@ module.exports.policies = {
   },
 
   ConductoresController: {
+    'findOne': ['isAuthenticated'],
     '*': ['isAuthenticated', 'fiterByEmpresa']
   },
 
