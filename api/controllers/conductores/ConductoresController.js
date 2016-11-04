@@ -17,11 +17,11 @@ module.exports = {
     create(req, res) {
         const data = req.allParams();
         data.empresa = req.user.empresa.id;
-        data.vehiculo.empresa= req.user.empresa.id;
+        data.vehiculo.empresa = req.user.empresa.id;
         data.codigo_vial = data.vehiculo.codigo_vial;
 
-        if(!req.user.empresa.especial && req.user.empresa.intermunicipal) data.vehiculo.modalidad = 'intermunicipal';
-        if(req.user.empresa.especial && !req.user.empresa.intermunicipal) data.vehiculo.modalidad = 'especial';
+        if (!req.user.empresa.especial && req.user.empresa.intermunicipal) data.vehiculo.modalidad = 'intermunicipal';
+        if (req.user.empresa.especial && !req.user.empresa.intermunicipal) data.vehiculo.modalidad = 'especial';
 
         data.user = {
             username: String(data.identificacion),
@@ -33,14 +33,17 @@ module.exports = {
             .then(res.ok)
             .catch(error => {
                 if (!error.invalidAttributes.username && data.user.username) {
-                    User.destroy({username: data.user.username}).exec(() => {});
+                    User.destroy({username: data.user.username}).exec(() => {
+                    });
                 }
                 if (!error.invalidAttributes.placa && data.vehiculo.placa) {
-                    Vehiculos.destroy({placa: data.vehiculo.placa}).exec(() => {});
+                    Vehiculos.destroy({placa: data.vehiculo.placa}).exec(() => {
+                    });
                 }
 
                 if (!error.invalidAttributes.codigo_vial && data.vehiculo.codigo_vial) {
-                    Vehiculos.destroy({codigo_vial: data.vehiculo.codigo_vial}).exec(() => {});
+                    Vehiculos.destroy({codigo_vial: data.vehiculo.codigo_vial}).exec(() => {
+                    });
                 }
                 res.negotiate(error);
             });
@@ -103,6 +106,7 @@ module.exports = {
     },
 
     saveImagen(req, res){
+        console.log(req)
         Conductores.findOne({id: req.allParams().id})
             .then((conductor) => {
                 if (conductor) {

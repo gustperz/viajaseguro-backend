@@ -5,50 +5,56 @@
 
 module.exports.policies = {
 
-  /*******************************************************************************
-  * Default policy for all controllers and actions (`true` allows public access) *
-  ********************************************************************************/
+    /*******************************************************************************
+     * Default policy for all controllers and actions (`true` allows public access) *
+     ********************************************************************************/
 
-  '*': [
-    'isAuthenticated'
-  ],
+    '*': [
+        'isAuthenticated'
+    ],
 
-  'user/AuthController': {
-    '*': true
-  },
+    'user/AuthController': {
+        '*': true
+    },
 
-  SwaggerController: {
-    '*': true
-  },
+    SwaggerController: {
+        '*': true
+    },
 
-  ConductoresController: {
-    'findOne': ['isAuthenticated'],
-    '*': ['isAuthenticated', 'fiterByEmpresa']
-  },
+    ConductoresController: {
+        '*': ['isAuthenticated', 'fiterByEmpresa']
+    },
 
-  VehiculosController: {
-    '*': ['isAuthenticated', 'fiterByEmpresa']
-  },
+    ConductoresController: {
+        '*': ['isAuthenticated', 'filterByConductor'],
+    },
 
-  ViajesController: {
-    '*': ['isAuthenticated', 'fiterByEmpresa'],
-    'find': ['isAuthenticated', 'fiterByCentral']
-  },
+    VehiculosController: {
+        '*': ['isAuthenticated', 'filterByConductor']
+    },
+    VehiculosController: {
+        '*': ['isAuthenticated', 'fiterByEmpresa'],
+    },
 
-  CentralesController: {
-    '*': ['isAuthenticated', 'fiterByEmpresa']
-  },
+    ViajesController: {
+        '*': ['isAuthenticated', 'fiterByEmpresa'],
+        'find': ['isAuthenticated', 'fiterByCentral']
+    },
 
-  RutasController: {
-    'find': ['isAuthenticated', 'fiterByCentral'],
-    '*': ['isAuthenticated', 'fiterByEmpresa']
-  },
+    CentralesController: {
+        '*': ['isAuthenticated', 'fiterByEmpresa']
+    },
 
-  SolicitudesController: {
-    '*': ['isAuthenticated', 'fiterByCentral']
-  },
+    RutasController: {
+        'find': ['isAuthenticated', 'fiterByCentral'],
+        '*': ['isAuthenticated', 'fiterByEmpresa']
+    },
 
-  ViajesController: {
-    '*': ['isAuthenticated', 'fiterByCentral']
-  },
+    SolicitudesController: {
+        '*': ['isAuthenticated', 'fiterByCentral']
+    },
+
+    ViajesController: {
+        '*': ['isAuthenticated', 'fiterByCentral']
+    },
 };
