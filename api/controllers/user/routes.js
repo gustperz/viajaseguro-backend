@@ -120,6 +120,21 @@ module.exports.routes = {
     }
   },
 
+  'PUT /user/:id/updateRegId': {
+    controller: 'user/Auth',
+    action: 'updateRegId',
+
+    swagger: {
+      methods: ['PUT'],
+      summary: 'Actualiza el reg_id del usuario al iniciar sesion desde la aplicacion movil',
+      responses: {
+        200: {
+          description: 'OK',
+        }
+      },
+    }
+  },
+
 
 
 }

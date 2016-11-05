@@ -115,6 +115,13 @@ module.exports = {
         User.update(req.params.id, {password: req.allParams().password})
             .then(res.ok)
             .catch(res.negotiate);
+    },
+
+    updateRegId(req, res){
+        User.update(req.params.id, { reg_id: req.allParams().reg_id})
+            .then(res.ok)
+            .catch(res.negotiate)
     }
+
 };
 

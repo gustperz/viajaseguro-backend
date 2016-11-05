@@ -130,4 +130,24 @@ module.exports = {
             }).catch(res.negotiate);
     },
 
-}
+    updateEstado(req, res){
+        const data = req.allParams();
+        Conductores.findOne({id : req.params.id})
+            .then((conductor) => {
+                if(conductor){
+                    if(data.estado !== conductor.estado){
+                        Conductores.update(conductor.id, {estado : data.estado})
+                            .then(function (de) {
+                                conductor.estado = data.estado;
+                                sails.sockets.broadcast('central'+conductor.central+'watcher', 'cambioEstado', conductor, req);
+                                res.ok();
+                            })
+                            .catch(res.negotiate)
+                    }
+                }else{
+                    return res.notFound('No se encontro al conductor.')
+                }
+            })
+            .catch(res.negotiate)
+    }
+};

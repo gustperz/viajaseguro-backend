@@ -22,32 +22,32 @@ module.exports.policies = {
     },
 
     ConductoresController: {
-        '*': ['isAuthenticated', 'fiterByEmpresa']
+        'find': ['isAuthenticated', 'fiterByCentral'],
+        'findOne': ['isAuthenticated', 'filterByConductor'],
+        'findVehiculo': ['isAuthenticated', 'filterByConductor'],
+        'saveImagen': ['isAuthenticated', 'filterByConductor'],
+        'updateEstado': ['isAuthenticated', 'filterByConductor'],
+        '*': ['isAuthenticated', 'filterByEmpresa'],
     },
-
-    ConductoresController: {
-        '*': ['isAuthenticated', 'filterByConductor'],
-    },
-
     VehiculosController: {
         '*': ['isAuthenticated', 'filterByConductor']
     },
     VehiculosController: {
-        '*': ['isAuthenticated', 'fiterByEmpresa'],
+        '*': ['isAuthenticated', 'filterByEmpresa'],
     },
 
     ViajesController: {
-        '*': ['isAuthenticated', 'fiterByEmpresa'],
+        '*': ['isAuthenticated', 'filterByEmpresa'],
         'find': ['isAuthenticated', 'fiterByCentral']
     },
 
     CentralesController: {
-        '*': ['isAuthenticated', 'fiterByEmpresa']
+        '*': ['isAuthenticated', 'filterByEmpresa']
     },
 
     RutasController: {
         'find': ['isAuthenticated', 'fiterByCentral'],
-        '*': ['isAuthenticated', 'fiterByEmpresa']
+        '*': ['isAuthenticated', 'filterByEmpresa']
     },
 
     SolicitudesController: {

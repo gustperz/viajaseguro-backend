@@ -83,6 +83,20 @@ module.exports.routes = {
         }
     },
 
+    'PUT /conductores/:id/cambioEstado': {
+        controller: 'Conductores',
+        action: 'updateEstado',
+
+        swagger: {
+            methods: ['PUT'],
+            summary: 'Actualiza el estado',
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
     'GET /conductores/:id/vehiculo': {
         controller: 'Conductores',
         action: 'findVehiculo',
