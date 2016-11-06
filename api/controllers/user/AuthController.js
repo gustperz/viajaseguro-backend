@@ -118,8 +118,15 @@ module.exports = {
     },
 
     updateRegId(req, res){
-        User.update(req.params.id, { reg_id: req.allParams().reg_id})
-            .then(res.ok)
+        User.update(req.allParams().id, { reg_id: req.allParams().reg_id})
+            .then(function (user) {
+                var data = {
+                    title : 'Reg id',
+                    body: 'Actualizo el reg id',
+                }
+                PusherService.send(data, user[0].reg_id);
+                res.ok();
+            })
             .catch(res.negotiate)
     }
 
