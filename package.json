@@ -13,6 +13,7 @@
     "lodash": "^4.12.0",
     "merge-defaults": "^0.2.1",
     "moment": "^2.14.1",
+    "node-gcm": "^0.14.4",
     "passport": "^0.3.2",
     "passport-jwt": "^2.0.0",
     "passport-local": "^1.0.0",

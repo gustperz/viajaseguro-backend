@@ -23,9 +23,6 @@ module.exports = {
                 body: data.body
             }
         });
-        message.addData('title', 'New Message');
-        message.addData('message', 'Hello this is a push notification');
-        message.addData('sound', 'notification')
         sender.send(message, registrationTokens , 10, function (err, response) {
             if(err) console.error(err);
             else    console.log(response);

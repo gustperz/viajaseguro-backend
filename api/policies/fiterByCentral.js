@@ -19,7 +19,9 @@ module.exports = function (req, res, next) {
                     id: central.id
                 };
                 req.user.empresa = {
-                    id: central.empresa
+                    id: central.empresa,
+                    especial: central.empresa.especial,
+                    intermunicipal: central.empresa.intermunicipal
                 };
                 next();
             }).catch(res.negotiate);
