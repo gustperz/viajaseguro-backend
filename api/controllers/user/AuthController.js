@@ -78,6 +78,8 @@ module.exports = {
                             Clientes.findOne({user: user.id})
                                 .then(cliente => {
                                     user.cliente_id = cliente.id;
+                                    user.nombre = cliente.nombre;
+                                    user.identificacion = cliente.identificacion;
                                     callback(user);
                                 }).catch(res.negotiate);
                         }

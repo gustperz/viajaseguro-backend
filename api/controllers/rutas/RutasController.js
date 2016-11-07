@@ -42,7 +42,7 @@ module.exports = {
     },
 
     populateTurnos(req, res) {
-        if (!req.isSocket) return res.badRequest();
+        // if (!req.isSocket) return res.badRequest();
         const ruta_id = req.params.id;
         TurnosRuta.find({ruta: ruta_id}).populate('conductor')
             .then(turnos => {

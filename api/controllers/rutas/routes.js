@@ -9,6 +9,7 @@ module.exports.routes = {
     'GET /rutas': {
         controller: 'Rutas',
         action: 'find',
+        nofields: true,
 
         swagger: {
             methods: ['GET'],

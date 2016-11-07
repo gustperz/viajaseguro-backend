@@ -51,6 +51,7 @@ module.exports.policies = {
 
     RutasController: {
         'find': ['isAuthenticated', 'fiterByCentral'],
+        'populateTurnos': ['isAuthenticated', 'fiterByCentral'],
         '*': ['isAuthenticated', 'filterByEmpresa']
     },
 
