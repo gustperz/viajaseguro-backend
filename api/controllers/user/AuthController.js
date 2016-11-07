@@ -19,7 +19,7 @@ module.exports = {
             async.series([
                     function (callback) {
                         if (user.rol === 'DESPACHADOR_EMPRESA_DES') return res.unauthorized(sails.config.errors.USER_NOT_INACTIVE);
-                        if (user.rol === 'CENTRAL_EMPRESA' || user.rol === 'DESPACHADOR_EMPRESA') {
+                        else if (user.rol === 'CENTRAL_EMPRESA' || user.rol === 'DESPACHADOR_EMPRESA') {
                             const filter = user.rol === 'CENTRAL_EMPRESA' ? {user: user.id} : {despachador: user.id};
                             Centrales.findOne(filter).populate('empresa')
                                 .then((central)=> {
@@ -71,6 +71,13 @@ module.exports = {
                                         'identificacion',
                                         'vehiculo'
                                     ]);
+                                    callback(user);
+                                }).catch(res.negotiate);
+                        }
+                        else if (user.rol === 'CLIENTE') {
+                            Clientes.findOne({user: user.id})
+                                .then(cliente => {
+                                    user.cliente_id = cliente.id;
                                     callback(user);
                                 }).catch(res.negotiate);
                         }
