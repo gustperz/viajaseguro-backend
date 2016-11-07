@@ -51,6 +51,21 @@ module.exports.routes = {
         }
     },
 
+    'GET /empresas/en_ciudad/:ciudad': {
+        controller: 'Empresas',
+        action: 'findByCiudad',
+
+        swagger: {
+            methods: ['GET'],
+            summary: 'Obtiene las empresas con central en la ciudad indicada',
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
+
     'GET /empresas/:id': {
         controller: 'Empresas',
         action: 'findOne',

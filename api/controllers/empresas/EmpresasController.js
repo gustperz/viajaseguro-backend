@@ -5,12 +5,21 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 const _ = require('lodash');
-const uid = require('uid-safe')
+const uid = require('uid-safe');
 
 module.exports = {
     identity: 'Empresas',
 
-    create(req, res, next) {
+    findByCiudad(req, res){
+        const fields = ['nombre_corto', 'nombre_largo', 'logo', 'direccion', 'telefono', 'fax', 'especial', 'intermunicipal'];
+        Empresas.find({select: fields})
+            .populate('centrales', { where: { ciudad_place_id: req.param('ciudad') } })
+            .then(empresas => {
+                return res.ok(_.remove(empresas, empresa => empresa.centrales.length));
+            }).catch(res.negotiate);
+    },
+
+    create(req, res) {
         const data = req.allParams();
         const mc = data.modulos_contratados_empresa;
         if (!data.user) return res.badRequest('Espera, aun no envias la información de acceso de la empresa.');

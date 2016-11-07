@@ -38,7 +38,8 @@ module.exports = function (req, res, next) {
                 };
                 next();
             }).catch(res.negotiate);
-    }else if (user.rol === 'CONDUCTOR') {
+    }
+    else if (user.rol === 'CONDUCTOR') {
         if(req.options.model === 'conductores') return next();
         const filter = user.rol === 'CONDUCTOR' ? {user: user.id} : {despachador: user.id};
         Conductores.findOne(filter, {select: ['id']})
@@ -50,6 +51,10 @@ module.exports = function (req, res, next) {
                 };
                 next();
             }).catch(res.negotiate);
+    }
+    else if (user.rol === 'CLIENTE') {
+        if(req.options.model === 'centrales') return next();
+        return res.unauthorized('no tienes permiso de hacer esta peticion');
     } else {
         return res.unauthorized('no tienes permiso de hacer esta peticion');
     }
