@@ -21,6 +21,10 @@ module.exports.policies = {
         '*': true
     },
 
+    ClientesController: {
+        '*': true
+    },
+
     ConductoresController: {
         '*': ['isAuthenticated', 'filterByEmpresa'],
         // 'find': ['isAuthenticated', 'fiterByCentral'],

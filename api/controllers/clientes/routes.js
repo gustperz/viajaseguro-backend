@@ -35,15 +35,15 @@ module.exports.routes = {
         }
     },
 
-    'DELETE /clientes/:id':{
-        controller: 'Conductores',
-        action: 'destroy',
+    'POST /clientes':{
+        controller: 'Clientes',
+        action: 'create',
 
         swagger: {
-            methods: ['DELETE'],
-            summary: 'Elimina un cliente',
+            methods: ['POST'],
+            summary: 'registrar cliente',
             responses: {
-                200: {
+                201: {
                     description: 'OK'
                 }
             }

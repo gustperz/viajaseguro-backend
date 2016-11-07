@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
 
-    username  : { type: 'string', required: true, unique: true, alphanumericdashed: true },
+    username  : { type: 'string', required: true, unique: true},
     password  : { type: 'string', required: true },
     email     : { type: 'email', size: 40 },
     rol       : { type: 'string', required: true },

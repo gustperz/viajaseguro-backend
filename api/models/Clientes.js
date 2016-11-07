@@ -7,16 +7,15 @@
 
 module.exports = {
 
-  attributes: {
-    identificacion: {type: 'string', primaryKey: true, required: true, size: 10},
-    nombre:         {type: 'string', required: true},
-    telefono:       {type: 'string'},
-    direccion:       {type: 'string'}
-  },
+    attributes: {
+        identificacion: {type: 'string', primaryKey: true, required: true, size: 10},
+        nombre: {type: 'string', required: true},
+        telefono: {type: 'string'},
+        direccion: {type: 'string'},
 
-    // relaciones
-    user: {
-        model: 'user'
+        user: {
+            model: 'user'
+        },
     },
 
     afterDestroy(destroyedRecords, next){

@@ -16,10 +16,10 @@ module.exports = {
     create(req, res) {
         const data = req.allParams();
         data.user = {
-            username: String(data.identificacion),
-            password: String(data.identificacion),
+            username: data.email,
+            password: data.password,
             rol: 'CLIENTE',
-            email: req.allParams().email || ''
+            email: data.email
         };
         Clientes.create(data)
             .then(res.ok)
