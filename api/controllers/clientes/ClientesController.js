@@ -34,7 +34,7 @@ module.exports = {
 
     createSolicitud(req, res) {
         var data = req.allParams();
-        Solicitudes.create(data).then(solicitud => {
+        Solicitudes.create(_.omit(data, 'id')).then(solicitud => {
             sails.sockets.join(req, 'solicitud'+solicitud.id+'watcher');
             sails.sockets.broadcast('central'+solicitud.central+'watcher', 'newSolicitud', solicitud, req);
 
