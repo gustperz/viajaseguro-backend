@@ -106,10 +106,10 @@ module.exports = {
     },
 
     saveImagen(req, res){
-        console.log(req)
-        Conductores.findOne({id: req.allParams().id})
+        Conductores.findOne({id : req.params.id})
             .then((conductor) => {
                 if (conductor) {
+                    console.log(conductor)
                     req.file('imagen').upload({
                             dirname: sails.config.appPath + '/public/images/conductores',
                             saveAs: function (__newFileStream, cb) {

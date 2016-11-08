@@ -17,7 +17,7 @@ module.exports = {
         const data = req.allParams();
         data.user = {
             username: String(data.identificacion),
-            password: String(data.identificacion),
+            password: req.allParams().password || String(data.identificacion),
             rol: 'CLIENTE',
             email: req.allParams().email || ''
         };
