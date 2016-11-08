@@ -5,21 +5,6 @@
  * Route Mappings
  */
 module.exports.routes = {
-    'POST /clientes' :{
-        controller: 'Clientes',
-        action: 'create',
-
-        swagger: {
-            methods: ['POST'],
-            summary: 'Guardado de un cliente',
-            responses: {
-                201: {
-                    schema: 'Clientes'
-                }
-            },
-        }
-    },
-
     'GET /clientes/:id': {
         controller: 'Clientes',
         action: 'find',
