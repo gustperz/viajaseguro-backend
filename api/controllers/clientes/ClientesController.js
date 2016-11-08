@@ -30,5 +30,21 @@ module.exports = {
                 }
                 res.negotiate(error);
             });
-    }
+    },
+
+    createSolicitud(req, res) {
+        var data = req.allParams();
+        Solicitudes.create(data).then(solicitud => {
+            sails.sockets.join(req, 'solicitud'+solicitud.id+'watcher');
+            sails.sockets.broadcast('central'+solicitud.central+'watcher', 'newSolicitud', solicitud, req);
+
+            _.forEach(solicitud.pasajeros, function (pasajero) {
+                if(pasajero.identificacion) {
+                    Clientes.findOrCreate({identificacion: pasajero.identificacion}, pasajero).exec(() => {});
+                }
+            });
+
+            return res.ok(solicitud);
+        }).catch(res.negotiate);
+    },
 };

@@ -48,6 +48,21 @@ module.exports.routes = {
                 }
             }
         }
+    },
+
+    'POST /clientes/:id/solicitudes':{
+        controller: 'Clientes',
+        action: 'createSolicitud',
+
+        swagger: {
+            methods: ['POST'],
+            summary: 'enviar solicitud clente',
+            responses: {
+                201: {
+                    description: 'OK'
+                }
+            }
+        }
     }
 
 }
