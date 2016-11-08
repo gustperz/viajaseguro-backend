@@ -8,7 +8,7 @@
 module.exports = {
 
     attributes: {
-        id: {type: 'integer', autoIncrement: true},
+        id:     {type: 'integer', primaryKey: true, autoIncrement: true},
         identificacion: {type: 'string', size: 10},
         nombre: {type: 'string', required: true},
         telefono: {type: 'string'},
