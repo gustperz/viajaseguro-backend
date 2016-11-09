@@ -56,6 +56,7 @@ module.exports.policies = {
     },
 
     SolicitudesController: {
+        'cancel': ['isAuthenticated'],
         '*': ['isAuthenticated', 'fiterByCentral']
     },
 

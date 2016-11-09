@@ -45,9 +45,9 @@ module.exports = {
     },
 
     cancel(req, res){
-        if (!req.isSocket) return res.badRequest();
+        // if (!req.isSocket) return res.badRequest();
         Solicitudes.destroy({id: req.params.id}).then(() => {
-            sails.sockets.broadcast('solicitud'+solicitud.id+'watcher', 'cancel', req.allParams());
+            sails.sockets.broadcast('solicitud'+req.params.id+'watcher', 'cancel', req.allParams());
             return res.ok();
         }).catch(res.negotiate);
     },
