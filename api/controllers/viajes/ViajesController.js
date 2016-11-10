@@ -28,7 +28,7 @@ module.exports = {
                             viaje: viaje
                         }
                     }
-                    console.log(data.data.contrato);
+                    // console.log(data.data.contrato);
                 }else if(viaje.vehiculo.modalidad === 'intermunicipal'){
                     var data = {
                         template: {"shortid": "S102cRpR"},

@@ -14,15 +14,15 @@ module.exports = function (req, res, next) {
         Centrales.findOne(filter, {select: ['id']}).populate('empresa')
             .then((central) => {
                 if(!central) return res.badRequest('no se encuentra la central de este usuario');
-                req.options.where.central = central.id;
+                req.options.where.empresa = central.empresa.id;
                 req.user.central = {
                     id: central.id
                 };
-                // req.user.empresa = {
-                //     id: central.empresa.id,
-                //     especial: central.empresa.especial,
-                //     intermunicipal: central.empresa.intermunicipal
-                // };
+                req.user.empresa = {
+                    id: central.empresa.id,
+                    especial: central.empresa.especial,
+                    intermunicipal: central.empresa.intermunicipal
+                };
                 next();
             }).catch(res.negotiate);
     }
@@ -45,9 +45,12 @@ module.exports = function (req, res, next) {
         Conductores.findOne(filter, {select: ['id']})
             .then((conductor) => {
                 if(!conductor) return res.badRequest('no se encuentra la central de este usuario');
-                req.options.where.conductor = conductor.id;
+                req.options.where.empresa = conductor.empresa;
                 req.user.conductor = {
                     id: conductor.id
+                }
+                req.user.empresa = {
+                    id: empresa.id,
                 };
                 next();
             }).catch(res.negotiate);

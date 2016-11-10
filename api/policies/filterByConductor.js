@@ -14,9 +14,12 @@ module.exports = function (req, res, next) {
         Conductores.findOne(filter, {select: ['id']})
             .then((conductor) => {
                 if(!conductor) return res.badRequest('no se encuentra la central de este usuario');
-                req.options.where.conductor = conductor.id;
+                req.options.where.empresa = conductor.empresa;
                 req.user.conductor = {
                     id: conductor.id
+                }
+                req.user.empresa = {
+                    id: empresa.id,
                 };
                 next();
             }).catch(res.negotiate);
