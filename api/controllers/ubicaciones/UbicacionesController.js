@@ -20,7 +20,7 @@ module.exports = {
 
     findUbicacionConductores(req, res) {
         sails.sockets.join(req, 'empresa'+req.allParams.id+'ubicacionwhacher'+req.allParams.estacion);
-        res.ok(turnos);
+        res.ok();
     }
 };
 
