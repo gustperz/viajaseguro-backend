@@ -12,14 +12,15 @@ module.exports = {
     },
 
     postUbicacionConductor(req, res){
-        const data = req.allParams;
-        sails.sockets.join(req, 'empresa'+data.empresa+'ubicacionwhacher'+data.estacion);
-        sails.sockets.broadcast('empresa'+data.empresa+'ubicacionwhacher'+data.estacion, 'posConductor', req.allParams(), req);
+        const data = req.allParams();
+        sails.sockets.join(req, 'empresa'+data.empresa+'ubicacionWhacher'+data.estacion);
+        sails.sockets.broadcast('empresa'+data.empresa+'ubicacionWhacher'+data.estacion, 'posConductor', req.allParams(), req);
+        sails.log.silly('broadcast empresa'+data.empresa+'ubicacionWhacher'+data.estacion+':posConductor');
         res.ok();
     },
 
     findUbicacionConductores(req, res) {
-        sails.sockets.join(req, 'empresa'+req.allParams.id+'ubicacionwhacher'+req.allParams.estacion);
+        sails.sockets.join(req, 'empresa'+req.allParams().id+'ubicacionWhacher'+req.allParams().estacion);
         res.ok();
     }
 };
