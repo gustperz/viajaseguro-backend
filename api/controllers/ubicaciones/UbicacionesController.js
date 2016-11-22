@@ -5,9 +5,7 @@ module.exports = {
     identity: 'Ubicaciones',
 
     joinWsUbicaciones(req, res){
-        if(req.user.conductor){
-            sails.sockets.join(req, 'conductor'+req.user.conductor.id+'watcher');
-        }
+        sails.sockets.join(req, 'conductor'+req.allParams().conductor_id+'watcher');
         res.ok();
     },
 
