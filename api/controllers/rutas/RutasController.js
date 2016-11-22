@@ -7,38 +7,39 @@ module.exports = {
     identity: 'Rutas',
 
     updateTurnos(req, res) {
-        const ruta_id = req.params.id;
-        async.series([
-            cb => TurnosRuta.destroy({ruta: ruta_id}).exec(cb),
-            cb => async.each(req.allParams().turnos, deleteOrCreate, cb)
-        ], (error, result) => {
-            if(error) return res.negotiate(error);
+        Rutas.find(req.params.id, {select : ['destino']}).then(_ruta => {
+            const ruta = _ruta[0];
+            async.series([
+                cb => TurnosRuta.destroy({ruta: ruta.id}).exec(cb),
+                cb => async.each(req.allParams().turnos, deleteOrCreate, cb)
+            ], (error, result) => {
+                if(error) return res.negotiate(error);
 
-            TurnosRuta.broadcastChange(ruta_id);
-            return res.ok()
-        });
+                TurnosRuta.broadcastChange(ruta.id);
+                return res.ok()
+            });
 
-        function deleteOrCreate(turno, cb){
-            console.log(turno)
-            if(turno.pos == -1) {
-                sails.sockets.broadcast('conductor' + turno.conductor + 'watcher', 'removedTurno');
-                sails.log.silly('broadcast conductor' + turno.conductor + 'watcher:removedTurno');
-                Conductores.updateEstado(turno.conductor, 'disponible');
-                return cb()
-            } else {
-                TurnosRuta.create({
-                    id: turno.conductor,
-                    pos: turno.pos,
-                    conductor: turno.conductor,
-                    ruta: ruta_id
-                }).then(() => {
-                    sails.sockets.broadcast('conductor' + turno.conductor + 'watcher', 'turnoUpdate', {pos: turno.pos});
-                    sails.log.silly('broadcast conductor' + turno.conductor + 'watcher:turnoUpdate');
-                    if(turno.isNew) Conductores.updateEstado(turno.conductor, 'en_turno');
-                    return cb();
-                }).catch(cb);
+            function deleteOrCreate(turno, cb){
+                if(turno.pos == -1) {
+                    sails.sockets.broadcast('conductor' + turno.conductor + 'watcher', 'removedTurno');
+                    sails.log.silly('broadcast conductor' + turno.conductor + 'watcher:removedTurno');
+                    Conductores.updateEstado(turno.conductor, 'disponible');
+                    return cb()
+                } else {
+                    TurnosRuta.create({
+                        id: turno.conductor,
+                        pos: turno.pos,
+                        conductor: turno.conductor,
+                        ruta: ruta.id
+                    }).then(() => {
+                        sails.sockets.broadcast('conductor' + turno.conductor + 'watcher', 'turnoUpdate', {pos: turno.pos, ruta: ruta.destino.ciudad});
+                        sails.log.silly('broadcast conductor' + turno.conductor + 'watcher:turnoUpdate');
+                        if(turno.isNew) Conductores.updateEstado(turno.conductor, 'en_turno');
+                        return cb();
+                    }).catch(cb);
+                }
             }
-        }
+        });
     },
 
     populateTurnos(req, res) {
