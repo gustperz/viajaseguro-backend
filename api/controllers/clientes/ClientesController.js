@@ -13,6 +13,10 @@ const _ = require('lodash');
 module.exports = {
     identity: 'Clientes',
 
+    findOne(req, res) {
+        Clientes.findOne({identificacion: req.params.id}).then(res.ok).catch(res.negotiate);
+    }, 
+
     create(req, res) {
         const data = req.allParams();
         data.user = {
