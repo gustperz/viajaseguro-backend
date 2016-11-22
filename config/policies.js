@@ -47,7 +47,7 @@ module.exports.policies = {
 
     CentralesController: {
         '*': ['isAuthenticated', 'filterByEmpresa'],
-        'find': ['isAuthenticated', 'fiterByCentral']
+        'findOne': ['isAuthenticated', 'fiterByCentral']
     },
 
     RutasController: {
