@@ -7,7 +7,7 @@
 module.exports.routes = {
     'GET /clientes/:id': {
         controller: 'Clientes',
-        action: 'find',
+        action: 'findOne',
 
         swagger: {
             methods: ['GET'],
