@@ -67,11 +67,14 @@ module.exports = {
                 //elimino de las columnas de vehiculo el sufijo vehiculo.
                 fields_vehiculo = _.map(fields_vehiculo, field => _.replace(field, 'vehiculo.', ''));
 
+                console.log(fields_vehiculo)
                 //verifico que no este consultando una columna que no exista en vehiculos
                 const dif = actionUtil.checkFields(fields_vehiculo, Vehiculos);
                 if (dif.length) {
                     return res.badRequest({'error': 'error in fields, [' + dif.toString() + ']'});
                 }
+
+                fields.push('vehiculo');
 
                 var query = Conductores.find({select: fields}).populate('vehiculo');
             } else {
@@ -84,8 +87,9 @@ module.exports = {
                 .sort(actionUtil.parseSort(req))
                 .then((conductores) => {
                     _.forEach(conductores, function (condcutor) {
-                        if (condcutor.vehiculo) {
+                        if (typeof condcutor.vehiculo == 'object') {
                             condcutor.vehiculo = _.pick(condcutor.vehiculo, fields_vehiculo)
+                            console.log(condcutor.vehiculo)
                         }
                     });
                     res.ok(conductores)
