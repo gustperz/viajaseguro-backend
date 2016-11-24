@@ -11,7 +11,7 @@ module.exports = {
     identity: 'Viajes',
 
     findOneFuec(req, res){
-        Viajes.findOne({id: req.allParams().id}).populate('conductor').populate('vehiculo').populate('clientes').then(function (viaje) {
+        Viajes.findOne({id: req.allParams().id}).populate('conductor').populate('vehiculo').then(function (viaje) {
             viaje.conductor.fecha_licencia = moment(viaje.conductor.fecha_licencia).format('L');
             Empresas.findOne({id: viaje.empresa}).then(function (empresa) {
                 empresa.fecha_resolucion = moment(empresa.fecha_resolucion).locale("es").format('LL');
@@ -97,9 +97,7 @@ module.exports = {
             data.empresa = result.empresa.id;
             data.fuec = territorial+resolucion+fecha_resol+fecha_exp+contrato+cont_dia;
             Viajes.create(data).then(viaje => {
-                forEach(data.pasajeros, pasajero =>
-                    PasajerosViaje.create({viaje: viaje.id, cliente: pasajero.identificacion}).exec(()=>{})
-                );
+                
                 finishSolicitudes(viaje.conductor, viaje.central);
                 broadcastTurnos(viaje.ruta, viaje.conductor);
 
@@ -149,7 +147,7 @@ module.exports = {
         }
 
         function generateFuec(Eviaje) {
-            Viajes.findOne({id: Eviaje.id}).populate('conductor').populate('vehiculo').populate('clientes').then(function (viaje) {
+            Viajes.findOne({id: Eviaje.id}).populate('conductor').populate('vehiculo').then(function (viaje) {
                 viaje.conductor.fecha_licencia = moment(viaje.conductor.fecha_licencia).format('L');
                 Empresas.findOne({id: viaje.empresa}).then(function (empresa) {
                     empresa.fecha_resolucion = moment(empresa.fecha_resolucion).locale("es").format('LL');

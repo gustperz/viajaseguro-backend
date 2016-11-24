@@ -19,6 +19,7 @@ module.exports = {
     valor:    {type: 'float'},
     contratante_identificacion:  {type: 'string', size: 12},
     contratante_nombre:  {type: 'string', size: 150},
+    pasajeros:  {type:'array', required: true},
 
     ruta: {
       model: 'rutas'
@@ -38,11 +39,6 @@ module.exports = {
 
     central: {
       model: 'centrales'
-    },
-
-    clientes: {
-      collection: 'clientes',
-      through: 'pasajerosviaje'
     }
   }
 };
