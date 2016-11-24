@@ -157,9 +157,9 @@ module.exports = {
                             data: {
                                 empresa: empresa,
                                 contrato: {
-                                    "dia": moment(viaje.fecha).day(),
-                                    "mes": moment(viaje.fecha).locale('es').format('MMMM'),
-                                    "ano": moment(viaje.fecha).year()
+                                    dia: parseInt(moment(viaje.fecha).format('Do')),
+                                    mes: moment(viaje.fecha).locale('es').format('MMMM'),
+                                    ano: moment(viaje.fecha).format('YYYY')
                                 },
                                 viaje: viaje
                             }
@@ -170,9 +170,9 @@ module.exports = {
                             data: {
                                 empresa: empresa,
                                 contrato: {
-                                    dia: moment(viaje.fecha).day(),
+                                    dia: moment(viaje.fecha).format('dd'),
                                     mes: moment(viaje.fecha).locale('es').format('MMMM'),
-                                    ano: moment(viaje.fecha).year()
+                                    ano: moment(viaje.fecha).format('YYYY')
                                 },
                                 viaje: viaje
                             }
