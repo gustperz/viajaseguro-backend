@@ -21,7 +21,7 @@ module.exports = {
                         data: {
                             empresa: empresa,
                             contrato: {
-                                dia: parseInt(moment(viaje.fecha).locale('es').format('Do')),
+                                dia: parseInt(moment(viaje.fecha).format('Do')),
                                 mes: moment(viaje.fecha).locale('es').format('MMMM'),
                                 ano: moment(viaje.fecha).format('YYYY')
                             },
