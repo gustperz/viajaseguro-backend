@@ -1,9 +1,9 @@
 {
     "shortid": "B144VRaR",
-    "recipe": "phantom-pdf",
+    "recipe": "html",
     "engine": "handlebars",
     "modificationDate": {
-        "$$date": 1477784360773
+        "$$date": 1480063105171
     },
     "_id": "1uc9N0C07h07ck9E",
     "phantom": {
