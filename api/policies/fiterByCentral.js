@@ -8,7 +8,7 @@ module.exports = function (req, res, next) {
 
     const user = req.user;
 
-    if (user.rol === 'CENTRAL_EMPRESA' || user.rol === 'DESPACHADOR_EMPRESA') {
+    if (user.rol === 'CENTRAL_EMPRESA' || user.rol === 'DESPACHADOR_EMPRESA' || user.rol === 'EMPRESA') {
         if(req.options.model === 'centrales') return next();
         const filter = user.rol === 'CENTRAL_EMPRESA' ? {user: user.id} : {despachador: user.id};
         Centrales.findOne(filter, {select: ['id']})
