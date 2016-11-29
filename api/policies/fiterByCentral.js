@@ -26,6 +26,10 @@ module.exports = function (req, res, next) {
                 next();
             }).catch(res.negotiate);
     }
+    else if (user.rol === 'CONDUCTOR') {
+        if(req.options.model === 'solicitudes') return next();
+        return res.unauthorized('no tienes permiso de hacer esta peticion');
+    }
     else if (user.rol === 'CLIENTE') {
         if(req.options.model === 'rutas') return next();
         return res.unauthorized('no tienes permiso de hacer esta peticion');
