@@ -9,7 +9,10 @@ module.exports = {
     find(req, res) {
         if (!req.isSocket) return res.badRequest();
         Solicitudes.find(req.options.where).then(solicitudes => {
-            sails.sockets.join(req, 'central'+req.user.central.id+'watcher');
+            if(req.user.central)
+                sails.sockets.join(req, 'central'+req.user.central.id+'watcher');
+            if(req.user.conductor)
+                sails.sockets.join(req, 'conductor'+req.user.conductor.id+'watcher');
             forEach(solicitudes, function (solicitud) {
                 sails.sockets.join(req, 'solicitud'+solicitud.id+'watcher');
             });
@@ -25,6 +28,7 @@ module.exports = {
             sails.sockets.join(req, 'solicitud'+solicitud.id+'watcher');
             sails.sockets.join(req, 'central'+req.user.central.id+'watcher');
             sails.sockets.broadcast('central'+solicitud.central+'watcher', 'newSolicitud', solicitud, req);
+            sails.sockets.broadcast('conductor'+solicitud.conductor+'watcher', 'newPasajero', solicitud, req);
 
             forEach(solicitud.pasajeros, function (pasajero) {
                 if(pasajero.identificacion) {

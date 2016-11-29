@@ -58,7 +58,7 @@ module.exports = {
     find(req, res){
         Viajes.find({
             where: {
-                central: req.user.central.id,
+                central: req.user.central.id || req.user.empresa.id,
             },
             sort: 'fecha DESC'
         }).populate('conductor').populate('vehiculo').exec((err, viajes) => {

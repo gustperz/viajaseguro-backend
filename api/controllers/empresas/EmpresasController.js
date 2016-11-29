@@ -13,7 +13,7 @@ module.exports = {
     findByCiudad(req, res){
         const fields = ['nombre_corto', 'nombre_largo', 'logo', 'direccion', 'telefono', 'fax', 'especial', 'intermunicipal'];
         Empresas.find({select: fields})
-            .populate('centrales', { where: { ciudad_place_id: req.param('ciudad') } })
+            .populate('centrales', {where: {ciudad_place_id: req.param('ciudad')}})
             .then(empresas => {
                 return res.ok(_.remove(empresas, empresa => empresa.centrales.length));
             }).catch(res.negotiate);
@@ -41,10 +41,10 @@ module.exports = {
 
     findConductores(req, res){
         console.log(req.allParams())
-      Empresas.find({id: req.allParams().id}).populate('conductores').then(empresa => {
-          console.log(empresa)
-          return  res.ok(empresa)
-      })
+        Empresas.find({id: req.allParams().id}).populate('conductores').then(empresa => {
+            console.log(empresa)
+            return res.ok(empresa)
+        })
     },
 
     saveLogo(req, res){
@@ -75,12 +75,10 @@ module.exports = {
         Empresas.findOne({id: req.allParams().id})
             .then((empresa) => {
                 if (empresa) {
-                    console.log(req.file('firmaDigital'));
                     req.file('firmaDigital').upload({
-                            dirname: sails.config.appPath + '/public/images/empresas/firma',
+                            dirname: sails.config.appPath + '/public/images/empresas/firma/',
                             saveAs: function (__newFileStream, cb) {
-                                cb(null, empresa.firma_digital || uid.sync(18) + empresa.id + '.'
-                                    + _.last(__newFileStream.filename.split('.')));
+                                cb(null, empresa.firma_digital || uid.sync(18) + empresa.id + '.' + _.last(__newFileStream.filename.split('.')));
                             }
                         },
                         (error, uploadedFiles) => {
