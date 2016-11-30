@@ -89,7 +89,7 @@ module.exports.routes = {
         }
     },
 
-    'GET /centrales/:parentId/rutas': {
+    'GET /centrales/:parentid/rutas': {
         controller: 'Centrales',
         action: 'populate',
         alias: 'rutas',
