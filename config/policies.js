@@ -40,10 +40,10 @@ module.exports.policies = {
         'saveImagen': ['isAuthenticated']
     },
 
-    ViajesController: {
-        '*': ['isAuthenticated', 'filterByEmpresa'],
-        'find': ['isAuthenticated', 'fiterByCentral']
-    },
+    // ViajesController: {
+    //     '*': ['isAuthenticated', 'filterByEmpresa'],
+    //     'find': ['isAuthenticated', 'fiterByCentral']
+    // },
 
     CentralesController: {
         '*': ['isAuthenticated', 'filterByEmpresa'],

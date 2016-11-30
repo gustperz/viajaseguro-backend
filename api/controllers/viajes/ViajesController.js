@@ -55,17 +55,6 @@ module.exports = {
             });
         });
     },
-    find(req, res){
-        Viajes.find({
-            where: {
-                central: req.user.central.id || req.user.empresa.id,
-            },
-            sort: 'fecha DESC'
-        }).populate('conductor').populate('vehiculo').exec((err, viajes) => {
-            if (err) return res.negotiate(err);
-            return res.ok(viajes);
-        });
-    },
 
     create(req, res){
         var data = req.allParams();

@@ -13,7 +13,7 @@ module.exports = function (req, res, next) {
         const filter = user.rol === 'CONDUCTOR' ? {user: user.id} : {despachador: user.id};
         Conductores.findOne(filter, {select: ['id']})
             .then((conductor) => {
-                if(!conductor) return res.badRequest('no se encuentra la central de este usuario');
+                if(!conductor) return res.badRequest('no se encuentra el conductor de este usuario');
                 req.options.where.empresa = conductor.empresa;
                 req.user.conductor = {
                     id: conductor.id
