@@ -92,7 +92,7 @@ module.exports.routes = {
     'GET /centrales/:parentId/rutas': {
         controller: 'Centrales',
         action: 'populate',
-        relarion: 'rutas',
+        alias: 'rutas',
 
         swagger: {
             methods: ['GET'],
