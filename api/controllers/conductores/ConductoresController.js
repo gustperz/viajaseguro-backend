@@ -17,11 +17,14 @@ module.exports = {
     create(req, res) {
         const data = req.allParams();
         data.empresa = req.user.empresa.id;
-        data.vehiculo.empresa = req.user.empresa.id;
-        data.codigo_vial = data.vehiculo.codigo_vial;
 
-        if (!req.user.empresa.especial && req.user.empresa.intermunicipal) data.vehiculo.modalidad = 'intermunicipal';
-        if (req.user.empresa.especial && !req.user.empresa.intermunicipal) data.vehiculo.modalidad = 'especial';
+        if(data.vehiculo) {
+            data.vehiculo.empresa = req.user.empresa.id;
+            data.codigo_vial = data.vehiculo.codigo_vial;
+        }
+
+        if (!req.user.empresa.especial && req.user.empresa.intermunicipal && data.vehiculo) data.vehiculo.modalidad = 'intermunicipal';
+        if (req.user.empresa.especial && !req.user.empresa.intermunicipal && data.vehiculo) data.vehiculo.modalidad = 'especial';
 
         data.user = {
             username: String(data.identificacion),
@@ -36,12 +39,12 @@ module.exports = {
                     User.destroy({username: data.user.username}).exec(() => {
                     });
                 }
-                if (!error.invalidAttributes.placa && data.vehiculo.placa) {
+                if (!error.invalidAttributes.placa && data.vehiculo.placa && data.vehiculo) {
                     Vehiculos.destroy({placa: data.vehiculo.placa}).exec(() => {
                     });
                 }
 
-                if (!error.invalidAttributes.codigo_vial && data.vehiculo.codigo_vial) {
+                if (!error.invalidAttributes.codigo_vial && data.vehiculo.codigo_vial && data.vehiculo) {
                     Vehiculos.destroy({codigo_vial: data.vehiculo.codigo_vial}).exec(() => {
                     });
                 }
