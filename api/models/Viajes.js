@@ -40,6 +40,8 @@ module.exports = {
     central: {
       model: 'centrales'
     }
-  }
+  },
+
+  autoCreatedAt: true,
 };
 
