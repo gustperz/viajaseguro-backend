@@ -47,6 +47,21 @@ module.exports.routes = {
       }
 
     },
+    'GET /empresa/:id/print_all_fuec': {
+        controller: 'Viajes',
+        action: 'printAllFuec',
+
+        swagger:{
+            methods: ['GET'],
+            summary: 'Imprime los contratos en las fechas enviadas',
+            responses:{
+                200:{
+                    description: 'OK'
+                }
+            }
+        }
+
+    },
 
     'POST /viajes': {
         controller: 'Viajes',

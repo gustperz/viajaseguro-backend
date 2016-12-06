@@ -19,6 +19,7 @@ module.exports = {
     valor:    {type: 'float'},
     contratante_identificacion:  {type: 'string', size: 12},
     contratante_nombre:  {type: 'string', size: 150},
+    modalidad: {type: 'string', size: 30},
     pasajeros:  {type:'array', required: true},
 
     ruta: {

@@ -1,0 +1,413 @@
+<meta charset="utf-8"/>
+<style type="text/css">
+    body,
+    div,
+    table,
+    thead,
+    tbody,
+    tfoot,
+    tr,
+    th,
+    td,
+    p {
+        font-family: "Calibri";
+        font-size: x-small
+    }
+    
+    a.comment-indicator:hover+ comment {
+        background: #ffd;
+        position: absolute;
+        display: block;
+        border: 1px solid black;
+        padding: 0.5em;
+    }
+    
+    a.comment-indicator {
+        background: red;
+        display: inline-block;
+        border: 1px solid black;
+        width: 0.5em;
+        height: 0.5em;
+    }
+    
+    comment {
+        display: none;
+    }
+</style>
+<table cellspacing="0" border="0">
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 rowspan=3 height="88" align="center" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+                <img src="{#image FUECCOOTRASAN1_html_a0432960c73d7cba}" width=350 height=110 hspace=38 vspace=5>
+            </font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 rowspan=3  height="88" align="center" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+                <img src="http://api.viajaseguro.co/images/empresas/{{this.viaje.empresa.logo}}" width=350 height=110 hspace=38 vspace=5>
+            </font>
+        </td>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="18" align="center" valign=bottom>
+            <b>
+                <font size=3 color="#000000">FORMATO &Uacute;NICO DE EXTRACTO DEL SERVICIO P&Uacute;BLICO DE TRANSPORTE TERRESTRE</font>
+            </b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="18" align="center" valign=bottom>
+            <b>
+                <font size=3 color="#000000">AUTOMOTOR ESPECIAL</font>
+            </b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="18" align="center" valign=bottom>
+            <b>
+                <font size=3 color="#000000">No {{this.viaje.fuec}}</font>
+            </b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" colspan=4 height="21" align="center" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">{{this.viaje.empresa.nombre_largo}} &quot;{{this.viaje.empresa.nombre_corto}}&quot;</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="left" valign=bottom>
+            <font size=3 color="#000000">NIT: {{this.viaje.empresa.nit_especial}}</font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="left" valign=bottom>
+            <font size=3 color="#000000">CONTRATO No: {{this.viaje.contrato}}</font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 height="21" align="left" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">CONTRATANTE: {{this.viaje.contratante_nombre}}</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="left" valign=bottom>
+            <font size=3 color="#000000">NIT/CC: {{this.viaje.contratante_identificacion}}</font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
+            <font size=3 color="#000000">OBJETO CONTRATO</font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">TRANSPORTAR UN GRUPO DE PERSONAS PARTICULARES O VIAJE EXPRESO</font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">RECORRIDO : {{this.viaje.trayecto}}</font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="21" align="left" valign=bottom>
+            <font size=3 color="#000000">ORIGEN:</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">{{this.viaje.origen}}</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">DESTINO:</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">{{this.viaje.destino}}</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
+            <b>
+                <font size=3 color="#000000">VIGENCIA DEL CONTRATO</font>
+            </b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" rowspan=2 height="42" align="left" valign=middle>
+            <font size=3 color="#000000">FECHA INICIAL</font>
+        </td>
+        <td style="border-top: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td style="border-top: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td style="border-top: 1px solid #000000" align="center" valign=bottom>
+            <font size=3 color="#000000">DIA</font>
+        </td>
+        <td style="border-top: 1px solid #000000" align="center" valign=bottom>
+            <font size=3 color="#000000">MES</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom>
+            <font size=3 color="#000000">A&Ntilde;O</font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-bottom: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td style="border-bottom: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td style="border-bottom: 1px solid #000000" align="center" valign=bottom sdval="24" sdnum="9226;">
+            <font size=3 color="#000000">{{this.contrato.dia}}</font>
+        </td>
+        <td style="border-bottom: 1px solid #000000" align="center" valign=bottom>
+            <font size=3 color="#000000">{{this.contrato.mes}}</font>
+        </td>
+        <td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom sdval="2015" sdnum="9226;">
+            <font size=3 color="#000000">{{this.contrato.ano}}</font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" rowspan=2 height="42" align="left" valign=middle>
+            <font size=3 color="#000000">FECHA FINAL</font>
+        </td>
+        <td style="border-top: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td style="border-top: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td style="border-top: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td style="border-top: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-bottom: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td style="border-bottom: 1px solid #000000" align="left" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td style="border-bottom: 1px solid #000000" align="center" valign=bottom sdval="24" sdnum="9226;">
+            <font size=3 color="#000000">{{this.contrato.dia}}</font>
+        </td>
+        <td style="border-bottom: 1px solid #000000" align="center" valign=bottom>
+            <font size=3 color="#000000">{{this.contrato.mes}}</font>
+        </td>
+        <td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom sdval="2015" sdnum="9226;">
+            <font size=3 color="#000000">{{this.contrato.ano}}</font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
+            <b>
+                <font size=3 color="#000000">CARACTERISTICAS DEL VEHICULO</font>
+            </b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 height="21" align="center" valign=bottom>
+            <font size=3 color="#000000">PLACA</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom>
+            <font size=3 color="#000000">MODELO</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom>
+            <font size=3 color="#000000">MARCA</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=bottom>
+            <font size=3 color="#000000">CLASE</font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 height="21" align="center" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">{{this.viaje.vehiculo.placa}}</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">
+                {{this.viaje.vehiculo.modelo}}
+            </font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">
+                {{this.viaje.vehiculo.marca}}
+            </font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">{{this.viaje.vehiculo.clase}}</font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 height="21" align="center" valign=bottom>
+            <b>
+                <font size=3 color="#000000">N&Uacute;MERO INTERNO</font>
+            </b>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="center" valign=bottom>
+            <b>
+                <font size=3 color="#000000">N&Uacute;MERO DE OPERACI&Oacute;N</font>
+            </b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 height="21" align="center" valign=bottom sdval="23" sdnum="9226;">
+            <font size=3 color="#000000">{{this.viaje.vehiculo.codigo_vial}}</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="center" valign=bottom>
+            <font size=3 color="#000000">
+                {{this.viaje.vehiculo.ntarjoperacion}}
+            </font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 height="21" align="center" valign=bottom>
+            <font size=3 color="#000000">NOMBRES Y APELLIDOS</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom>
+            <font size=3 color="#000000">CEDULA</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=bottom>
+            <font size=3 color="#000000">No DE LICENCIA DE CONDUCCI&Oacute;N</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom>
+            <font size=3 color="#000000">VIGENCIA</font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 height="21" align="center" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">{{this.viaje.conductor.nombres}} {{this.viaje.conductor.apellidos}}</font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom>
+            <font size=3 color="#000000">
+                {{this.viaje.conductor.identificacion}}
+            </font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=bottom>
+            <font size=3 color="#000000">
+                {{this.viaje.conductor.nlicencia}}
+            </font>
+        </td>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom>
+            <font size=3 color="#000000">
+                {{this.viaje.conductor.fecha_licencia}}
+            </font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
+            <b>
+                <font size=3 color="#000000">REPONSABLE DEL CONTRATANTE</font>
+            </b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
+            <font size=3 color="#000000">NOMBRES Y APELLIDOS</font>
+        </td>
+    </tr>
+    {{#each this.viaje.pasajeros}}
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">{{identificacion}} - {{nombre}}</font>
+        </td>
+    </tr>
+    {{/each}}
+    
+    <tr>
+        <td style="border-top: 1px solid #000000" colspan=6 rowspan=3 height="110" align="center" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+                <img src="http://api.viajaseguro.co/images/empresas/firma/{{this.viaje.empresa.firma_digital}}" width=280 height=100 hspace=182 vspace=2>
+            </font>
+        </td>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+        <td colspan=6 height="15" align="center" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">{{this.viaje.empresa.nombre_largo}} "{{this.viaje.empresa.nombre_corto}}" Nit {{this.empresa.nit_especial}}</font>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=6 height="15" align="center" valign=bottom>
+            <font size=3 color="#000000">Resoluci&oacute;n de Habilitaci&oacute;n No {{this.viaje.empresa.nresolucon}} del {{this.viaje.empresa.fecha_resolucion}} Emanada del Ministerio de Transporte Seccional Cesar</font>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=6 height="15" align="center" valign=bottom>
+            <font size=3 color="#000000">Oficina Principal {{this.viaje.empresa.direccion}} Tel: {{this.viaje.empresa.telefono}} - Fax: {{this.viaje.empresa.fax}}</font>
+        </td>
+    </tr>
+    <tr>
+        <td height="15" align="center" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td align="center" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td colspan=2 rowspan=4 align="center" valign=bottom style="margin-left: -50px">
+            <font size=3 color="#000000">
+                <br>
+                <img src="{#image FUECCOOTRASAN1_html_ee55b014f46af39d}" width=280 height=60 hspace=46 vspace=11>
+            </font>
+        </td>
+        <td align="center" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+        <td align="center" valign=bottom>
+            <font size=3 color="#000000">
+                <br>
+            </font>
+        </td>
+    </tr>
+</table>
+<script>
+    var data = {{#toJSON this}}{{/toJSON}}
+</script>
