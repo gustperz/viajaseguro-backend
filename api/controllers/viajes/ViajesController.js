@@ -14,7 +14,7 @@ module.exports = {
         Viajes.findOne({id: req.allParams().id}).populate('empresa').populate('conductor').populate('vehiculo').then(function (viaje) {
             viaje.conductor.fecha_licencia = moment(viaje.conductor.fecha_licencia).format('L');
             viaje.empresa.fecha_resolucion = moment(viaje.empresa.fecha_resolucion).locale("es").format('LL');
-            if (viaje.vehiculo.modalidad === 'especial') {
+            if (viaje.modalidad === 'especial') {
                 var data = {
                     template: {'shortid': 'BkFSrPVXl'},
                     data: {
@@ -27,7 +27,7 @@ module.exports = {
                     }
                 }
                 // console.log(data.data.contrato);
-            } else if (viaje.vehiculo.modalidad === 'intermunicipal') {
+            } else if (viaje.modalidad === 'intermunicipal') {
                 var data = {
                     template: {"shortid": "B1PZH7AR"},
                     data: {
@@ -156,7 +156,7 @@ module.exports = {
             Viajes.findOne({id: Eviaje.id}).populate('empresa').populate('conductor').populate('vehiculo').then(function (viaje) {
                 viaje.conductor.fecha_licencia = moment(viaje.conductor.fecha_licencia).format('L');
                 viaje.empresa.fecha_resolucion = moment(viaje.empresa.fecha_resolucion).locale("es").format('LL');
-                if (viaje.vehiculo.modalidad === 'especial') {
+                if (viaje.modalidad === 'especial') {
                     var data = {
                         template: {'shortid': 'BkFSrPVXl'},
                         data: {
@@ -168,7 +168,7 @@ module.exports = {
                             viaje: viaje
                         }
                     }
-                } else if (viaje.vehiculo.modalidad === 'intermunicipal') {
+                } else if (viaje.modalidad === 'intermunicipal') {
                     var data = {
                         template: {"shortid": "B1PZH7AR"},
                         data: {
