@@ -29,9 +29,9 @@ module.exports = {
                 // console.log(data.data.contrato);
             } else if (viaje.vehiculo.modalidad === 'intermunicipal') {
                 var data = {
-                    template: {"shortid": "S102cRpR"},
+                    template: {"shortid": "B1PZH7AR"},
                     data: {
-                        contrato: {
+                        ontrato : {
                             dia: moment(viaje.fecha).format('dd'),
                             mes: moment(viaje.fecha).locale('es').format('MMMM'),
                             ano: moment(viaje.fecha).format('YYYY')
@@ -170,9 +170,9 @@ module.exports = {
                     }
                 } else if (viaje.vehiculo.modalidad === 'intermunicipal') {
                     var data = {
-                        template: {"shortid": "S102cRpR"},
+                        template: {"shortid": "B1PZH7AR"},
                         data: {
-                            contrato: {
+                            contrato : {
                                 dia: moment(viaje.fecha).format('dd'),
                                 mes: moment(viaje.fecha).locale('es').format('MMMM'),
                                 ano: moment(viaje.fecha).format('YYYY')

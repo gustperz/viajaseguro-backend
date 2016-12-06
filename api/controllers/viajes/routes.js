@@ -62,6 +62,21 @@ module.exports.routes = {
         }
 
     },
+    'GET /empresa/:id/print_all_generic': {
+        controller: 'Viajes',
+        action: 'printAllGeneric',
+
+        swagger:{
+            methods: ['GET'],
+            summary: 'Imprime los contratos en las fechas enviadas',
+            responses:{
+                200:{
+                    description: 'OK'
+                }
+            }
+        }
+
+    },
 
     'POST /viajes': {
         controller: 'Viajes',
