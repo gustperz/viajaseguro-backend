@@ -32,6 +32,21 @@ module.exports.routes = {
       }
 
     },
+    'GET /empresa/:id/rango_fechas_viajes': {
+      controller: 'Viajes',
+      action: 'getViajes',
+
+      swagger:{
+          methods: ['GET'],
+          summary: 'Obtiene los viajes des una fecha seleccionada',
+          responses:{
+              200:{
+                  description: 'OK'
+              }
+          }
+      }
+
+    },
 
     'POST /viajes': {
         controller: 'Viajes',
