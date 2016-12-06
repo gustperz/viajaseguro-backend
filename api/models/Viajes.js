@@ -12,7 +12,7 @@ module.exports = {
     contrato: {type: 'string', size: 4},
     cont_dia: {type: 'string', size: 4},
     fuec:     {type: 'string', size: 21},
-    fecha:    {type: 'string', defaultsTo: moment().format('YYYY-MM-DD')},
+    fecha:    {type: 'string', defaultsTo: () => moment().format('YYYY-MM-DD') },
     trayecto: {type: 'mediumtext'},
     origen:   {type: 'string'},
     destino:  {type: 'string'},
