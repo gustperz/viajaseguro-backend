@@ -9,7 +9,6 @@
     "hoek": "^4.0.2",
     "include-all": "~0.1.6",
     "jsonwebtoken": "^6.2.0",
-    "jsrender": "^0.9.83",
     "jsreport": "^1.0.9",
     "lodash": "^4.12.0",
     "merge-defaults": "^0.2.1",

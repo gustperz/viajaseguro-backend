@@ -70,7 +70,6 @@ module.exports = {
                 //elimino de las columnas de vehiculo el sufijo vehiculo.
                 fields_vehiculo = _.map(fields_vehiculo, field => _.replace(field, 'vehiculo.', ''));
 
-                console.log(fields_vehiculo)
                 //verifico que no este consultando una columna que no exista en vehiculos
                 const dif = actionUtil.checkFields(fields_vehiculo, Vehiculos);
                 if (dif.length) {
