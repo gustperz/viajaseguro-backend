@@ -17,7 +17,7 @@ module.exports.routes = {
       }
   },
 
-  'GET /viajes': {
+    'GET /viajes': {
       controller: 'Viajes',
       action: 'find',
 
@@ -94,6 +94,21 @@ module.exports.routes = {
                     }
                 }
             }]
+        }
+    },
+
+    'DELETE /viajes/:id': {
+        controller: 'Viajes',
+        action: 'destroy',
+
+        swagger: {
+            methods: ['DELETE'],
+            summary: 'Anular despacho',
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
         }
     },
 };
