@@ -29,9 +29,9 @@ module.exports = {
                 // console.log(data.data.contrato);
             } else if (viaje.vehiculo.modalidad === 'intermunicipal') {
                 var data = {
-                    template: {"shortid": "S102cRpR"},
+                    template: {"shortid": "B1PZH7AR"},
                     data: {
-                        contrato: {
+                        ontrato : {
                             dia: moment(viaje.fecha).format('dd'),
                             mes: moment(viaje.fecha).locale('es').format('MMMM'),
                             ano: moment(viaje.fecha).format('YYYY')
@@ -152,9 +152,9 @@ module.exports = {
                     }
                 } else if (viaje.vehiculo.modalidad === 'intermunicipal') {
                     var data = {
-                        template: {"shortid": "S102cRpR"},
+                        template: {"shortid": "B1PZH7AR"},
                         data: {
-                            contrato: {
+                            contrato : {
                                 dia: moment(viaje.fecha).format('dd'),
                                 mes: moment(viaje.fecha).locale('es').format('MMMM'),
                                 ano: moment(viaje.fecha).format('YYYY')
@@ -199,7 +199,7 @@ module.exports = {
             },
             sort: 'fecha ASC'
         }).populate('conductor').populate('vehiculo').populate('empresa').then(datos => {
-            datos.forEach(function(viaje){
+            datos.forEach(function (viaje) {
                 viaje.conductor.fecha_licencia = moment(viaje.conductor.fecha_licencia).format('L');
                 viaje.empresa.fecha_resolucion = moment(viaje.empresa.fecha_resolucion).locale("es").format('LL');
                 viaje.f_contrato = {
@@ -209,12 +209,12 @@ module.exports = {
                 }
                 viajes.push(viaje);
             })
-            if(req.allParams().contrato == 'true'){
+            if (req.allParams().contrato == 'true') {
                 data = {
                     template: {'shortid': 'rJTXRSN7x'},
                     data: viajes
                 }
-            }else {
+            } else {
                 data = {
                     template: {'shortid': 'B144VRaR'},
                     data: viajes
@@ -243,7 +243,7 @@ module.exports = {
             },
             sort: 'fecha ASC'
         }).populate('conductor').populate('vehiculo').populate('empresa').then(datos => {
-            datos.forEach(function(viaje){
+            datos.forEach(function (viaje) {
                 viaje.conductor.fecha_licencia = moment(viaje.conductor.fecha_licencia).format('L');
                 viaje.empresa.fecha_resolucion = moment(viaje.empresa.fecha_resolucion).locale("es").format('LL');
                 viaje.f_contrato = {
