@@ -92,7 +92,9 @@ module.exports = {
                     sails.log.error('el vehiculo '+valuesToUpdate.vehiculo+' no existe')
                 }
                 next();
-            })
+            });
+        } else {
+            next();
         }
     }
 }
