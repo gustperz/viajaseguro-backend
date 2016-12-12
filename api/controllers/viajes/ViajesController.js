@@ -57,22 +57,32 @@ module.exports = {
 
         if(!data.modalidad) return res.badRequest('modalidad required');
 
+        if(data.modalidad == 'especial' && !data.contrato) return res.badRequest('numero de contrato required');        
+
         async.parallel({
             empresa: cb => {
                 Empresas.findOne(req.user.empresa.id).exec(cb);
             },
             max_contrato: cb => {
-                Viajes.find({
-                    empresa: req.user.empresa.id,
-                    modalidad: data.modalidad
-                }).max('contrato').exec(cb);
+                if(data.modalidad == 'intermunicipal'){
+                    Viajes.find({
+                        empresa: req.user.empresa.id,
+                        modalidad: data.modalidad
+                    }).max('contrato').exec(cb);
+                } else{
+                    return cb(null, null);
+                }
             },
-            max_cont_dia: cb => {
-                Viajes.find({
-                    empresa: req.user.empresa.id,
-                    modalidad: data.modalidad,
-                    fecha: moment().format('YYYY-MM-DD')
-                }).max('cont_dia').exec(cb);
+            contrato: cb => {
+                if(data.modalidad == 'especial'){
+                    Viajes.findOne({
+                        empresa: req.user.empresa.id,
+                        modalidad: data.modalidad,
+                        contrato: data.contrato
+                    }).exec(cb);
+                } else{
+                    return cb(null, null);
+                }
             }
         }, function (err, result) {
             if (err) return res.negotiate(err);
@@ -81,9 +91,6 @@ module.exports = {
                 return res.notFound('No se han registrado todos los datos de la empresa', {code: 'E_INCOMPLETE_EMPRESA_DATA'});
             }            
 
-            const contrato = result.max_contrato ? ('000' + (+result.max_contrato[0].contrato + 1)).slice(-4) : '0001';
-
-            data.contrato = contrato;
             data.central = req.user.central.id;
             data.empresa = result.empresa.id;
 
@@ -91,15 +98,25 @@ module.exports = {
                 if (!result.empresa.ndireccion_terr) {
                     return res.notFound('No se han registrado todos los datos de la empresa', {code: 'E_INCOMPLETE_EMPRESA_DATA'});
                 }
+
+                if(result.contrato && result.contrato.contratante_identificacion != data.contratante_identificacion){
+                    return res.notFound('El numero de contrato ya esta registrado para otro contratante', {code: 'E_NC_USED'});                    
+                }
                             
                 const territorial = result.empresa.ndireccion_terr;
                 const resolucion = ('0000' + result.empresa.nresolucon).slice(-4);
                 const fecha_resol = moment(result.empresa.fecha_resolucion).format('YY');
                 const fecha_exp = moment().format('YYYY');
-                const cont_dia = result.max_cont_dia ? ('000' + (+result.max_cont_dia[0].cont_dia + 1)).slice(-4) : '0001';
+                const cont = result.contrato ? ('000' + (+result.contrato.cont_dia + 1)).slice(-4) : '0001';
 
-                data.cont_dia = cont_dia;
-                data.fuec = territorial + resolucion + fecha_resol + fecha_exp + contrato + cont_dia;
+                data.cont_dia = cont;
+                data.contrato = (   '000' + (+data.contrato)).slice(-4);                
+                
+                data.fuec = territorial + resolucion + fecha_resol + fecha_exp + data.contrato + cont;
+            } else { //es intermunicipal :P
+                data.contratante_identificacion = undefined;
+                data.contratante_nombre = undefined;
+                data.contrato = result.max_contrato ? ('000' + (+result.max_contrato[0].contrato + 1)).slice(-4) : '0001';                
             }
 
             Viajes.create(data).then(viaje => {

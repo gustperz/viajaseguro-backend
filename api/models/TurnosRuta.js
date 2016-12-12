@@ -25,7 +25,7 @@ module.exports = {
         toJSON() {
             var obj = this.toObject();
             if(typeof obj.conductor == 'object'){
-                obj.conductor = pick(obj.conductor, ['id', 'nombres', 'apellidos', 'imagen', 'codigo_vial', 'vehiculo'])
+                obj.conductor = pick(obj.conductor, ['id', 'nombres', 'apellidos', 'imagen', 'codigo_vial', 'vehiculo', 'modalidad'])
             }
             return obj;
         }
