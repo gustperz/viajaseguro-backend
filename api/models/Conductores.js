@@ -17,7 +17,7 @@ module.exports = {
         imagen:             { type: 'string', required: false, size: 255 },
         telefono:           { type: 'string', required: true, size: 15 },
         fecha_nacimiento:   { type: 'date', required: true },
-        fecha_ingreso:   { type: 'date', required: true },
+        fecha_ingreso:       { type: 'date', required: true },
         direccion:          { type: 'string', required: true, size: 50},
         email:              { type: 'email', size: 40},
         nlicencia:          { type: 'string', required: true ,size: 20},
@@ -27,6 +27,7 @@ module.exports = {
         activo:             { type: 'boolean', defaultsTo: true},
         codigo_vial:        { type: 'string'},
         estacion:           { type: 'string'},
+        modalidad:          { type: 'string', size: 14},
 
         // relaciones
         central: {
@@ -57,12 +58,20 @@ module.exports = {
     },
 
     afterCreate(newlyInsertedRecord, next){
-        Centrales.findOne(newlyInsertedRecord.central).then((central) => {
-            Conductores.update(
-                { id: newlyInsertedRecord.id },
-                { estacion: central.ciudad_place_id }
-            ).exec(() => {});
-        });
+         async.parallel({
+            central: cb => {
+                Centrales.findOne(newlyInsertedRecord.central).exec(cb);
+            },
+             vehiculo: cb => {
+                Vehiculos.findOne(newlyInsertedRecord.vehiculo).exec(cb);
+            }
+         }, (err, result) => {
+             Conductores.update(
+                 { id: newlyInsertedRecord.id },
+                 { estacion: result.central.ciudad_place_id },
+                 { modalidad: result.vehiculo.modalidad }
+             ).exec(() => {});
+         });
         next();
     },
 
@@ -72,5 +81,18 @@ module.exports = {
             Vehiculos.destroy({id: destroyedRecords[i].vehiculo}).exec(() => {});
         }
         next();
+    },
+
+    beforeUpdate(valuesToUpdate, next){
+        if(valuesToUpdate.vehiculo){
+            Vehiculos.findOne(valuesToUpdate.vehiculo).exec((error, vehiculo) => {
+                if(vehiculo){
+                    valuesToUpdate.modalidad = vehiculo.modalidad;
+                }else {
+                    sails.log.error('el vehiculo '+valuesToUpdate.vehiculo+' no existe')
+                }
+                next();
+            })
+        }
     }
 }
