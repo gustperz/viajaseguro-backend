@@ -30,11 +30,22 @@ module.exports = {
             sails.sockets.broadcast('central'+solicitud.central+'watcher', 'newSolicitud', solicitud, req);
             sails.sockets.broadcast('conductor'+solicitud.conductor+'watcher', 'newPasajero', solicitud, req);
 
-            forEach(solicitud.pasajeros, function (pasajero) {
-                if(pasajero.identificacion) {
-                    Clientes.findOrCreate({identificacion: pasajero.identificacion}, pasajero).exec(() => {});
-                }
-            });
+            if(solicitud.pasajeros.length == 1) {
+                const pasajero = solicitud.pasajeros[0];
+                Clientes.findOrCreate({identificacion: pasajero.identificacion}, pasajero)
+                    .exec((error, cliente) => {
+                        if(error) return sails.log.error(error);
+                        if(pasajero.telefono) cliente.telefono = pasajero.telefono;
+                        if(pasajero.direccion) cliente.direccion = pasajero.direccion;
+                        cliente.save();
+                    });                
+            } else {
+                forEach(solicitud.pasajeros, function (pasajero) {
+                    if(pasajero.identificacion) {
+                        Clientes.findOrCreate({identificacion: pasajero.identificacion}, pasajero).exec(() => {});
+                    }
+                });
+            }
 
             return res.ok(solicitud);
         }).catch(res.negotiate);
