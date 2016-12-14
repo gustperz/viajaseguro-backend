@@ -18,13 +18,14 @@ module.exports = {
         const data = req.allParams();
         data.empresa = req.user.empresa.id;
 
+        if (!req.user.empresa.especial && req.user.empresa.intermunicipal && data.vehiculo) data.vehiculo.modalidad = 'intermunicipal';
+        if (req.user.empresa.especial && !req.user.empresa.intermunicipal && data.vehiculo) data.vehiculo.modalidad = 'especial';
+
         if(data.vehiculo) {
             data.vehiculo.empresa = req.user.empresa.id;
             data.codigo_vial = data.vehiculo.codigo_vial;
+            data.modalidad = data.vehiculo.modalidad;
         }
-
-        if (!req.user.empresa.especial && req.user.empresa.intermunicipal && data.vehiculo) data.vehiculo.modalidad = 'intermunicipal';
-        if (req.user.empresa.especial && !req.user.empresa.intermunicipal && data.vehiculo) data.vehiculo.modalidad = 'especial';
 
         data.user = {
             username: String(data.identificacion),
