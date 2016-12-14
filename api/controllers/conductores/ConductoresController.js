@@ -42,10 +42,14 @@ module.exports = {
                 if (!error.invalidAttributes.placa && data.vehiculo.placa && data.vehiculo) {
                     Vehiculos.destroy({placa: data.vehiculo.placa}).exec(() => {
                     });
+                    User.destroy({username: data.user.username}).exec(() => {
+                    });
                 }
 
                 if (!error.invalidAttributes.codigo_vial && data.vehiculo.codigo_vial && data.vehiculo) {
                     Vehiculos.destroy({codigo_vial: data.vehiculo.codigo_vial}).exec(() => {
+                    });
+                    User.destroy({username: data.user.username}).exec(() => {
                     });
                 }
                 res.negotiate(error);
