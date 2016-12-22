@@ -476,11 +476,6 @@
         </td>
     </tr>
     <tr>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
-            <font size=3 color="#000000" style="text-transform: uppercase">RECORRIDO : {{trayecto}}</font>
-        </td>
-    </tr>
-    <tr>
         <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="21" align="left" valign=bottom>
             <font size=3 color="#000000">ORIGEN:</font>
         </td>
@@ -502,6 +497,11 @@
             <font size=3 color="#000000">
                 <br>
             </font>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
+            <font size=3 color="#000000" style="text-transform: uppercase">RECORRIDO : {{trayecto}}</font>
         </td>
     </tr>
     <tr>
@@ -741,12 +741,17 @@
     </tr>
     <tr>
         <td colspan=6 height="15" align="center" valign=bottom>
-            <font size=3 color="#000000">Resoluci&oacute;n de Habilitaci&oacute;n No {{empresa.nresolucon}} del {{empresa.fecha_resolucion}} Emanada del Ministerio de Transporte Seccional Cesar</font>
+            <font size=3 color="#000000">Resoluci&oacute;n de Habilitaci&oacute;n No {{empresa.nresolucon}} del {{empresa.fecha_resolucion}} Emanada del Ministerio de Transporte Seccional {{empresa.secc_resolucion}}</font>
         </td>
     </tr>
     <tr>
         <td colspan=6 height="15" align="center" valign=bottom>
             <font size=3 color="#000000">Oficina Principal {{empresa.direccion}} Tel: {{empresa.telefono}} - Fax: {{empresa.fax}}</font>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=6 height="15" align="center" valign=bottom>
+            <font size=4 color="#000000">{{empresa.email}}</font>
         </td>
     </tr>
     <tr>
