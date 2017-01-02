@@ -31,7 +31,7 @@ module.exports = {
                 var data = {
                     template: {"shortid": "B1PZH7AR"},
                     data: {
-                        ontrato : {
+                        ontrato: {
                             dia: moment(viaje.fecha).format('dd'),
                             mes: moment(viaje.fecha).locale('es').format('MMMM'),
                             ano: moment(viaje.fecha).format('YYYY')
@@ -55,32 +55,32 @@ module.exports = {
     create(req, res){
         var data = req.allParams();
 
-        if(!data.modalidad) return res.badRequest('modalidad required');
+        if (!data.modalidad) return res.badRequest('modalidad required');
 
-        if(data.modalidad == 'especial' && !data.contrato) return res.badRequest('numero de contrato required');        
+        if (data.modalidad == 'especial' && !data.contrato) return res.badRequest('numero de contrato required');
 
         async.parallel({
             empresa: cb => {
                 Empresas.findOne(req.user.empresa.id).exec(cb);
             },
             max_contrato: cb => {
-                if(data.modalidad == 'intermunicipal'){
+                if (data.modalidad == 'intermunicipal') {
                     Viajes.find({
                         empresa: req.user.empresa.id,
                         modalidad: data.modalidad
                     }).max('contrato').exec(cb);
-                } else{
+                } else {
                     return cb(null, null);
                 }
             },
             contrato: cb => {
-                if(data.modalidad == 'especial'){
+                if (data.modalidad == 'especial') {
                     Viajes.findOne({
                         empresa: req.user.empresa.id,
                         modalidad: data.modalidad,
                         contrato: data.contrato
                     }).exec(cb);
-                } else{
+                } else {
                     return cb(null, null);
                 }
             }
@@ -89,20 +89,20 @@ module.exports = {
 
             if (!result.empresa.nresolucon) {
                 return res.notFound('No se han registrado todos los datos de la empresa', {code: 'E_INCOMPLETE_EMPRESA_DATA'});
-            }            
+            }
 
             data.central = req.user.central.id;
             data.empresa = result.empresa.id;
 
-            if(data.modalidad == 'especial') {    
+            if (data.modalidad == 'especial') {
                 if (!result.empresa.ndireccion_terr) {
                     return res.notFound('No se han registrado todos los datos de la empresa', {code: 'E_INCOMPLETE_EMPRESA_DATA'});
                 }
 
-                if(result.contrato && result.contrato.contratante_identificacion != data.contratante_identificacion){
-                    return res.notFound('El numero de contrato ya esta registrado para otro contratante', {code: 'E_NC_USED'});                    
+                if (result.contrato && result.contrato.contratante_identificacion != data.contratante_identificacion) {
+                    return res.notFound('El numero de contrato ya esta registrado para otro contratante', {code: 'E_NC_USED'});
                 }
-                            
+
                 const territorial = result.empresa.ndireccion_terr;
                 const resolucion = ('0000' + result.empresa.nresolucon).slice(-4);
                 const fecha_resol = moment(result.empresa.fecha_resolucion).format('YY');
@@ -110,13 +110,13 @@ module.exports = {
                 const cont = result.contrato ? ('000' + (+result.contrato.cont_dia + 1)).slice(-4) : '0001';
 
                 data.cont_dia = cont;
-                data.contrato = (   '000' + (+data.contrato)).slice(-4);                
-                
+                data.contrato = (   '000' + (+data.contrato)).slice(-4);
+
                 data.fuec = territorial + resolucion + fecha_resol + fecha_exp + data.contrato + cont;
             } else { //es intermunicipal :P
                 data.contratante_identificacion = undefined;
                 data.contratante_nombre = undefined;
-                data.contrato = result.max_contrato ? ('000' + (+result.max_contrato[0].contrato + 1)).slice(-4) : '0001';                
+                data.contrato = result.max_contrato ? ('000' + (+result.max_contrato[0].contrato + 1)).slice(-4) : '0001';
             }
 
             Viajes.create(data).then(viaje => {
@@ -189,7 +189,7 @@ module.exports = {
                     var data = {
                         template: {"shortid": "B1PZH7AR"},
                         data: {
-                            contrato : {
+                            contrato: {
                                 dia: moment(viaje.fecha).format('dd'),
                                 mes: moment(viaje.fecha).locale('es').format('MMMM'),
                                 ano: moment(viaje.fecha).format('YYYY')
