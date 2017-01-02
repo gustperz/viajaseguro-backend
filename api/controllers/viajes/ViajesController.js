@@ -18,10 +18,15 @@ module.exports = {
                 var data = {
                     template: {'shortid': 'BkFSrPVXl'},
                     data: {
-                        contrato: {
-                            dia: parseInt(moment(viaje.fecha).format('Do')),
-                            mes: moment(viaje.fecha).locale('es').format('MMMM'),
-                            ano: moment(viaje.fecha).format('YYYY')
+                        vigencia_fi: {
+                            dia: parseInt(moment(viaje.vigencia_fi).format('Do')),
+                            mes: moment(viaje.vigencia_fi).locale('es').format('MMMM'),
+                            ano: moment(viaje.vigencia_fi).format('YYYY')
+                        },
+                        vigencia_fn: {
+                            dia: parseInt(moment(viaje.vigencia_fn).format('Do')),
+                            mes: moment(viaje.vigencia_fn).locale('es').format('MMMM'),
+                            ano: moment(viaje.vigencia_fn).format('YYYY')
                         },
                         viaje: viaje
                     }
@@ -31,10 +36,10 @@ module.exports = {
                 var data = {
                     template: {"shortid": "B1PZH7AR"},
                     data: {
-                        ontrato: {
-                            dia: moment(viaje.fecha).format('dd'),
-                            mes: moment(viaje.fecha).locale('es').format('MMMM'),
-                            ano: moment(viaje.fecha).format('YYYY')
+                        vigencia_fi: {
+                            dia: parseInt(moment(viaje.vigencia_fi).format('Do')),
+                            mes: moment(viaje.vigencia_fi).locale('es').format('MMMM'),
+                            ano: moment(viaje.vigencia_fi).format('YYYY')
                         },
                         viaje: viaje
                     }
@@ -177,10 +182,15 @@ module.exports = {
                     var data = {
                         template: {'shortid': 'BkFSrPVXl'},
                         data: {
-                            contrato: {
-                                dia: parseInt(moment(viaje.fecha).format('Do')),
-                                mes: moment(viaje.fecha).locale('es').format('MMMM'),
-                                ano: moment(viaje.fecha).format('YYYY')
+                            vigencia_fi: {
+                                dia: parseInt(moment(viaje.vigencia_fi).format('Do')),
+                                mes: moment(viaje.vigencia_fi).locale('es').format('MMMM'),
+                                ano: moment(viaje.vigencia_fi).format('YYYY')
+                            },
+                            vigencia_fn: {
+                                dia: parseInt(moment(viaje.vigencia_fn).format('Do')),
+                                mes: moment(viaje.vigencia_fn).locale('es').format('MMMM'),
+                                ano: moment(viaje.vigencia_fn).format('YYYY')
                             },
                             viaje: viaje
                         }
@@ -189,10 +199,10 @@ module.exports = {
                     var data = {
                         template: {"shortid": "B1PZH7AR"},
                         data: {
-                            contrato: {
-                                dia: moment(viaje.fecha).format('dd'),
-                                mes: moment(viaje.fecha).locale('es').format('MMMM'),
-                                ano: moment(viaje.fecha).format('YYYY')
+                            vigencia_fi: {
+                                dia: parseInt(moment(viaje.vigencia_fi).format('Do')),
+                                mes: moment(viaje.vigencia_fi).locale('es').format('MMMM'),
+                                ano: moment(viaje.vigencia_fi).format('YYYY')
                             },
                             viaje: viaje
                         }
@@ -215,9 +225,9 @@ module.exports = {
         Viajes.find({
             where: {
                 empresa: req.allParams().id,
-                fecha: limitFecha(req)
+                createdAt: limitFecha(req)
             },
-            sort: 'fecha DESC'
+            sort: 'createdAt DESC'
         }).populate('conductor').populate('vehiculo').then(viajes => {
             return res.ok(viajes);
         })
@@ -230,17 +240,22 @@ module.exports = {
             where: {
                 empresa: req.allParams().id,
                 modalidad: 'especial',
-                fecha: limitFecha(req)
+                createdAt: limitFecha(req)
             },
-            sort: 'fecha ASC'
+            sort: 'createdAt ASC'
         }).populate('conductor').populate('vehiculo').populate('empresa').then(datos => {
             datos.forEach(function (viaje) {
                 viaje.conductor.fecha_licencia = moment(viaje.conductor.fecha_licencia).format('L');
                 viaje.empresa.fecha_resolucion = moment(viaje.empresa.fecha_resolucion).locale("es").format('LL');
-                viaje.f_contrato = {
-                    dia: parseInt(moment(viaje.fecha).format('Do')),
-                    mes: moment(viaje.fecha).locale('es').format('MMMM'),
-                    ano: moment(viaje.fecha).format('YYYY')
+                viaje.vigencia_fi = {
+                    dia: parseInt(moment(viaje.vigencia_fi).format('Do')),
+                    mes: moment(viaje.vigencia_fi).locale('es').format('MMMM'),
+                    ano: moment(viaje.vigencia_fi).format('YYYY')
+                }
+                viaje.vigencia_fn = {
+                    dia: parseInt(moment(viaje.vigencia_fn).format('Do')),
+                    mes: moment(viaje.vigencia_fn).locale('es').format('MMMM'),
+                    ano: moment(viaje.vigencia_fn).format('YYYY')
                 }
                 viajes.push(viaje);
             })
@@ -274,17 +289,17 @@ module.exports = {
             where: {
                 empresa: req.allParams().id,
                 modalidad: 'intermunicipal',
-                fecha: limitFecha(req)
+                createdAt: limitFecha(req)
             },
-            sort: 'fecha ASC'
+            sort: 'createdAt ASC'
         }).populate('conductor').populate('vehiculo').populate('empresa').then(datos => {
             datos.forEach(function (viaje) {
                 viaje.conductor.fecha_licencia = moment(viaje.conductor.fecha_licencia).format('L');
                 viaje.empresa.fecha_resolucion = moment(viaje.empresa.fecha_resolucion).locale("es").format('LL');
-                viaje.f_contrato = {
-                    dia: parseInt(moment(viaje.fecha).format('Do')),
-                    mes: moment(viaje.fecha).locale('es').format('MMMM'),
-                    ano: moment(viaje.fecha).format('YYYY')
+                viaje.vigencia_fi = {
+                    dia: parseInt(moment(viaje.vigencia_fi).format('Do')),
+                    mes: moment(viaje.vigencia_fi).locale('es').format('MMMM'),
+                    ano: moment(viaje.vigencia_fi).format('YYYY')
                 }
                 viajes.push(viaje);
             })
@@ -315,8 +330,8 @@ function limitFecha(req, default_dia) {
     }
     fecha_desde.set('hour', 0).set('minute', 0).set('second', 0);
     fecha_hasta.set('hour', 0).set('minute', 0).set('second', 0);
-    fecha_desde.add(-1, 'd');
-//   fecha_hasta.add(1, 'd');
+    // fecha_desde.add(-1, 'd');
+    fecha_hasta.add(1, 'd');
     console.log(fecha_hasta.toDate(), '**************');
     console.log(fecha_desde.toDate(), '**************');
     return {

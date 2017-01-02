@@ -254,9 +254,9 @@
     <tr>
         <td colspan=9 height="17" align="left" valign=middle style="font-size: 14px">El presente contrato se suscribe en la ciudad de
             <b style="text-transform: capitalize">{{origen}}</b> a los
-            <b>{{f_contrato.dia}}</b> dias del mes de
-            <b>{{f_contrato.mes}}</b> del a&ntilde;o
-            <b>{{f_contrato.ano}}</b>.
+            <b>{{vigencia_fi.dia}}</b> dias del mes de
+            <b>{{vigencia_fi.mes}}</b> del a&ntilde;o
+            <b>{{vigencia_fi.ano}}</b>.
         </td>
     </tr>
     <tr>
@@ -547,13 +547,13 @@
             </font>
         </td>
         <td style="border-bottom: 1px solid #000000" align="center" valign=bottom sdval="24" sdnum="9226;">
-            <font size=3 color="#000000">{{f_contrato.dia}}</font>
+            <font size=3 color="#000000">{{vigencia_fi.dia}}</font>
         </td>
         <td style="border-bottom: 1px solid #000000" align="center" valign=bottom>
-            <font size=3 color="#000000">{{f_contrato.mes}}</font>
+            <font size=3 color="#000000">{{vigencia_fi.mes}}</font>
         </td>
         <td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom sdval="2015" sdnum="9226;">
-            <font size=3 color="#000000">{{f_contrato.ano}}</font>
+            <font size=3 color="#000000">{{vigencia_fi.ano}}</font>
         </td>
     </tr>
     <tr>
@@ -598,13 +598,13 @@
             </font>
         </td>
         <td style="border-bottom: 1px solid #000000" align="center" valign=bottom sdval="24" sdnum="9226;">
-            <font size=3 color="#000000">{{f_contrato.dia}}</font>
+            <font size=3 color="#000000">{{vigencia_fn.dia}}</font>
         </td>
         <td style="border-bottom: 1px solid #000000" align="center" valign=bottom>
-            <font size=3 color="#000000">{{f_contrato.mes}}</font>
+            <font size=3 color="#000000">{{vigencia_fn.mes}}</font>
         </td>
         <td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom sdval="2015" sdnum="9226;">
-            <font size=3 color="#000000">{{f_contrato.ano}}</font>
+            <font size=3 color="#000000">{{vigencia_fn.ano}}</font>
         </td>
     </tr>
     <tr>
@@ -715,11 +715,15 @@
         </td>
     </tr>
     {{#each pasajeros}}
-    <tr>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
-            <font size=3 color="#000000" style="text-transform: uppercase">{{identificacion}} - {{nombre}}</font>
-        </td>
-    </tr>
+        {{#if es_contratante}}
+        
+        {{else}}
+            <tr>
+                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
+                    <font size=3 color="#000000" style="text-transform: uppercase">{{identificacion}} - {{nombre}}</font>
+                </td>
+            </tr>
+        {{/if}}
     {{/each}}
     
     <tr>
