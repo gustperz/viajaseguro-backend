@@ -345,11 +345,15 @@
         </td>
     </tr>
     {{#each this.viaje.pasajeros}}
-    <tr>
-        <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
-            <font size=3 color="#000000" style="text-transform: uppercase">{{identificacion}} - {{nombre}}</font>
-        </td>
-    </tr>
+        {{#if es_contratante}}
+        
+        {{else}}
+            <tr>
+                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=6 height="21" align="center" valign=bottom>
+                    <font size=3 color="#000000" style="text-transform: uppercase">{{identificacion}} - {{nombre}}</font>
+                </td>
+            </tr>
+        {{/if}}
     {{/each}}
     
     <tr>
