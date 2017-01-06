@@ -4,7 +4,11 @@
  * @description :: Server-side logic for managing Empresas
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+
+const actionUtil = require('../../blueprints/myActionUtil');
 const _ = require('lodash');
+const uid = require('uid-safe');
+var fs = require('fs');
 
 module.exports = {
     identity: 'Vehiculos',
@@ -30,9 +34,6 @@ module.exports = {
     },
 
     saveImagen(req, res){
-        console.log(req.allParams())
-        console.log('=================')
-        console.log(req.params)
         Vehiculos.findOne({id: req.allParams().id})
             .then((vehiculo) => {
                 if (vehiculo) {
