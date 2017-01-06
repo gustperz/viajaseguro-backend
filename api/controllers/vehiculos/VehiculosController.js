@@ -30,27 +30,31 @@ module.exports = {
     },
 
     saveImagen(req, res){
+        console.log(req.allParams())
+        console.log('=================')
+        console.log(req.params)
         Vehiculos.findOne({id: req.allParams().id})
             .then((vehiculo) => {
                 if (vehiculo) {
                     req.file('imagen').upload({
-                            dirname: sails.config.appPath + '/public/images/conductores',
+                            dirname: sails.config.appPath + '/public/images/vehiculos',
                             saveAs: function (__newFileStream, cb) {
                                 cb(null, vehiculo.imagen || uid.sync(18) + vehiculo.id + '.' + _.last(__newFileStream.filename.split('.')));
-                            }
+                            },
+                            maxBytes: 10000000
                         },
                         (error, uploadedFiles) => {
                             if (error) return res.negotiate(error);
-                            if (!uploadedFiles[0]) return res.badRequest('ha ocurrido un error inesperado al almacenar la imagen');
+                            if (!uploadedFiles[0]) return res.badRequest('Ha ocurrido un error inesperado al almacenar la imagen');
                             const filename = _.last(uploadedFiles[0].fd.split('/'));
                             vehiculo.imagen = filename;
                             vehiculo.save((err, s) => res.ok('files upload'));
                         }
                     );
                 } else {
-                    return res.notFound('El conductor no existe');
+                    return res.notFound('el vehiculo no existe');
                 }
             }).catch(res.negotiate);
-    },
+    }
 
 };
