@@ -55,7 +55,7 @@ module.exports = {
     findLastSolicitud(req, res) {
         if (!req.isSocket) return res.badRequest();
         Solicitudes.findOne({cliente: req.params.id}).then(solicitud => {
-            sails.sockets.join(req, 'solicitud'+solicitud.id+'watcher');
+            if(solicitud) sails.sockets.join(req, 'solicitud'+solicitud.id+'watcher');
             return res.ok(solicitud);
         }).catch(res.negotiate);
     },
