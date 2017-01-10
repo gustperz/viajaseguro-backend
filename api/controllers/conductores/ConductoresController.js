@@ -10,6 +10,8 @@
 
 const actionUtil = require('../../blueprints/myActionUtil');
 const _ = require('lodash');
+var fs = require('fs');
+const uid = require('uid-safe');
 
 module.exports = {
     identity: 'Conductores',
@@ -120,12 +122,13 @@ module.exports = {
         Conductores.findOne({id : req.params.id})
             .then((conductor) => {
                 if (conductor) {
-                    console.log(conductor)
+                    console.log(req.file);
                     req.file('imagen').upload({
                             dirname: sails.config.appPath + '/public/images/conductores',
                             saveAs: function (__newFileStream, cb) {
                                 cb(null, conductor.imagen || uid.sync(18) + conductor.id + '.' + _.last(__newFileStream.filename.split('.')));
-                            }
+                            },
+                            maxBytes: 10000000
                         },
                         (error, uploadedFiles) => {
                             if (error) return res.negotiate(error);
