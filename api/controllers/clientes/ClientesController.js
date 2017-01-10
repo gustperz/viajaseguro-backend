@@ -15,7 +15,7 @@ module.exports = {
 
     findOne(req, res) {
         Clientes.findOne({identificacion: req.params.id}).then(res.ok).catch(res.negotiate);
-    }, 
+    },
 
     create(req, res) {
         const data = req.allParams();
@@ -48,6 +48,14 @@ module.exports = {
                 }
             });
 
+            return res.ok(solicitud);
+        }).catch(res.negotiate);
+    },
+
+    findLastSolicitud(req, res) {
+        if (!req.isSocket) return res.badRequest();
+        Solicitudes.findOne({cliente: req.params.id}).then(solicitud => {
+            sails.sockets.join(req, 'solicitud'+solicitud.id+'watcher');
             return res.ok(solicitud);
         }).catch(res.negotiate);
     },

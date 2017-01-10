@@ -50,7 +50,7 @@ module.exports.routes = {
         }
     },
 
-    'POST /clientes/:id/solicitudes':{
+    'POST /clientes/:id/solicitud':{
         controller: 'Clientes',
         action: 'createSolicitud',
 
@@ -63,6 +63,21 @@ module.exports.routes = {
                 }
             }
         }
-    }
+    },
+
+    'GET /clientes/:id/solicitud': {
+        controller: 'Clientes',
+        action: 'findLastSolicitud',
+
+        swagger: {
+            methods: ['GET'],
+            summary: 'Obtiene la solucitud activa del cliente',
+            responses: {
+                200: {
+                    description: 'OK'
+                }
+            }
+        }
+    },
 
 }

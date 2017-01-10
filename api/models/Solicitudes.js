@@ -10,7 +10,7 @@ module.exports = {
   connection: 'redis',
 
   attributes: {
-    estado:     {type:'string', size: '1'},
+    estado:     {type:'string', size: '1'}, //p:pendiente, a:asignada
     direccion:  {type:'string', size: '50'},
     telefono:   {type:'string', size: '12'},
     pasajeros:  {type:'array', required: true},
@@ -25,6 +25,8 @@ module.exports = {
     central: {
       model : 'centrales'
     }
-  }
+  },
+
+    autoCreatedAt: true,
 };
 
