@@ -68,8 +68,8 @@ module.exports = {
          }, (err, result) => {
              Conductores.update(
                  { id: newlyInsertedRecord.id },
-                 { estacion: result.central.ciudad_place_id },
-                 { modalidad: result.vehiculo.modalidad }
+                 { estacion: result.central ? result.central.ciudad_place_id : undefined },
+                 { modalidad: result.vehiculo ? result.vehiculo.modalidad : undefined }
              ).exec(() => {});
          });
         next();
