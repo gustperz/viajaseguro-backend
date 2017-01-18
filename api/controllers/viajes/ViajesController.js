@@ -133,8 +133,9 @@ module.exports = {
                     estacion: data.estacion,
                     estado: 'en_ruta'
                 }).then(updateRecords => {
+                    sails.sockets.broadcast('conductor' + viaje.conductor + 'watcher', 'updateEstado', 'en_ruta', req);
                     sails.sockets.broadcast('conductor' + viaje.conductor + 'watcher', 'madeDespacho');
-                    sails.log.silly('broadcast conductor' + viaje.conductor + 'watcher:madeDespacho');
+                    // sails.log.silly('broadcast conductor' + viaje.conductor + 'watcher:madeDespacho');
 
                     return generateFuec(viaje);
                 });
