@@ -11,19 +11,24 @@ module.exports = {
         var registrationTokens = [];
         registrationTokens.push(tokens);
         var message = new gcm.Message({
-            collapseKey: 'testing',
+            collapseKey: 'demo',
             priority: 'high',
             contentAvailable: true,
             delayWhileIdle: true,
             timeToLive: 3,
-            dryRun: true,
+            data: {
+                message: data.body,
+                type: data.type ? data.type : null,
+                pos: data.pos ? data.pos: null,
+                ruta: data.ruta ? data.ruta: null
+            },
             notification: {
                 title: data.title,
                 icon: "ic_launcher",
                 body: data.body
             }
         });
-        sender.send(message, registrationTokens , 10, function (err, response) {
+        sender.send(message, { registrationTokens: registrationTokens }, function (err, response) {
             if(err) console.error(err);
             else    console.log(response);
         });

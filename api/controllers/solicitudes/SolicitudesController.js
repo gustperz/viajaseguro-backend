@@ -25,10 +25,20 @@ module.exports = {
         var data = req.allParams();
         data.central = req.user.central;
         Solicitudes.create(data).then(solicitud => {
+            Conductores.findOne({id: solicitud.conductor}).then(function (conductor) {
+                User.findOne({id: conductor.user}).then(function (user) {
+                    var data = {
+                        title : 'Nuevo pasajero',
+                        body : 'Se te ah agregado un nuevo pasajero, verificalo en la lista',
+                        type : 'newPasajero'
+                    }
+                    PusherService.send(data, user.reg_id);
+                })
+            });
             sails.sockets.join(req, 'solicitud'+solicitud.id+'watcher');
             sails.sockets.join(req, 'central'+req.user.central.id+'watcher');
             sails.sockets.broadcast('central'+solicitud.central+'watcher', 'newSolicitud', solicitud, req);
-            sails.sockets.broadcast('conductor'+solicitud.conductor+'watcher', 'newPasajero', solicitud, req);
+            // sails.sockets.broadcast('conductor'+solicitud.conductor+'watcher', 'newPasajero', solicitud, req);
 
             if(solicitud.pasajeros.length == 1) {
                 const pasajero = solicitud.pasajeros[0];
