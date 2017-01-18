@@ -24,7 +24,6 @@ module.exports = {
             },
             notification: {
                 title: data.title,
-                icon: "ic_launcher",
                 body: data.body
             }
         });
