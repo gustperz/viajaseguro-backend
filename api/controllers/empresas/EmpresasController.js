@@ -6,6 +6,7 @@
  */
 const _ = require('lodash');
 const uid = require('uid-safe');
+const fs = require('fs');
 
 module.exports = {
     identity: 'Empresas',
@@ -51,6 +52,8 @@ module.exports = {
         Empresas.findOne({id: req.allParams().id})
             .then((empresa) => {
                 if (empresa) {
+                    if(empresa.logo)
+                        fs.unlink(sails.config.appPath + '/public/images/empresas/'+empresa.logo);
                     req.file('logo').upload({
                             dirname: sails.config.appPath + '/public/images/empresas',
                             saveAs: function (__newFileStream, cb) {

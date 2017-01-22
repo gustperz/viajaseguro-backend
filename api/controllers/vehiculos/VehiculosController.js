@@ -37,6 +37,8 @@ module.exports = {
         Vehiculos.findOne({id: req.allParams().id})
             .then((vehiculo) => {
                 if (vehiculo) {
+                    if(vehiculo.imagen)
+                        fs.unlink(sails.config.appPath + '/public/images/empresas/'+vehiculo.imagen);
                     req.file('imagen').upload({
                             dirname: sails.config.appPath + '/public/images/vehiculos',
                             saveAs: function (__newFileStream, cb) {

@@ -122,7 +122,8 @@ module.exports = {
         Conductores.findOne({id : req.params.id})
             .then((conductor) => {
                 if (conductor) {
-                    console.log(req.file);
+                    if(conductor.imagen)
+                        fs.unlink(sails.config.appPath + '/public/images/empresas/'+conductor.imagen);
                     req.file('imagen').upload({
                             dirname: sails.config.appPath + '/public/images/conductores',
                             saveAs: function (__newFileStream, cb) {
