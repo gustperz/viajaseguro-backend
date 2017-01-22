@@ -54,7 +54,7 @@ module.exports = {
                     req.file('logo').upload({
                             dirname: sails.config.appPath + '/public/images/empresas',
                             saveAs: function (__newFileStream, cb) {
-                                cb(null, empresa.logo || uid.sync(18) + empresa.id + '.' + _.last(__newFileStream.filename.split('.')));
+                                cb(null, uid.sync(18) + empresa.id + '.' + _.last(__newFileStream.filename.split('.')));
                             }
                         },
                         (error, uploadedFiles) => {

@@ -40,7 +40,7 @@ module.exports = {
                     req.file('imagen').upload({
                             dirname: sails.config.appPath + '/public/images/vehiculos',
                             saveAs: function (__newFileStream, cb) {
-                                cb(null, vehiculo.imagen || uid.sync(18) + vehiculo.id + '.' + _.last(__newFileStream.filename.split('.')));
+                                cb(null, uid.sync(18) + vehiculo.id + '.' + _.last(__newFileStream.filename.split('.')));
                             },
                             maxBytes: 10000000
                         },
