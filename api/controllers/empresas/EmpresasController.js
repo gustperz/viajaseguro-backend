@@ -78,10 +78,12 @@ module.exports = {
         Empresas.findOne({id: req.allParams().id})
             .then((empresa) => {
                 if (empresa) {
+                    if(empresa.firma_digital)
+                        fs.unlink(sails.config.appPath + '/public/images/empresas/firma/'+empresa.firma_digital);
                     req.file('firmaDigital').upload({
                             dirname: sails.config.appPath + '/public/images/empresas/firma/',
                             saveAs: function (__newFileStream, cb) {
-                                cb(null, empresa.firma_digital || uid.sync(18) + empresa.id + '.' + _.last(__newFileStream.filename.split('.')));
+                                cb(null, uid.sync(18) + empresa.id + '.' + _.last(__newFileStream.filename.split('.')));
                             }
                         },
                         (error, uploadedFiles) => {
