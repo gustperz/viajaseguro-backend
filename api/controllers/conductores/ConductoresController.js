@@ -123,7 +123,7 @@ module.exports = {
             .then((conductor) => {
                 if (conductor) {
                     if(conductor.imagen)
-                        fs.unlink(sails.config.appPath + '/public/images/empresas/'+conductor.imagen);
+                        fs.unlink(sails.config.appPath + '/public/images/conductores/'+conductor.imagen);
                     req.file('imagen').upload({
                             dirname: sails.config.appPath + '/public/images/conductores',
                             saveAs: function (__newFileStream, cb) {
