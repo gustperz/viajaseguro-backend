@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     origen:    {type: 'json'},
     destino:   {type: 'json'},
-    trayecto:  {type: 'text'},
+    trayecto:  {type: 'array', defaultsTo: []},
 
     central: {
       model: 'centrales'
