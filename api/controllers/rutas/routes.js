@@ -53,6 +53,21 @@ module.exports.routes = {
         }
     },
 
+    'PUT /rutas/:id': {
+        controller: 'Rutas',
+        action: 'update',
+
+        swagger: {
+            methods: ['PUT'],
+            summary: 'Modificar ruta',
+            responses: {
+                200: {
+                    schema: 'rutas'
+                }
+            }
+        }
+    },
+
     'DELETE /rutas/:id': {
         controller: 'Rutas',
         action: 'destroy',
