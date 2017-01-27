@@ -13,7 +13,7 @@ module.exports = {
         const data = req.allParams();
         sails.sockets.join(req, 'empresa'+data.empresa+'tracking');
         sails.sockets.broadcast('empresa'+data.empresa+'tracking', 'posConductores'+data.estacion, req.allParams(), req);
-        sails.log.silly('broadcast empresa'+data.empresa+'tracking'+':posConductores'+data.estacion);
+        //sails.log.silly('broadcast empresa'+data.empresa+'tracking'+':posConductores'+data.estacion);
         res.ok();
     },
 

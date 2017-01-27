@@ -38,7 +38,7 @@ module.exports = {
             sails.sockets.join(req, 'solicitud'+solicitud.id+'watcher');
             sails.sockets.join(req, 'central'+req.user.central.id+'watcher');
             sails.sockets.broadcast('central'+solicitud.central+'watcher', 'newSolicitud', solicitud, req);
-            // sails.sockets.broadcast('conductor'+solicitud.conductor+'watcher', 'newPasajero', solicitud, req);
+            sails.sockets.broadcast('conductor'+solicitud.conductor+'watcher', 'newPasajero', solicitud, req);
 
             if(solicitud.pasajeros.length == 1) {
                 const pasajero = solicitud.pasajeros[0];
