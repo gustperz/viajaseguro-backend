@@ -159,6 +159,7 @@ module.exports = {
                             })
                             .catch(res.negotiate)
                     }
+                    res.ok('el conductor ya tenia el estado '+data.estado);
                 }else{
                     return res.notFound('No se encontro al conductor.')
                 }
