@@ -69,7 +69,10 @@ module.exports = {
                                         'imagen',
                                         'empresa',
                                         'identificacion',
-                                        'vehiculo'
+                                        'vehiculo',
+                                        'estado',
+                                        'estacion',
+                                        'codigo_vial'
                                     ]);
                                     callback(user);
                                 }).catch(res.negotiate);
